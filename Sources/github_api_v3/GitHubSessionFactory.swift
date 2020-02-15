@@ -7,11 +7,11 @@
 
 import Foundation
 
-public class GitHubSessionFactory {
+class GitHubSessionFactory {
     
     // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________
-    typealias ResultApi         = (Result< GithubAPI    ,Error> ) -> Void
+    public typealias ResultApi         = (Result< GithubAPI    ,Error> ) -> Void
     
     
     // MARK: PRIVATE CONSTRUCTOR
@@ -24,7 +24,7 @@ public class GitHubSessionFactory {
     // MARK: PUBLIC STATIC FUNCTIONS
     //__________________________________________________________________________________________________________________
     
-    static func initSessionWithToken(
+    public static func initSessionWithToken(
         token   : String ,
         result  : @escaping ResultApi
     ) -> Void  {
