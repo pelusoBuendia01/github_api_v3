@@ -21,13 +21,21 @@ Swift Package designed to generate GitHub API access as "Session" using token ac
 | Layer  | Description | 
 |--------|-------------|
 | [core](./Sources/github_api_v3/core/README.md) | Includes all the abstraction concepts for this api | 
-| [data](./Sources/github_api_v3/core/README.md) | Includes all the data transmision features between this API pand Github server | 
-| [API](./Sources/github_api_v3/core/README.md)  | Wrap the implemenytation and definition from "core" & "data" layers  | 
+| [data](./Sources/github_api_v3/data/README.md) | Includes all the data transmision features between this API pand Github server | 
+| [API](./Sources/README.md)  | Wrap the implemenytation and definition from "core" & "data" layers  | 
+
+#### Layer Dependency
 
 ![Architecture layer dependency](./docs/img/architecture_layers.png "Architecture layer dependency")
 
+#### Module Depedendencies 
+![Architecture layer dependency](./docs/img/architecture_layer_dependencies.png "Architecture layer dependency")
 
-### References
+
+
+
+
+#### References
 |Topic       |Link|
 |:-----------|:-----------------------------------------------|
 |Github API  |[https://developer.github.com/v3/](https://developer.github.com/v3/)|
