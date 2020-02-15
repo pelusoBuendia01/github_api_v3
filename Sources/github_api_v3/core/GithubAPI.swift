@@ -7,7 +7,7 @@
 
 import Foundation
 
-internal protocol GithubAPI {
+public protocol GithubAPI {
     
     // MARK: PUBLIC VARIABLE
     //__________________________________________________________________________________________________________________
