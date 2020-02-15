@@ -25,7 +25,7 @@ class GHBranchRestrictionEntity: BranchRestrictionEntity {
     required init(from decoder: Decoder) throws {
         
         /// Initialize local variables
-        let container = try decoder.container(keyedBy: GHBranchEntity.CodingKeys.self)
+        //let container = try decoder.container(keyedBy: GHBranchEntity.CodingKeys.self)
         
         /// Initialize instance properties
         //do      { self.name = try container.decode(String.self, forKey: .name)}

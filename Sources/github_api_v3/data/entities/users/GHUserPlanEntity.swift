@@ -8,7 +8,6 @@
 //
 
 import Foundation
-import GitHubApiCore
 
 struct GHUserPlanEntity : UserPlanEntity {
         
