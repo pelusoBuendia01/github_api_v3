@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct github_api_v3 {
+struct github_api_v3  {
     
 }
