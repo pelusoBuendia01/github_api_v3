@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import GitHubApiCore
+
 
 internal class GHUserRepository: UserRepo {
     

@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import GitHubApiCore
+
 
 class GHPullRequestCommitEntity: PullRequestCommitEntity {
     

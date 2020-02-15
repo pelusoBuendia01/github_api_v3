@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import GitHubApiCore
 
 internal class GHProjectRepository : ProjectRepo {
     

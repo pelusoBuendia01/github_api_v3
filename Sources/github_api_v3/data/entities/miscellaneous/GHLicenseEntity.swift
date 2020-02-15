@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import GitHubApiCore
 
 class GHLicenseEntity: LicenseEntity {
     
