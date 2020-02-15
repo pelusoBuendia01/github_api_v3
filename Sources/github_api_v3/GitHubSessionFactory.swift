@@ -7,7 +7,7 @@
 
 import Foundation
 
-class GitHubSessionFactory {
+public class GitHubSessionFactory {
     
     // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________
