@@ -76,7 +76,7 @@ internal class GHRepositoryRepository       : RepositoryRepo {
     
     // MARK: CONSTRUCTOR
     //__________________________________________________________________________________________________________________
-    init(session : GHSession){
+    public init(session : GHSession){
         
         /// initialize instnace variables
         self.session        = session
