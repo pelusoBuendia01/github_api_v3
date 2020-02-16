@@ -11,10 +11,10 @@
 |[MigrationRepo](./MigrationRepo.swift)         | TODO: 🏷 Add description  |
 |[MiscellaneousRepo](./MiscellaneousRepo.swift) | TODO: 🏷 Add description  |
 |[OrganizationRepo](./OrganizationRepo.swift)   | TODO: 🏷 Add description  |
-|[ProjectRepo](./ProjectRepo.swift)             | TODO: 🏷 Add description  |
+|[🗄ProjectRepo](./ProjectRepo.swift)             | prived access to project repository features  |
 |[PullRequestRepo](./PullRequestRepo.swift)     | TODO: 🏷 Add description  |
 |[ReactionsRepo](./ReactionsRepo.swift)         | TODO: 🏷 Add description  |
 |[RepositoryRepo](./RepositoryRepo.swift)       | TODO: 🏷 Add description  |
 |[SearchRepo](./SearchRepo.swift)               | TODO: 🏷 Add description  |
 |[TeamsRepo](./TeamsRepo.swift)                 | TODO: 🏷 Add description  |
-|[UserRepo](./UserRepo.swift)                   | TODO: 🏷 Add description  |
+|[🗄UserRepo](./UserRepo.swift)                   | provides access to user repository freature (authorized & public profiles) |
