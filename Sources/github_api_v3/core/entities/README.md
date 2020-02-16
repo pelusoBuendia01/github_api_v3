@@ -107,8 +107,8 @@
 
 ## users
 
-|Protocol name                                            | Description               |
-|:--------------------------------------------------------|:--------------------------|
-|[UserEntity](./users/UserEntity.swift)                   | TODO: 🏷 Add description  |
-|[UserHoverCardEntity](./users/UserHoverCardEntity.swift) | TODO: 🏷 Add description  |
-|[UserPlanEntity](./users/UserPlanEntity.swift)           | TODO: 🏷 Add description  |
+|Protocol name                                              | Description                       |
+|:----------------------------------------------------------|:----------------------------------|
+|[🧬UserEntity](./users/UserEntity.swift)                   | User object protocol              |
+|[🧬UserHoverCardEntity](./users/UserHoverCardEntity.swift) | User Hovercard object protocol    |
+|[🧬UserPlanEntity](./users/UserPlanEntity.swift)           | User Plan object protocol         |
