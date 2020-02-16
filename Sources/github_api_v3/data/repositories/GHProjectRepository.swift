@@ -2,9 +2,10 @@
 //  GHProjectRepository.swift
 //  githubAPIv3
 //
-//  Created by Francisco Romero on 02/02/20.
-//  Copyright © 2020 Francisco Romero. All rights reserved.
-//
+/// - copyright: <http://unlicense.org/>
+/// - author: francisco.romero.valle.01@gmail.com
+/// - seeAlso: https://developer.github.com/v3/projects/
+
 
 import Foundation
 
@@ -17,6 +18,7 @@ internal class GHProjectRepository : ProjectRepo {
     static let paramName            : String = "name"
     static let paramBody            : String = "body"
     
+
     // MARK: OVERRIDED PUBLIC PROPERTIES [ProjectRepository]
     //__________________________________________________________________________________________________________________
     var session         : GHSession
@@ -24,17 +26,21 @@ internal class GHProjectRepository : ProjectRepo {
     var collaborators   : ProjectCollaboratorsRepository
     var columns         : ProjectColumnsRepository
     
+
     // MARK: CONSTRUCTOR
     //__________________________________________________________________________________________________________________
-    init(session : GHSession) {
+    
+    init                (session : GHSession) {
         self.session        = session
         self.cards          = GHProjectCardRepository           (session: session)
         self.collaborators  = GHProjectColaboratorsRepository   (session: session)
         self.columns        = GHProjectColumnsRepository        (session: session)
     }
     
+
     // MARK: OVERRIDED PUBLIC FUNCTIONS [ProjectRepository]
     //__________________________________________________________________________________________________________________
+    
     func myProjects     (result: @escaping ProjectRepo.ResultProjectList) {
         
         /// initialize local variables
@@ -229,27 +235,35 @@ internal class GHProjectRepository : ProjectRepo {
 }
 
 class GHProjectCardRepository : ProjectCardRepository {
-    
+
+
     // MARK: PRIVATE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+
     private static let pathMoves        : String = "/moves"
     private static let paramPosition    : String = "position"
     private static let paramNote        : String = "note"
     private static let paramArchived    : String = "archived"
     private static let paramContentId   : String = "content_id"
     private static let paramContentType : String = "content_type"
-    
+
+
     // MARK: PUBLIC STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+
     static let pathCards : String = "/cards"
-    
+
+
     // MARK: OVERRIDED PUBLIC PROPERTIES [UserRepository]
     //__________________________________________________________________________________________________________________
+
     var session: GHSession
-    
+
+
     // MARK: CONSTRUCTOR
     //__________________________________________________________________________________________________________________
-    init(session : GHSession) {
+
+    init                (session : GHSession) {
         self.session = session
     }
     
@@ -422,44 +436,44 @@ class GHProjectCardRepository : ProjectCardRepository {
         
     }
     
-    func update        ( archived       : Bool,
+    func update         (archived       : Bool,
                          of cardId      : Int,
                          result         : @escaping ProjectCardRepository.ResultCard) {
-        /// initialize local variables
-        var path : String    = GHProjectRepository.pathProjects
-        path                += GHProjectColumnsRepository.pathColumns
-        path                += GHProjectCardRepository.pathCards
-        path                += "/\(cardId)"
-        let params  : [String:Any?] = [
-            GHProjectCardRepository.paramArchived : archived
-        ]
+    /// initialize local variables
+    var path : String    = GHProjectRepository.pathProjects
+    path                += GHProjectColumnsRepository.pathColumns
+    path                += GHProjectCardRepository.pathCards
+    path                += "/\(cardId)"
+    let params  : [String:Any?] = [
+        GHProjectCardRepository.paramArchived : archived
+    ]
+    
+    /// execute http patch request
+    
+    session.patch(path, with: params) {
+        RESTResult in
         
-        /// execute http patch request
-        
-        session.patch(path, with: params) {
-            RESTResult in
+        switch(RESTResult) {
             
-            switch(RESTResult) {
-                
-            case .failure(let error) : do {
-                result(.failure(error))
-                }
-            case .success(let response) : do {
-                
-                do {
-                    let card = try self.session.decoder.decode(GHProjectCardEntity.self, from: response.data)
-                    result(.success(card))
-                } catch {
-                    result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
-                }
-                
-                }
-                
+        case .failure(let error) : do {
+            result(.failure(error))
+            }
+        case .success(let response) : do {
+            
+            do {
+                let card = try self.session.decoder.decode(GHProjectCardEntity.self, from: response.data)
+                result(.success(card))
+            } catch {
+                result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
             }
             
+            }
             
         }
+        
+        
     }
+}
     
     func delete         (cardId         : Int,
                          result         : @escaping GHConfiguration.RESTConfirmation) {
@@ -622,27 +636,33 @@ class GHProjectCardRepository : ProjectCardRepository {
 class GHProjectColaboratorsRepository : ProjectCollaboratorsRepository {
     
     // MARK: PRIVATE STATIC PROPERTIES
+    
     //__________________________________________________________________________________________________________________
+    
     static let paramAffiliation : String = "affiliation"
     static let pathPermission   : String = "/permission"
     static let paramPermission  : String = "permission"
     
+    
     // MARK: OVERRIDED PUBLIC PROPERTIES [UserRepository]
     //__________________________________________________________________________________________________________________
+    
     var session: GHSession
+    
     
     // MARK: CONSTRUCTOR
     //__________________________________________________________________________________________________________________
-    init(session : GHSession) {
+    
+    init                    (session : GHSession) {
         self.session = session
     }
     
     // MARK: FUNCTIONS
     //__________________________________________________________________________________________________________________
     
-    func inProject(id               : Int,
-                   with affiliation : GHAffiliation?,
-                   result           : @escaping ProjectCollaboratorsRepository.ResultCollaboratorList ) {
+    func inProject          (id               : Int,
+                             with affiliation : GHAffiliation?,
+                             result           : @escaping ProjectCollaboratorsRepository.ResultCollaboratorList ) {
         
         /// Initialize local variables
         var path    : String    = "\(GHProjectRepository.pathProjects)/\(id)\(GHProjectRepository.pathCollaborators)"
@@ -681,8 +701,8 @@ class GHProjectColaboratorsRepository : ProjectCollaboratorsRepository {
         
     }
     
-    func inProject(id               : Int,
-                   result           : @escaping ProjectCollaboratorsRepository.ResultCollaboratorList) {
+    func inProject          (id               : Int,
+                             result           : @escaping ProjectCollaboratorsRepository.ResultCollaboratorList) {
         
         /// Initialize local variables
         let path    : String    = "\(GHProjectRepository.pathProjects)/\(id)\(GHProjectRepository.pathCollaborators)"
@@ -715,9 +735,9 @@ class GHProjectColaboratorsRepository : ProjectCollaboratorsRepository {
         }
     }
     
-    func permissionLevel (username  : String,
-                          for id    : Int,
-                          result    : @escaping ResultPermissionLevel) {
+    func permissionLevel    (username       : String,
+                             for id         : Int,
+                             result         : @escaping ResultPermissionLevel) {
 
         /// Initialize local variables
         let path    : String    = "\(GHProjectRepository.pathProjects)/\(id)\(GHProjectRepository.pathCollaborators)/\(username)\(GHProjectColaboratorsRepository.pathPermission)"
@@ -749,10 +769,10 @@ class GHProjectColaboratorsRepository : ProjectCollaboratorsRepository {
         
     }
     
-    func add(username       : String,
-             to projectId   : Int,
-             permisionLevel : GHPermission,
-             result         : @escaping GHConfiguration.RESTConfirmation) {
+    func add                (username       : String,
+                             to projectId   : Int,
+                             permisionLevel : GHPermission,
+                             result         : @escaping GHConfiguration.RESTConfirmation) {
         
         /// Initialize local variables
         var path    : String    = "\(GHProjectRepository.pathProjects)/"
@@ -787,9 +807,11 @@ class GHProjectColaboratorsRepository : ProjectCollaboratorsRepository {
         
        }
        
-    func remove(username    : String,
-                to projectId: Int,
-                result      : @escaping GHConfiguration.RESTConfirmation) {
+    
+    
+    func remove             (username       : String,
+                             to projectId   : Int,
+                             result         : @escaping GHConfiguration.RESTConfirmation) {
                 
         /// Initialize local variables
         var path    : String    = "\(GHProjectRepository.pathProjects)/"
@@ -823,23 +845,30 @@ class GHProjectColumnsRepository : ProjectColumnsRepository {
     
     // MARK: PRIVATE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    
     private static let paramName     : String = "name"
     private static let paramPosition : String = "position"
     private static let pathMoves     : String = "/moves"
     
     // MARK: PRIVATE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    
     static let pathColumns  : String = "/columns"
+    
     
     // MARK: OVERRIDED PUBLIC PROPERTIES [UserRepository]
     //__________________________________________________________________________________________________________________
+    
     var session: GHSession
+    
     
     // MARK: CONSTRUCTOR
     //__________________________________________________________________________________________________________________
-    init(session : GHSession) {
+    
+    init            (session : GHSession) {
         self.session = session
     }
+    
     
     // MARK: FUNCTIONS
     //__________________________________________________________________________________________________________________
@@ -1131,4 +1160,6 @@ class GHProjectColumnsRepository : ProjectColumnsRepository {
         
         
     }
+    
+    
 }
