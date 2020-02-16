@@ -1,9 +1,9 @@
 //
-//  File.swift
-//  
+//  GithubAPI.swift
+//  githubAPIv3
 //
-//  Created by Francisco Romero on 14/02/20.
-//
+/// - copyright: <http://unlicense.org/>
+/// - author: francisco.romero.valle.01@gmail.com
 
 import Foundation
 

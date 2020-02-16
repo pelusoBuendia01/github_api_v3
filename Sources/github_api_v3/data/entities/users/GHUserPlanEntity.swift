@@ -1,11 +1,10 @@
 //
-//  GHUserPlan.swift
+//  GHUserPlanEntity.swift
 //  githubAPIv3
 //
-//  Created by Francisco Romero on 11/01/20.
-//  Copyright © 2020 Francisco Romero. All rights reserved.
-//  TECH REFERENCE : https://developer.github.com/v3/users/
-//
+/// - copyright: <http://unlicense.org/>
+/// - author: francisco.romero.valle.01@gmail.com
+/// - seeAlso: https://developer.github.com/v3/users/
 
 import Foundation
 
@@ -30,16 +29,17 @@ struct GHUserPlanEntity : UserPlanEntity {
     // MARK: OVERRIDE CONSTRUCTOR (Decodable)
     //__________________________________________________________________________________________________________________
     
+    
     init(from decoder: Decoder) throws {
         
         /// Initialize local variables
         let container = try decoder.container(keyedBy: GHUserPlanEntity.CodingKeys.self)
         
+        /// Initialize instance properties
         self.name           = try container.decode(String.self  , forKey: .name)
         self.space          = try container.decode(Int.self     , forKey: .space)
         self.collaborators  = try container.decode(Int.self     , forKey: .collaborators)
         self.privateRepos   = try container.decode(Int.self     , forKey: .private_repos)
-        
         
     }
     

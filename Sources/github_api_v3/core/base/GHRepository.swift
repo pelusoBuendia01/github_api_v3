@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol  GHRepository {
-    var session : GHSession { get }
+    var session : ºGHSession { get }
 }
