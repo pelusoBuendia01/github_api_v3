@@ -9,5 +9,9 @@
 import Foundation
 
 public protocol  GHRepository {
+    
+    // MARK: PUBLIC PROPERTIES
+    //__________________________________________________________________________________________________________________
     var session : GHSession { get }
+    
 }

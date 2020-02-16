@@ -17,4 +17,4 @@
 |[GHRepositoryRepo](./GHRepositoryRepository.swift) | TODO: 🏷 Add description  |
 |[GHSearchRepo](./GHSearchRepo.swift)               | TODO: 🏷 Add description  |
 |[GHTeamsRepo](./GHTeamsRepo.swift)                 | TODO: 🏷 Add description  |
-|[GHUserRepo](./GHUserRepository.swift)             | TODO: 🏷 Add description  |
+|[GHUserRepo](./GHUserRepo.swift)             | TODO: 🏷 Add description  |

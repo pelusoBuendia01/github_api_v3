@@ -2,17 +2,18 @@
 //  GHUserRepository.swift
 //  githubAPIv3
 //
-//  Created by Francisco Romero on 11/01/20.
-//  Copyright © 2020 Francisco Romero. All rights reserved.
-//
+/// - copyright: <http://unlicense.org/>
+/// - author: francisco.romero.valle.01@gmail.com
+/// - seeAlso: https://developer.github.com/v3/users/
 
 import Foundation
 
-
-internal class GHUserRepository: UserRepo {
+internal class GHUserRepo: UserRepo {
+   
     
     // MARK: PRIVATE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    
     private static let paramName            : String = "name"
     private static let paramEmail           : String = "email"
     private static let paramBlog            : String = "blog"
@@ -23,14 +24,19 @@ internal class GHUserRepository: UserRepo {
     private static let paramSince           : String = "since"
     private static let pathBlocks           : String = "/blocks"
     
+    
     // MARK: PUBLIC STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    
     static let pathUsers            : String = "/users"
-    static let pathAuthenticated    : String = "/user"    
+    static let pathAuthenticated    : String = "/user"
+    static let pathHovercard    : String = "/hovercard"
+    
     
     // MARK: OVERRIDED PUBLIC PROPERTIES [UserRepository]
     //__________________________________________________________________________________________________________________
     public var session: GHSession
+    
     
     // MARK: CONSTRUCTOR
     //__________________________________________________________________________________________________________________
@@ -41,7 +47,6 @@ internal class GHUserRepository: UserRepo {
     
     // MARK: OVERRIDED PUBLIC FUNCTIONS [UserRepository]
     //__________________________________________________________________________________________________________________
-    //  TECH REFERENCE : https://developer.github.com/v3/users/
     
     public func authenticated  (result     : @escaping ResultUser) {
         /// Initialize local variables
@@ -74,13 +79,13 @@ internal class GHUserRepository: UserRepo {
         
         /// Initialize local variables
         let params : [String:Any?] = [
-            GHUserRepository.paramName: name
+            GHUserRepo.paramName: name
         ]
         
         /// Get path from session
         session
             .patch(
-                GHUserRepository.pathAuthenticated ,
+                GHUserRepo.pathAuthenticated ,
                 with        : params ) {
                     RESTResult in
                     
@@ -114,17 +119,17 @@ internal class GHUserRepository: UserRepo {
     }
     
     public func updateEmail    (_ email    : String?,
-                         result     : @escaping UserRepo.ResultUser) {
+                                result     : @escaping ResultUser) {
         
         /// Initialize local variables
         let params : [String:Any?] = [
-            GHUserRepository.paramEmail: email
+            GHUserRepo.paramEmail: email
         ]
         
         /// Get path from session
         session
             .patch(
-                GHUserRepository.pathAuthenticated ,
+                GHUserRepo.pathAuthenticated ,
                 with        : params                ) {
                 RESTResult in
                     
@@ -154,17 +159,17 @@ internal class GHUserRepository: UserRepo {
     }
         
     public func updateBlog     (_ blog     : String?,
-                         result     : @escaping UserRepo.ResultUser) {
+                                result     : @escaping ResultUser) {
         
         /// Initialize local variables
         let params : [String:Any?] = [
-            GHUserRepository.paramBlog: blog
+            GHUserRepo.paramBlog: blog
         ]
         
         /// Get path from session
         session
             .patch(
-                GHUserRepository.pathAuthenticated ,
+                GHUserRepo.pathAuthenticated ,
                 with        : params ) {
                 RESTResult in
                     
@@ -195,17 +200,17 @@ internal class GHUserRepository: UserRepo {
     }
     
     public func updateCompany  (_ company  : String?,
-                         result     : @escaping UserRepo.ResultUser) {
+                                result     : @escaping ResultUser) {
         
         /// Initialize local variables
         let params : [String:Any?] = [
-            GHUserRepository.paramCompany: company
+            GHUserRepo.paramCompany: company
         ]
         
         /// Get path from session
         session
             .patch(
-                GHUserRepository.pathAuthenticated ,
+                GHUserRepo.pathAuthenticated ,
                 with        : params) {
                     RESTResult in
                     
@@ -238,15 +243,15 @@ internal class GHUserRepository: UserRepo {
     }
     
     public func updateLocation (_ location : String?,
-                         result     : @escaping UserRepo.ResultUser) {
+                                result     : @escaping ResultUser) {
         
         /// Initialize local variables
         let params : [String:Any?] = [
-            GHUserRepository.paramLocation: location
+            GHUserRepo.paramLocation: location
         ]
         
         session.patch(
-            GHUserRepository.pathAuthenticated,
+            GHUserRepo.pathAuthenticated,
             with: params ) {
             RESTResult in
             
@@ -279,16 +284,16 @@ internal class GHUserRepository: UserRepo {
     }
     
     public func updateHireable (_ hireable : Bool?,
-                         result     : @escaping UserRepo.ResultUser) {
+                                result     : @escaping ResultUser) {
         
         /// Initialize local variables
         let params : [String:Any?] = [
-            GHUserRepository.paramHireable: hireable
+            GHUserRepo.paramHireable: hireable
         ]
         
         /// Get path from session
         session.patch(
-            GHUserRepository.pathAuthenticated ,
+            GHUserRepo.pathAuthenticated ,
             with        : params ) {
                 RESTResult in
                 
@@ -321,17 +326,17 @@ internal class GHUserRepository: UserRepo {
     }
     
     public func updateBio      (_ bio      : String?,
-                         result     : @escaping UserRepo.ResultUser) {
+                                result     : @escaping ResultUser) {
         
         /// Initialize local variables
         let params : [String:Any?] = [
-            GHUserRepository.paramBio: bio
+            GHUserRepo.paramBio: bio
         ]
         
         /// Get path from session
         session
             .patch(
-                GHUserRepository.pathAuthenticated,
+                GHUserRepo.pathAuthenticated,
                 with        : params ) {
                     RESTResult in
                     
@@ -362,10 +367,10 @@ internal class GHUserRepository: UserRepo {
         }
     }
     
-    public func single         (from username: GHConfiguration.Username,
-                         result     : @escaping UserRepo.ResultUser) {
+    public func single         (from username   : GHConfiguration.Username,
+                                result          : @escaping ResultUser) {
         /// Initialize local variables
-        let path = "\(GHUserRepository.pathUsers)/\(username)"
+        let path = "\(GHUserRepo.pathUsers)/\(username)"
         
         /// Get path from session
         session.get(
@@ -400,16 +405,59 @@ internal class GHUserRepository: UserRepo {
         }
     }
     
-    public func list           (starting since: GHConfiguration.ID?,
-                         result     : @escaping UserRepo.ResultUserList) {
+    public func singleHovercard(from username   : String,
+                                result          : @escaping ResultUserHovercardList) {
+        /// Initialize local variables
+        var path : String    = GHUserRepo.pathUsers
+        path                += "/\(username)"
+        path                += GHUserRepo.pathHovercard
+        
+        /// Get path from session
+        session.get(
+            path,
+            with        : nil )  {
+               RESTResult in
+               
+               switch (RESTResult) {
+                   
+               case .failure(let error) :
+                do {
+                   result(.failure(error))
+                }
+                   
+               case .success(let response) :
+                do {
+                    
+                   do {
+                       let hovercards = try self.session.decoder.decode([GHUserHoverCardEntity].self, from: response.data)
+                       result( .success(hovercards) )
+                   }
+                   catch {
+                       result(
+                           .failure(
+                               GHSession.SessionError.decodingError(
+                                   message: error.localizedDescription
+                               )
+                           )
+                       )
+                   }
+                    
+                }
+               
+                }
+        }
+    }
+    
+    public func list           (starting since  : GHConfiguration.ID?,
+                                result          : @escaping ResultUserList) {
         /// Initialize local variables
         let path : String
         
         /// Determine what parameters to use
         if let since = since {
-            path = "\(GHUserRepository.pathUsers)?\(GHUserRepository.paramSince)=\(since)"
+            path = "\(GHUserRepo.pathUsers)?\(GHUserRepo.paramSince)=\(since)"
         } else {
-            path = GHUserRepository.pathUsers
+            path = GHUserRepo.pathUsers
         }
          
         /// Get path from session
@@ -446,18 +494,14 @@ internal class GHUserRepository: UserRepo {
             }
     }
     
-        
-    
     // MARK: BLOCKING FUNCTION
     //__________________________________________________________________________________________________________________
     
-    //  TECH REFERENCE : https://developer.github.com/v3/users/blocking/    
-    
-    public func blockedUsers   (result: @escaping UserRepo.ResultUserList) {
+    public func blockedUsers   (result      : @escaping ResultUserList) {
         /// Get path from session
         session
             .get(
-                "\(GHUserRepository.pathAuthenticated)\(GHUserRepository.pathBlocks)",
+                "\(GHUserRepo.pathAuthenticated)\(GHUserRepo.pathBlocks)",
                 with        : nil ) {
                     RESTResult in
                     
@@ -491,10 +535,10 @@ internal class GHUserRepository: UserRepo {
     }
     
     public func verifyIf       (isBlocked username: GHConfiguration.Username,
-                         result     : @escaping GHConfiguration.RESTConfirmation) {
+                                result      : @escaping GHConfiguration.RESTConfirmation) {
         
         /// Initialize local variables
-       let path : String = "\(GHUserRepository.pathAuthenticated)\(GHUserRepository.pathBlocks)/\(username)"
+       let path : String = "\(GHUserRepo.pathAuthenticated)\(GHUserRepo.pathBlocks)/\(username)"
        
        /// Determine what parameters to use
         session
@@ -516,11 +560,11 @@ internal class GHUserRepository: UserRepo {
         }
     }
     
-    public func block          (username   : GHConfiguration.Username,
-                         result     : @escaping GHConfiguration.RESTConfirmation) {
+    public func block          (username    : GHConfiguration.Username,
+                                result      : @escaping GHConfiguration.RESTConfirmation) {
         
         /// Initialize local variables
-        let path : String = "\(GHUserRepository.pathAuthenticated)\(GHUserRepository.pathBlocks)/\(username)"
+        let path : String = "\(GHUserRepo.pathAuthenticated)\(GHUserRepo.pathBlocks)/\(username)"
           
         /// Determine what parameters to use
         session
@@ -542,11 +586,11 @@ internal class GHUserRepository: UserRepo {
            }
     }
     
-    public func unblock        (username   : GHConfiguration.Username,
-                         result     : @escaping GHConfiguration.RESTConfirmation) {
+    public func unblock        (username    : GHConfiguration.Username,
+                                result      : @escaping GHConfiguration.RESTConfirmation) {
                              
         /// Initialize local variables
-        let path : String = "\(GHUserRepository.pathAuthenticated)\(GHUserRepository.pathBlocks)/\(username)"
+        let path : String = "\(GHUserRepo.pathAuthenticated)\(GHUserRepo.pathBlocks)/\(username)"
         
         /// Determine what parameters to use
         session

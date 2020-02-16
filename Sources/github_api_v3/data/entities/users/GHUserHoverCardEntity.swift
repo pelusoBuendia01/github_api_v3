@@ -1,24 +1,24 @@
 //
-//  GHUserHoverCard.swift
+//  GHUserHoverCardEntity.swift
 //  githubAPIv3
 //
-//  Created by Francisco Romero on 11/01/20.
-//  Copyright © 2020 Francisco Romero. All rights reserved.
-//  TECH REFERENCE : https://developer.github.com/v3/users/
-//
+/// - copyright: <http://unlicense.org/>
+/// - author: francisco.romero.valle.01@gmail.com
+/// - seeAlso: https://developer.github.com/v3/users/
 
 import Foundation
 
-class GHUserHoverCardEntity : UserHoverCardEntity {
+internal class GHUserHoverCardEntity : UserHoverCardEntity {
     
     // MARK: ENUM
     //__________________________________________________________________________________________________________________
-    enum CodingKeys: CodingKey {
+    enum CodingKeys: String, CodingKey {
+        case context = "context"
     }
     
     // MARK: INSTANCE PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________
-    
+    let context : UserHoverCardContextEntity?
     
     // MARK: OVERRIDE CONSTRUCTOR (Decodable)
     //__________________________________________________________________________________________________________________
@@ -26,9 +26,11 @@ class GHUserHoverCardEntity : UserHoverCardEntity {
     required init(from decoder: Decoder) throws {
         
         /// Initialize local variables
-        //let container = try decoder.container(keyedBy: GHUserEntity.CodingKeys.self)
+        let container = try decoder.container(keyedBy: GHUserHoverCardEntity.CodingKeys.self)
         
         /// Initialize instance properties
+        do      { self.context = try container.decode(GHUserHoverCardContextEntity.self  , forKey: .context)}
+        catch   { self.context = nil }
         
     }
     

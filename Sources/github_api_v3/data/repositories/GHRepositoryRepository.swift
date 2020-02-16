@@ -108,7 +108,7 @@ internal class GHRepositoryRepository       : RepositoryRepo {
     func myRepositories                     (result                 : @escaping ResultResultRepositoryList) {
         
         /// initialize local variables
-        var path : String = GHUserRepository.pathAuthenticated
+        var path : String = GHUserRepo.pathAuthenticated
         path             += GHRepositoryRepository.pathRepos
         
         /// execute http get request
@@ -146,7 +146,7 @@ internal class GHRepositoryRepository       : RepositoryRepo {
         let paramSort        = sort         != nil ? sort!      : RepositorySortType.from            (string: "")
         let paramDirection   = direction    != nil ? direction! : RepositorySortDirectionType.from   (string: "")
         
-        var path : String    = GHUserRepository.pathAuthenticated
+        var path : String    = GHUserRepo.pathAuthenticated
         path                += GHRepositoryRepository.pathRepos
         path                += "?\(GHRepositoryRepository.paramType     )=\(paramType.rawValue      )"
         path                += "&\(GHRepositoryRepository.paramSort     )=\(paramSort.rawValue      )"
@@ -272,7 +272,7 @@ internal class GHRepositoryRepository       : RepositoryRepo {
                                              result                 : @escaping ResultRepository) {
         
         /// initialize local variables
-        var path : String    = GHUserRepository.pathAuthenticated
+        var path : String    = GHUserRepo.pathAuthenticated
         path                += GHRepositoryRepository.pathRepos
         
         var param : [String:Any?]           = [ GHRepositoryRepository.paramName : name]
