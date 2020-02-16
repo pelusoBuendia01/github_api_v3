@@ -34,13 +34,15 @@
 
 ## organizations
 
-|Protocol name                                                                            | Description               |
-|:----------------------------------------------------------------------------------------|:--------------------------|
-|[OrganizationAuthorizationEntity](./organizations/OrganizationAuthorizationEntity.swift) | TODO: 🏷 Add description  |
-|[OrganizationEntity](./organizations/OrganizationEntity.swift)                           | TODO: 🏷 Add description  |
-|[OrganizationInvitationEntity](./organizations/OrganizationInvitationEntity.swift)       | TODO: 🏷 Add description  |
-|[OrganizationMembershipEntity](./organizations/OrganizationMembershipEntity.swift)       | TODO: 🏷 Add description  |
-|[WebhookEntity](./organizations/WebhookEntity.swift)                                     | TODO: 🏷 Add description  |
+|Protocol name                                                                                                                  | Description                       |
+|:------------------------------------------------------------------------------------------------------------------------------|:----------------------------------|
+|[🧬OrganizationAuthorizationEntity](./organizations/OrganizationAuthorizationEntity.swift)                                     | Org authorization object protocol |
+|[🧬OrganizationEntity](./organizations/OrganizationEntity.swift)                                                               | Org object protocol               |
+|[🧬OrganizationInvitationEntity](./organizations/OrganizationInvitationEntity.swift)                                           | Org invitation object protocol    |
+|[📇OrganizationMembersAllowedRepositoryCreationType](./organizations/OrganizationMembersAllowedRepositoryCreationType.swift)   | Enum Org meber creation type      |
+|[🧬OrganizationMembershipEntity](./organizations/OrganizationMembershipEntity.swift)                                           | Org membership object protocol    |
+|[📇OrganizationRepositoryPermission](./organizations/OrganizationRepositoryPermission.swift)                                   | Enum Org repository permision     |
+|[🧬WebhookEntity](./organizations/WebhookEntity.swift)                                                                         | Org webhook object protocol       |
 
 
 ## projects
