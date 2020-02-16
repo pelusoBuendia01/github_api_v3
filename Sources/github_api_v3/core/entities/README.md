@@ -60,13 +60,13 @@
 
 ## pull request
 
-|Protocol name                                                                          | Description               |
-|:--------------------------------------------------------------------------------------|:--------------------------|
-|[PullRequestCommitEntity](./pull_requests/PullRequestCommitEntity.swift)               | TODO: 🏷 Add description  |
-|[PullRequestEntity](./pull_requests/PullRequestEntity.swift)                           | TODO: 🏷 Add description  |
-|[PullRequestReviewCommentEntity](./pull_requests/PullRequestReviewCommentEntity.swift) | TODO: 🏷 Add description  |
-|[PullRequestReviewEntity](./pull_requests/PullRequestReviewEntity.swift)               | TODO: 🏷 Add description  |
-|[PullRequestReviewRequestEntity](./pull_requests/PullRequestReviewRequestEntity.swift) | TODO: 🏷 Add description  |
+|Protocol name                                                                            | Description                                 |
+|:----------------------------------------------------------------------------------------|:--------------------------------------------|
+|[🧬PullRequestCommitEntity](./pull_requests/PullRequestCommitEntity.swift)               | Pull request commit object protocol         |
+|[🧬PullRequestEntity](./pull_requests/PullRequestEntity.swift)                           | Pull request object protocol                |
+|[🧬PullRequestReviewCommentEntity](./pull_requests/PullRequestReviewCommentEntity.swift) | Pull request review comment object protocol |
+|[🧬PullRequestReviewEntity](./pull_requests/PullRequestReviewEntity.swift)               | Pull request review object protocol         |
+|[🧬PullRequestReviewRequestEntity](./pull_requests/PullRequestReviewRequestEntity.swift) | Pull request review request object protocol |
 
 
 ## repositories

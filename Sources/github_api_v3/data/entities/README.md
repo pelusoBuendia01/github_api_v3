@@ -48,13 +48,13 @@
 
 ## pull request
 
-|Protocol name                                                                              | Description               |
-|:------------------------------------------------------------------------------------------|:--------------------------|
-|[GHPullRequestCommitEntity](./pull_requests/GHPullRequestCommitEntity.swift)               | TODO: 🏷 Add description  |
-|[GHPullRequestEntity](./pull_requests/GHPullRequestEntity.swift)                           | TODO: 🏷 Add description  |
-|[GHPullRequestReviewCommentEntity](./pull_requests/GHPullRequestReviewCommentEntity.swift) | TODO: 🏷 Add description  |
-|[GHPullRequestReviewEntity](./pull_requests/GHPullRequestReviewEntity.swift)               | TODO: 🏷 Add description  |
-|[GHPullRequestReviewRequestEntity](./pull_requests/GHPullRequestReviewRequestEntity.swift) | TODO: 🏷 Add description  |
+|Protocol name                                                                                | Description                         |
+|:--------------------------------------------------------------------------------------------|:------------------------------------|
+|[🧩GHPullRequestCommitEntity](./pull_requests/GHPullRequestCommitEntity.swift)               | Pull request commit Object          |
+|[🧩GHPullRequestEntity](./pull_requests/GHPullRequestEntity.swift)                           | Pull request Object                 |
+|[🧩GHPullRequestReviewCommentEntity](./pull_requests/GHPullRequestReviewCommentEntity.swift) | Pull request review comment Object  |
+|[🧩GHPullRequestReviewEntity](./pull_requests/GHPullRequestReviewEntity.swift)               | Pull request review Object          |
+|[🧩GHPullRequestReviewRequestEntity](./pull_requests/GHPullRequestReviewRequestEntity.swift) | Pull Request Review request Object  |
 
 
 ## repositories
