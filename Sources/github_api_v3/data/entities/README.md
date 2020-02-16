@@ -27,13 +27,13 @@
 
 ## organizations
 
-|Protocol name                                                                                | Description               |
-|:--------------------------------------------------------------------------------------------|:--------------------------|
-|[GHOrganizationAuthorizationEntity](./organizations/GHOrganizationAuthorizationEntity.swift) | TODO: 🏷 Add description  |
-|[GHOrganizationEntity](./organizations/GHOrganizationEntity.swift)                           | TODO: 🏷 Add description  |
-|[GHOrganizationInvitationEntity](./organizations/GHOrganizationInvitationEntity.swift)       | TODO: 🏷 Add description  |
-|[GHOrganizationMembershipEntity](./organizations/GHOrganizationMembershipEntity.swift)       | TODO: 🏷 Add description  |
-|[GHWebhookEntity](./organizations/GHWebhookEntity.swift)                                     | TODO: 🏷 Add description  |
+|Protocol name                                                                                  | Description               |
+|:----------------------------------------------------------------------------------------------|:--------------------------|
+|[🧩GHOrganizationAuthorizationEntity](./organizations/GHOrganizationAuthorizationEntity.swift) | Org authroization object  |
+|[🧩GHOrganizationEntity](./organizations/GHOrganizationEntity.swift)                           | Org object                |
+|[🧩GHOrganizationInvitationEntity](./organizations/GHOrganizationInvitationEntity.swift)       | Org inviation object      |
+|[🧩GHOrganizationMembershipEntity](./organizations/GHOrganizationMembershipEntity.swift)       | Org membership object     |
+|[🧩GHWebhookEntity](./organizations/GHWebhookEntity.swift)                                     | Org webhook object        |
 
 
 ## projects
