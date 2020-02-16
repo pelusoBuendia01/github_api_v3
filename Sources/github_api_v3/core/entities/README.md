@@ -101,11 +101,11 @@
 
 ## teams
 
-|Protocol name                                                             | Description               |
-|:-------------------------------------------------------------------------|:--------------------------|
-|[TeamDiscussionCommentEntity](./teams/TeamDiscussionCommentEntity.swift)  | TODO: 🏷 Add description  |
-|[TeamDiscussionEntity](./teams/TeamDiscussionEntity.swift)                | TODO: 🏷 Add description  |
-|[TeamEntity](./teams/TeamEntity.swift)                                    | TODO: 🏷 Add description  |
+|Protocol name                                                               | Description                              |
+|:---------------------------------------------------------------------------|:-----------------------------------------|
+|[🧬TeamDiscussionCommentEntity](./teams/TeamDiscussionCommentEntity.swift)  | Team discussion comment object protocol  |
+|[🧬TeamDiscussionEntity](./teams/TeamDiscussionEntity.swift)                | Team duscusion object protocol           |
+|[🧬TeamEntity](./teams/TeamEntity.swift)                                    | Team object protocol                     |
 
 ## users
 

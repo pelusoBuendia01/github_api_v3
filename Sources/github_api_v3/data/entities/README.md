@@ -77,11 +77,11 @@
 
 ## teams
 
-|Protocol name                                                             | Description               |
-|:-------------------------------------------------------------------------|:--------------------------|
-|[GHTeamDiscussionCommentEntity](./teams/GHTeamDiscussionCommentEntity.swift)  | TODO: 🏷 Add description  |
-|[GHTeamDiscussionEntity](./teams/GHTeamDiscussionEntity.swift)                | TODO: 🏷 Add description  |
-|[GHTeamEntity](./teams/GHTeamEntity.swift)                                    | TODO: 🏷 Add description  |
+|Protocol name                                                                   | Description                      |
+|:-------------------------------------------------------------------------------|:---------------------------------|
+|[🧩GHTeamDiscussionCommentEntity](./teams/GHTeamDiscussionCommentEntity.swift)  | Team Discussion Comment object   |
+|[🧩GHTeamDiscussionEntity](./teams/GHTeamDiscussionEntity.swift)                | Team Discussion object           |
+|[🧩GHTeamEntity](./teams/GHTeamEntity.swift)                                    | Team object                      |
 
 ## users
 
