@@ -2,11 +2,12 @@
 //  ProjectEntity.swift
 //  githubAPIv3
 //
-//  Created by Francisco Romero on 06/02/20.
-//  Copyright © 2020 Francisco Romero. All rights reserved.
-//
+/// - copyright: <http://unlicense.org/>
+/// - author: francisco.romero.valle.01@gmail.com
+/// - seeAlso: https://developer.github.com/v3/projects/
 
 import Foundation
+
 public  protocol ProjectEntity : GHCodable {
     
     // MARK: PUBLIC PROPERTIES

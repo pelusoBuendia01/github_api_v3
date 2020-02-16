@@ -38,12 +38,12 @@
 
 ## projects
 
-|Protocol name                                                           | Description               |
-|:-----------------------------------------------------------------------|:--------------------------|
-|[GHProjectCardType](./projects/GHProjectCardType.swift)                 | TODO: 🏷 Add description  |
-|[GHProjectColumnEntity](./projects/GHProjectColumnEntity.swift)         | TODO: 🏷 Add description  |
-|[GHProjectEntity](./projects/GHProjectEntity.swift)                     | TODO: 🏷 Add description  |
-|[GHProjectPermissionEntity](./projects/GHProjectPermissionEntity.swift) | TODO: 🏷 Add description  |
+|Protocol name                                                             | Description                    |
+|:-------------------------------------------------------------------------|:-------------------------------|
+|[🧩GHProjectCardType](./projects/GHProjectCardType.swift)                 | Project Card Codable Object    |
+|[🧩GHProjectColumnEntity](./projects/GHProjectColumnEntity.swift)         | Project Column Codable Object  |
+|[🧩GHProjectEntity](./projects/GHProjectEntity.swift)                     | Project Codable Object         |
+|[🧩GHProjectPermissionEntity](./projects/GHProjectPermissionEntity.swift) | Project Permision Object       |
 
 
 ## pull request

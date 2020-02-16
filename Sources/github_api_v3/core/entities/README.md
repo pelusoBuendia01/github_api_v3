@@ -45,15 +45,15 @@
 
 ## projects
 
-|Protocol name                                                       | Description               |
-|:-------------------------------------------------------------------|:--------------------------|
-|[GHAffiliation](./projects/GHAffiliation.swift)                     | TODO: 🏷 Add description  |
-|[GHPermission](./projects/GHPermission.swift)                       | TODO: 🏷 Add description  |
-|[ProjectCardEntity](./projects/ProjectCardEntity.swift)             | TODO: 🏷 Add description  |
-|[ProjectCardType](./projects/ProjectCardType.swift)                 | TODO: 🏷 Add description  |
-|[ProjectColumnEntity](./projects/ProjectColumnEntity.swift)         | TODO: 🏷 Add description  |
-|[ProjectEntity](./projects/ProjectEntity.swift)                     | TODO: 🏷 Add description  |
-|[ProjectPermissionEntity](./projects/ProjectPermissionEntity.swift) | TODO: 🏷 Add description  |
+|Protocol name                                                         | Description                        |
+|:---------------------------------------------------------------------|:-----------------------------------|
+|[📇GHAffiliation](./projects/GHAffiliation.swift)                     | Enum project affiliation           |
+|[📇GHPermission](./projects/GHPermission.swift)                       | Enum project permission            |
+|[🧬ProjectCardEntity](./projects/ProjectCardEntity.swift)             | Card object protocol               |
+|[📇ProjectCardType](./projects/ProjectCardType.swift)                 | Enum of project card type          |
+|[🧬ProjectColumnEntity](./projects/ProjectColumnEntity.swift)         | Project Column object protocol     |
+|[🧬ProjectEntity](./projects/ProjectEntity.swift)                     | Project object protocol            |
+|[🧬ProjectPermissionEntity](./projects/ProjectPermissionEntity.swift) | Project permision object protocol  |
 
 
 ## pull request
@@ -107,8 +107,8 @@
 
 ## users
 
-|Protocol name                                            | Description               |
-|:--------------------------------------------------------|:--------------------------|
-|[UserEntity](./users/UserEntity.swift)                   | TODO: 🏷 Add description  |
-|[UserHoverCardEntity](./users/UserHoverCardEntity.swift) | TODO: 🏷 Add description  |
-|[UserPlanEntity](./users/UserPlanEntity.swift)           | TODO: 🏷 Add description  |
+|Protocol name                                              | Description                       |
+|:----------------------------------------------------------|:----------------------------------|
+|[🧬UserEntity](./users/UserEntity.swift)                   | User object protocol              |
+|[🧬UserHoverCardEntity](./users/UserHoverCardEntity.swift) | User Hovercard object protocol    |
+|[🧬UserPlanEntity](./users/UserPlanEntity.swift)           | User Plan object protocol         |

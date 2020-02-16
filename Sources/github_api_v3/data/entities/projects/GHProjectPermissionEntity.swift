@@ -9,18 +9,24 @@
 import Foundation
 
 class GHProjectPermissionEntity : ProjectPermissionEntity {
+    
+    
     // MARK: ENUM
     //__________________________________________________________________________________________________________________
+    
     enum CodingKeys: CodingKey {
         case permission
         case user
     }
     
+    
     // MARK: INSTANCE PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    
     let permision : GHPermission
     let user      : UserEntity?
     
+
     // MARK: OVERRIDE CONSTRUCTOR (Decodable)
     //__________________________________________________________________________________________________________________
     
@@ -30,25 +36,19 @@ class GHProjectPermissionEntity : ProjectPermissionEntity {
         let container = try decoder.container(keyedBy: GHProjectPermissionEntity.CodingKeys.self)
         
         /// Initialize instance properties
-        do {
-            let permsisionString    = try container.decode(String.self, forKey: .permission)
-                        
+        do      { 
+            let permsisionString    = try container.decode(String.self, forKey: .permission)                        
             self.permision          = GHPermission.from(string: permsisionString)
-            
-        } catch {
-            self.permision          = GHPermission.from(string: "")
-        }
+        } 
+        catch   { self.permision    = GHPermission.from(string: "") }
         
-        do {
-            self.user          = try container.decode(GHUserEntity.self, forKey: .user)
-            
-        } catch {
-            self.user          = nil
-        }
+        do      { self.user          = try container.decode(GHUserEntity.self, forKey: .user) } 
+        catch   { self.user          = nil }
         
         
     }
     
+
     // MARK: OVERRIDE FUNCTIONS [Encodable]
     //__________________________________________________________________________________________________________________
     
