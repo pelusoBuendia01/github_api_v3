@@ -2,13 +2,15 @@
 //  GHOrganizationEntity.swift
 //  githubAPIv3
 //
-//  Created by Francisco Romero on 03/02/20.
-//  Copyright © 2020 Francisco Romero. All rights reserved.
-//
+/// - copyright: <http://unlicense.org/>
+/// - author: francisco.romero.valle.01@gmail.com
+/// - seeAlso: https://developer.github.com/v3/orgs/
 
 import Foundation
 
 class GHOrganizationEntity: OrganizationEntity {
+    
+    
     
     // MARK: ENUM
     //__________________________________________________________________________________________________________________
@@ -47,7 +49,7 @@ class GHOrganizationEntity: OrganizationEntity {
         case disk_usage
         case collaborators
         case billing_email
-        case default_repository_permission
+        case defaultRepositoryPermission
         case members_can_create_repositories
         case two_factor_requirement_enabled
         case members_allowed_repository_creation_type
@@ -86,17 +88,17 @@ class GHOrganizationEntity: OrganizationEntity {
     let publicGists                             : Int?
     let htmlURL                                 : String?
     let createdAt                               : Date?
-    // var type                                   :
+    let type                                    : String
     let totalPrivateRepos                       : Int?
     let ownedPrivateRepos                       : Int?
     let privateGists                            : Int?
     let diskUsage                               : Int?
     let collaborators                           : Int?
     let billingEmail                            : String?
-    //let defaultRepositoryPermission             :
+    var defaultRepositoryPermission             : OrganizationRepositoryPermission?
     let membersCanCreateRepositories            : Bool?
     let twoFactorRequirementEnabled             : Bool?
-    //var membersAllowedRepositoryCreationType    :
+    let membersAllowedRepositoryCreationType    : OrganizationMembersAllowedRepositoryCreationType?
     let membersCanCreatePublicRepositories      : Bool?
     let membersCanCreatePrivateRepositories     : Bool?
     let membersCanCreateInternalRepositories    : Bool?
@@ -186,6 +188,9 @@ class GHOrganizationEntity: OrganizationEntity {
         do      { self.createdAt = try container.decode(Date.self,forKey: .created_at) }
         catch   { self.createdAt = nil }
         
+        do      { self.type = try container.decode(String.self,forKey: .type) }
+        catch   { self.type = "" }
+        
         do      { self.totalPrivateRepos = try container.decode(Int.self,forKey: .total_private_repos) }
         catch   { self.totalPrivateRepos = nil }
         
@@ -204,11 +209,29 @@ class GHOrganizationEntity: OrganizationEntity {
         do      { self.billingEmail = try container.decode(String.self,forKey: .billing_email) }
         catch   { self.billingEmail = nil }
         
+        do      {
+            let string = try container.decode(String.self,forKey: .defaultRepositoryPermission)
+            self.defaultRepositoryPermission = OrganizationRepositoryPermission.from(string: string)
+        }
+        catch   { self.defaultRepositoryPermission = nil }
+        
+        
+        
         do      { self.membersCanCreateRepositories = try container.decode(Bool.self,forKey: .collaborators) }
         catch   { self.membersCanCreateRepositories = nil }
         
         do      { self.twoFactorRequirementEnabled = try container.decode(Bool.self,forKey: .collaborators) }
         catch   { self.twoFactorRequirementEnabled = nil }
+        
+        do      {
+            
+            let string = try container.decode(String.self,forKey: .members_allowed_repository_creation_type)
+            self.membersAllowedRepositoryCreationType = OrganizationMembersAllowedRepositoryCreationType.from(string: string)
+            
+        }
+        catch   { self.membersAllowedRepositoryCreationType = nil }
+        
+        
         
         do      { self.membersCanCreatePublicRepositories = try container.decode(Bool.self,forKey: .collaborators) }
         catch   { self.membersCanCreatePublicRepositories = nil }

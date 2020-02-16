@@ -10,8 +10,13 @@ import Foundation
 
 internal class GHOrganizationRepository: OrganizationRepo {
     
+    
+    
+        
+    
     // MARK: PRIVATE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    
     private static let paramBillingEmail                            : String = "param_billing_email"
     private static let paramCompany                                 : String = "company"
     private static let paramEmail                                   : String = "email"
@@ -30,26 +35,47 @@ internal class GHOrganizationRepository: OrganizationRepo {
         
     // MARK: PUBLIC STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    
     static let pathOrgs             : String = "/orgs"
     static let pathOrganizations    : String = "/organizations"
     
+    
     // MARK: PRIVATTE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    
     private static let paramSince   : String = "since"
+    
     
     // MARK: OVERRIDED PUBLIC PROPERTIES [UserRepository]
     //__________________________________________________________________________________________________________________
-    public var session: GHSession
+    
+    public var session  : GHSession
+    
+    let blocks              : OrganizationBlocksRepo
+    let members             : OrganizationMembersRepo
+    let outsideCollaborators: OrganizationOutsideCollaboratorsRepo
+    let webhooks            : OrganizationWebhooksRepo
+    
     
     // MARK: CONSTRUCTOR
     //__________________________________________________________________________________________________________________
+    
     init(session : GHSession) {
-        self.session = session
+        
+        /// initialize instance variables
+        self.session                = session
+        self.blocks                 = GHOrganizationBlocksRepo              (session: self.session)
+        self.members                = GHOrganizationMembersRepo             (session: self.session)
+        self.outsideCollaborators   = GHOrganizationOutsideCollaboratorsRepo(session: self.session)
+        self.webhooks               = GHOrganizationWebhooksRepo            (session: self.session)
+        
     }
+    
     
     // MARK: OVERRIDE FUNCTIONS FROM [OrganizationRepository]
     //__________________________________________________________________________________________________________________
-    public func listOAuthOrganizations (result: @escaping OrganizationRepo.ResultOrgList) {
+    
+    func listOAuthOrganizations (result: @escaping OrganizationRepo.ResultOrgList) {
         
         /// initialize local variables
         var path : String = GHUserRepo.pathAuthenticated
@@ -385,10 +411,11 @@ internal class GHOrganizationRepository: OrganizationRepo {
             }
         }
     }
-    
-    func update                 (hasOrganizationProjects                : String,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg){
+        
+    func update                 (hasOrganizationProjects    : Bool,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg) {
+        
         /// initialize local variables
         var path : String    = GHOrganizationRepository.pathOrgs
             path                +=  "/\(orgLogin)"
@@ -417,9 +444,10 @@ internal class GHOrganizationRepository: OrganizationRepo {
         }
     }
     
-    func update                 (hasRepositoryProjects                  : String,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg){
+    func update                 (hasRepositoryProjects: Bool,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg) {
+        
         /// initialize local variables
         var path : String    = GHOrganizationRepository.pathOrgs
             path                +=  "/\(orgLogin)"
@@ -446,11 +474,13 @@ internal class GHOrganizationRepository: OrganizationRepo {
                 
             }
         }
+        
     }
     
-    func update                 (defaultRepositoryPermission            : String,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg){
+    func update                 (defaultRepositoryPermission: OrganizationRepositoryPermission,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg) {
+        
         /// initialize local variables
         var path : String    = GHOrganizationRepository.pathOrgs
             path                +=  "/\(orgLogin)"
@@ -477,11 +507,13 @@ internal class GHOrganizationRepository: OrganizationRepo {
                 
             }
         }
+        
     }
     
-    func update                 (membersCanCreateRepositories           : String,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg){
+    func update                 (membersCanCreateRepositories: Bool,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg) {
+        
         /// initialize local variables
         var path : String    = GHOrganizationRepository.pathOrgs
             path                +=  "/\(orgLogin)"
@@ -508,11 +540,14 @@ internal class GHOrganizationRepository: OrganizationRepo {
                 
             }
         }
+        
     }
     
-    func update                 (membersCanCreateInternalRepositories   : String,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg){
+    
+    func update                 (membersCanCreateInternalRepositories: Bool,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg) {
+        
         /// initialize local variables
         var path : String    = GHOrganizationRepository.pathOrgs
             path                +=  "/\(orgLogin)"
@@ -539,17 +574,19 @@ internal class GHOrganizationRepository: OrganizationRepo {
                 
             }
         }
+        
     }
-    
-    func update                 (membersCanCreateCrivateRepositories    : String,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg){
+        
+    func update                 (membersCanCreatePrivateRepositories: Bool,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg) {
+        
         /// initialize local variables
         var path : String    = GHOrganizationRepository.pathOrgs
             path                +=  "/\(orgLogin)"
                
         let params : [String:Any?] = [
-            GHOrganizationRepository.paramMembersCanCreatePrivateRepositories : membersCanCreateCrivateRepositories
+            GHOrganizationRepository.paramMembersCanCreatePrivateRepositories : membersCanCreatePrivateRepositories
         ]
                
         /// execute http patch request
@@ -570,11 +607,13 @@ internal class GHOrganizationRepository: OrganizationRepo {
                 
             }
         }
+        
     }
     
-    func update                 (membersCanCreatePublicRepositories     : String,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg){
+    func update                 (membersCanCreatePublicRepositories: Bool,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg) {
+        
         /// initialize local variables
         var path : String    = GHOrganizationRepository.pathOrgs
             path                +=  "/\(orgLogin)"
@@ -603,36 +642,218 @@ internal class GHOrganizationRepository: OrganizationRepo {
         }
     }
     
-    func update                 (membersAllowedRepositoryCreationType   : String,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg){
-        /// initialize local variables
-        var path : String    = GHOrganizationRepository.pathOrgs
-            path                +=  "/\(orgLogin)"
-               
-        let params : [String:Any?] = [
-            GHOrganizationRepository.paramMembersAllowedRepositoryCreationType : membersAllowedRepositoryCreationType
-        ]
-               
-        /// execute http patch request
-        session.patch(path, with: params) {
-            RESTResult in
+    func update                 (membersAllowedRepositoryCreationType: OrganizationMembersAllowedRepositoryCreationType,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg) {
+    
+    /// initialize local variables
+    var path : String    = GHOrganizationRepository.pathOrgs
+        path                +=  "/\(orgLogin)"
             
-            switch(RESTResult) {
-                
-            case .failure(let error)    : do { result(.failure((error))) }
-            case .success(let response) : do {
-                do {
-                    let org = try self.session.decoder.decode(GHOrganizationEntity.self, from: response.data)
-                    result(.success(org))
-                } catch {
-                    result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
-                }
-                }
-                
+    let params : [String:Any?] = [
+        GHOrganizationRepository.paramMembersAllowedRepositoryCreationType : membersAllowedRepositoryCreationType.rawValue
+    ]
+            
+    /// execute http patch request
+    session.patch(path, with: params) {
+        RESTResult in
+        
+        switch(RESTResult) {
+            
+        case .failure(let error)    : do { result(.failure((error))) }
+        case .success(let response) : do {
+            do {
+                let org = try self.session.decoder.decode(GHOrganizationEntity.self, from: response.data)
+                result(.success(org))
+            } catch {
+                result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
             }
+            }
+            
         }
+    }
+}
+    
+}
+
+
+class GHOrganizationBlocksRepo: OrganizationBlocksRepo {
+    
+    
+    // MARK: PRIVATE STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    
+        
+    // MARK: PUBLIC STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    static let pathBlocks   : String = "/blocks "
+    
+    
+    // MARK: PRIVATTE STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    
+    
+    // MARK: OVERRIDED PUBLIC PROPERTIES [UserRepository]
+    //__________________________________________________________________________________________________________________
+    
+    public var session: GHSession
+    
+    
+    // MARK: CONSTRUCTOR
+    //__________________________________________________________________________________________________________________
+    
+    init(session : GHSession) {
+        self.session = session
+    }
+    
+    
+    // MARK: OVERRIDE FUNCTIONS FROM [OrganizationRepository]
+    //__________________________________________________________________________________________________________________
+
+    func listBlockedUsers   (result     : @escaping UserRepo.ResultUserList) {
+                    
+        /// initialize local variables
+        
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationBlocksRepo.listBlockedUsers : 🚧 not implemented")))
+        
+    }
+    
+    func verify             (username   : String,
+                             result     : @escaping GHConfiguration.RESTConfirmation) {
+    
+        /// initialize local variables
+        
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationBlocksRepo.verify : 🚧 not implemented")))
+        
+    }
+    
+    func block              (username   : String,
+                             result     : @escaping GHConfiguration.RESTConfirmation) {
+    
+        /// initialize local variables
+        
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationBlocksRepo.block : 🚧 not implemented")))
+        
+    }
+    
+    func unblock            (username   : String,
+                             result     : @escaping GHConfiguration.RESTConfirmation) {
+        
+        /// initialize local variables
+        
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationBlocksRepo.unblock : 🚧 not implemented")))
+        
     }
     
     
 }
+
+class GHOrganizationMembersRepo: OrganizationMembersRepo {
+    
+    
+    // MARK: PRIVATE STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    
+        
+    // MARK: PUBLIC STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    
+    
+    // MARK: PRIVATTE STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    
+    
+    // MARK: OVERRIDED PUBLIC PROPERTIES [UserRepository]
+    //__________________________________________________________________________________________________________________
+    
+    public var session: GHSession
+    
+    
+    // MARK: CONSTRUCTOR
+    //__________________________________________________________________________________________________________________
+    
+    init(session : GHSession) {
+        self.session = session
+    }
+    
+    
+    // MARK: OVERRIDE FUNCTIONS FROM [OrganizationRepository]
+    //__________________________________________________________________________________________________________________
+    
+    
+}
+
+
+
+class GHOrganizationOutsideCollaboratorsRepo: OrganizationOutsideCollaboratorsRepo {
+    
+    
+    // MARK: PRIVATE STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    
+        
+    // MARK: PUBLIC STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    
+    
+    // MARK: PRIVATTE STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    
+    
+    // MARK: OVERRIDED PUBLIC PROPERTIES [UserRepository]
+    //__________________________________________________________________________________________________________________
+    
+    public var session: GHSession
+    
+    
+    // MARK: CONSTRUCTOR
+    //__________________________________________________________________________________________________________________
+    
+    init(session : GHSession) {
+        self.session = session
+    }
+    
+    
+    // MARK: OVERRIDE FUNCTIONS FROM [OrganizationRepository]
+    //__________________________________________________________________________________________________________________
+    
+    
+}
+
+
+class GHOrganizationWebhooksRepo: OrganizationWebhooksRepo {
+    
+    
+    // MARK: PRIVATE STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    
+        
+    // MARK: PUBLIC STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    
+    
+    // MARK: PRIVATTE STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    
+    
+    // MARK: OVERRIDED PUBLIC PROPERTIES [UserRepository]
+    //__________________________________________________________________________________________________________________
+    
+    public var session: GHSession
+    
+    
+    // MARK: CONSTRUCTOR
+    //__________________________________________________________________________________________________________________
+    
+    init(session : GHSession) {
+        self.session = session
+    }
+    
+    
+    // MARK: OVERRIDE FUNCTIONS FROM [OrganizationRepository]
+    //__________________________________________________________________________________________________________________
+    
+    
+}
+
+
