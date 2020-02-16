@@ -14,8 +14,10 @@ public protocol UserRepo : GHRepository {
     // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________
     
-    typealias ResultUser        = (Result< UserEntity   ,Error>)  -> Void
-    typealias ResultUserList    = (Result<[UserEntity]  ,Error>)  -> Void
+    typealias ResultUser                = (Result< UserEntity   ,Error>)  -> Void
+    typealias ResultUserList            = (Result<[UserEntity]  ,Error>)  -> Void
+    typealias ResultUserHovercardList   = (Result<[UserHoverCardEntity]  ,Error>)  -> Void
+    
     
     // MARK: AUTHENTICATED FUNCTIONS
     //__________________________________________________________________________________________________________________
@@ -82,6 +84,7 @@ public protocol UserRepo : GHRepository {
     func updateBio      (_ bio      : String?,
                         result      : @escaping ResultUser ) -> Void
     
+    
     // MARK: SINGLE USER FUNCTIONS
     //__________________________________________________________________________________________________________________
     
@@ -90,9 +93,18 @@ public protocol UserRepo : GHRepository {
     /// - parameter for_username: the username to find
     /// - parameter result: the callback competition
     /// - returns: Void
-    func single         (from username: GHConfiguration.Username,
-                        result      : @escaping ResultUser ) -> Void
-    //func singleHovercard(from username: GHConfiguration.Username) -> Void // TODO: 🏷 Setup hovercard api
+    func single         (from username  : GHConfiguration.Username,
+                        result          : @escaping ResultUser ) -> Void
+    
+    
+    /// singleHovercard
+    ///
+    /// - parameter for_username: the username to to get hovercard
+    /// - parameter result: the callback competition
+    /// - returns: Void
+    func singleHovercard(from username  : String ,
+                         result         : @escaping ResultUserHovercardList) -> Void
+    
     
     // MARK: MULTIPLE USERS FUNCTIONS
     //__________________________________________________________________________________________________________________

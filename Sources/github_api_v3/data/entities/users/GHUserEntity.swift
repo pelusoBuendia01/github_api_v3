@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GHUserEntity : UserEntity  {
+internal class GHUserEntity : UserEntity  {
         
     // MARK: ENUM
     //__________________________________________________________________________________________________________________
@@ -87,7 +87,7 @@ struct GHUserEntity : UserEntity  {
     // MARK: OVERRIDE CONSTRUCTOR (Decodable)
     //__________________________________________________________________________________________________________________
     
-    init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         
         /// Initialize local variables
         let container = try decoder.container(keyedBy: GHUserEntity.CodingKeys.self)
@@ -111,100 +111,84 @@ struct GHUserEntity : UserEntity  {
         receivedEventsURL   = try container.decode(String.self  , forKey: .received_events_url)
         type                = try container.decode(String.self  , forKey: .type)
         siteAdmin           = try container.decode(Bool.self    , forKey: .site_admin)
-        do {
-            name            = try container.decode(String.self  , forKey: .name)
-        }
-        catch {
-            name            = nil
-        }
-        do {
-            company         = try container.decode(String.self  , forKey: .company)
-        }
-        catch {
-            company         = nil
-        }
-        do {
-            blog            = try container.decode(String.self  , forKey: .blog)
-        }
-        catch {
-            blog            = nil
-        }
-        do {
-            location        = try container.decode(String.self  , forKey: .location)
-        }
-        catch {
-            location        = nil
-        }
-        do {
-            email           = try container.decode(String.self  , forKey: .email)
-        }
-        catch {
-            email           = nil
-        }
-        do {
-            hireable        = try container.decode(Bool.self    , forKey: .hireable)
-        }
-        catch {
-            hireable        = nil
-        }
-        do {
-            bio             = try container.decode(String.self  , forKey: .bio)
-        }
-        catch {
-            bio             = nil
-        }
+        
+        do      { name = try container.decode(String.self, forKey: .name)}
+        catch   { name = nil}
+        
+        do      { company = try container.decode(String.self, forKey: .company)}
+        catch   { company = nil}
+        
+        do      { blog = try container.decode(String.self, forKey: .blog) }
+        catch   { blog = nil}
+        
+        do      { location = try container.decode(String.self, forKey: .location) }
+        catch   { location = nil }
+        
+        do      { email = try container.decode(String.self, forKey: .email) }
+        catch   { email = nil }
+        
+        do      { hireable = try container.decode(Bool.self, forKey: .hireable) }
+        catch   { hireable = nil }
+        
+        do      { bio = try container.decode(String.self, forKey: .bio) }
+        catch   { bio = nil }
         
         if (container.allKeys.contains(.public_repos)) {
-            publicRepos         = try container.decode(Int.self     , forKey: .public_repos)
+            publicRepos         = try container.decode(Int.self, forKey: .public_repos)
         }
         else{
             publicRepos            = nil
         }
+        
         if (container.allKeys.contains(.public_gists)) {
-            publicGists         = try container.decode(Int.self     , forKey: .public_gists)
+            publicGists         = try container.decode(Int.self, forKey: .public_gists)
         }
         else{
             publicGists         = nil
-            
         }
+        
         if (container.allKeys.contains(.followers)) {
-            followers           = try container.decode(Int.self     , forKey: .followers)
-        } else {
+            followers           = try container.decode(Int.self, forKey: .followers)
+        }
+        else {
             followers           = nil
         }
+        
         if (container.allKeys.contains(.following)) {
-            following           = try container.decode(Int.self     , forKey: .following)
+            following           = try container.decode(Int.self, forKey: .following)
         }
         else {
             following           = nil
         }
         
         if (container.allKeys.contains(.created_at)) {
-            createdAt           = try container.decode(Date.self    , forKey: .created_at)
-        } else {
+            createdAt           = try container.decode(Date.self, forKey: .created_at)
+        }
+        else {
             createdAt           = nil
         }
         
         if (container.allKeys.contains(.updated_at)) {
-            updatedAt           = try container.decode(Date.self    , forKey: .updated_at)
-        } else {
+            updatedAt           = try container.decode(Date.self, forKey: .updated_at)
+        }
+        else {
             updatedAt           = nil
         }
-        
-        
+                
         if (container.allKeys.contains(.plan)) {
-            plan            = try container.decode(GHUserPlanEntity.self    , forKey: .plan)
+            plan            = try container.decode(GHUserPlanEntity.self, forKey: .plan)
         }
         else{
             plan            = nil
         }
         
         if (container.allKeys.contains(.contributions)) {
-            contributions   = try container.decode(Int.self    , forKey: .contributions)
+            contributions   = try container.decode(Int.self, forKey: .contributions)
         }
         else{
             contributions   = nil
         }
+        
     }
     
     // MARK: OVERRIDE FUNCTIONS [Encodable]

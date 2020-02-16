@@ -8,16 +8,17 @@
 
 import Foundation
 
-class GHUserHoverCardEntity : UserHoverCardEntity {
+internal class GHUserHoverCardEntity : UserHoverCardEntity {
     
     // MARK: ENUM
     //__________________________________________________________________________________________________________________
-    enum CodingKeys: CodingKey {
+    enum CodingKeys: String, CodingKey {
+        case context = "context"
     }
     
     // MARK: INSTANCE PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________
-    
+    let context : UserHoverCardContextEntity?
     
     // MARK: OVERRIDE CONSTRUCTOR (Decodable)
     //__________________________________________________________________________________________________________________
@@ -25,9 +26,11 @@ class GHUserHoverCardEntity : UserHoverCardEntity {
     required init(from decoder: Decoder) throws {
         
         /// Initialize local variables
-        //let container = try decoder.container(keyedBy: GHUserEntity.CodingKeys.self)
+        let container = try decoder.container(keyedBy: GHUserHoverCardEntity.CodingKeys.self)
         
         /// Initialize instance properties
+        do      { self.context = try container.decode(GHUserHoverCardContextEntity.self  , forKey: .context)}
+        catch   { self.context = nil }
         
     }
     

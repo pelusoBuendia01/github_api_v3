@@ -52,7 +52,7 @@ internal class GHOrganizationRepository: OrganizationRepo {
     public func listOAuthOrganizations (result: @escaping OrganizationRepo.ResultOrgList) {
         
         /// initialize local variables
-        var path : String = GHUserRepository.pathAuthenticated
+        var path : String = GHUserRepo.pathAuthenticated
         path += GHOrganizationRepository.pathOrgs
          
         /// execute http get request
@@ -132,7 +132,7 @@ internal class GHOrganizationRepository: OrganizationRepo {
         ///users/:username/orgs
 
         /// inititalize local variables
-        var path : String = GHUserRepository.pathUsers
+        var path : String = GHUserRepo.pathUsers
         path += "/\(username)"
         path += GHOrganizationRepository.pathOrgs        
          

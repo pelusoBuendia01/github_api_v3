@@ -59,7 +59,7 @@ internal class GHProjectRepository : ProjectRepo {
                          result: @escaping ResultProjectList) {
         
         /// initialize local variables
-        let path : String   = "\(GHUserRepository.pathUsers)/\(username)\(GHProjectRepository.pathProjects)"
+        let path : String   = "\(GHUserRepo.pathUsers)/\(username)\(GHProjectRepository.pathProjects)"
         
         /// execute  http get request
         session
@@ -161,7 +161,7 @@ internal class GHProjectRepository : ProjectRepo {
                          result: @escaping ProjectRepo.ResultProject) {
         
         /// Initialize local variables
-        let path : String   = "\(GHUserRepository.pathAuthenticated)\(GHProjectRepository.pathProjects)"
+        let path : String   = "\(GHUserRepo.pathAuthenticated)\(GHProjectRepository.pathProjects)"
         let params : [String:Any?] = [
             GHProjectRepository.paramName: name,
             GHProjectRepository.paramBody: body,

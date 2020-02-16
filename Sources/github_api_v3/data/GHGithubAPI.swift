@@ -45,7 +45,7 @@ class GHGithubAPI: GithubAPI {
         self.repositoryRepo     = GHRepositoryRepository    (session: self.session)
         self.searchRepo         = GHSearchRepo              (session: self.session)
         self.teamRepo           = GHTeamsRepo               (session: self.session)
-        self.userRepo           = GHUserRepository          (session: self.session)
+        self.userRepo           = GHUserRepo          (session: self.session)
         
         
         

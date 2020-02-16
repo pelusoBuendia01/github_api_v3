@@ -1,5 +1,5 @@
 //
-//  GHUserPlanEntity.swift
+//  GHUserHoverCardContextEntity.swift
 //  githubAPIv3
 //
 /// - copyright: <http://unlicense.org/>
@@ -8,23 +8,21 @@
 
 import Foundation
 
-internal class GHUserPlanEntity : UserPlanEntity {
-        
+internal class GHUserHoverCardContextEntity: UserHoverCardContextEntity {
+    
+    
     // MARK: ENUM
     //__________________________________________________________________________________________________________________
-    enum CodingKeys: CodingKey {
-        case name
-        case space
-        case collaborators
-        case private_repos
+    enum CodingKeys: String, CodingKey {
+        case message  = "message"
+        case octicon = "octicon"
     }
     
     // MARK: INSTANCE PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________
-    let name            : String
-    let space           : Int
-    let collaborators   : Int
-    let privateRepos    : Int
+    let message : String
+    let octicon : String
+    
     
     // MARK: OVERRIDE CONSTRUCTOR (Decodable)
     //__________________________________________________________________________________________________________________
@@ -33,20 +31,14 @@ internal class GHUserPlanEntity : UserPlanEntity {
     required init(from decoder: Decoder) throws {
         
         /// Initialize local variables
-        let container = try decoder.container(keyedBy: GHUserPlanEntity.CodingKeys.self)
+        let container = try decoder.container(keyedBy: GHUserHoverCardContextEntity.CodingKeys.self)
         
         /// Initialize instance properties
-        do      { self.name = try container.decode(String.self, forKey: .name) }
-        catch   { self.name = "" }
+        do      { self.message = try container.decode(String.self  , forKey: .message)}
+        catch   { self.message = "" }
         
-        do      { self.space = try container.decode(Int.self, forKey: .space)}
-        catch   { self.space = 0 }
-        
-        do      { self.collaborators = try container.decode(Int.self, forKey: .collaborators) }
-        catch   { self.collaborators = 0 }
-        
-        do      { self.privateRepos = try container.decode(Int.self, forKey: .private_repos) }
-        catch   { self.privateRepos = 0 }        
+        do      { self.octicon = try container.decode(String.self  , forKey: .octicon)}
+        catch   { self.octicon = "" }
         
     }
     
