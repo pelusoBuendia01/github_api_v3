@@ -16,5 +16,5 @@
 |[GHReactionsRepo](./GHReactionsRepo.swift)                 | TODO: 🏷 Add description  |
 |[GHRepositoryRepo](./GHRepositoryRepository.swift)         | TODO: 🏷 Add description  |
 |[GHSearchRepo](./GHSearchRepo.swift)                       | TODO: 🏷 Add description  |
-|[GHTeamsRepo](./GHTeamsRepo.swift)                         | TODO: 🏷 Add description  |
+|[🌐 GHTeamsRepo](./GHTeamsRepo.swift)                         | Http access to teams repository  |
 |[🌐 GHUserRepo](./GHUserRepo.swift)                        | Http access to project repository  |

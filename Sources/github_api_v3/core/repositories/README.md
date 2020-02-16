@@ -16,5 +16,5 @@
 |[ReactionsRepo](./ReactionsRepo.swift)             | TODO: 🏷 Add description  |
 |[RepositoryRepo](./RepositoryRepo.swift)           | TODO: 🏷 Add description  |
 |[SearchRepo](./SearchRepo.swift)                   | TODO: 🏷 Add description  |
-|[TeamsRepo](./TeamsRepo.swift)                     | TODO: 🏷 Add description  |
+|[🗄TeamsRepo](./TeamsRepo.swift)                     | provides access to tems repository freatures  |
 |[🗄UserRepo](./UserRepo.swift)                     | provides access to user repository freature (authorized & public profiles) |
