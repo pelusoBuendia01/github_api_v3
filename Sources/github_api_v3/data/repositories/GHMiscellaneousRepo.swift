@@ -134,7 +134,8 @@ class GHMiscellaneousGitIgnoresRepo: MiscellaneousGitIgnoresRepo {
         
     // MARK: PUBLIC STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
-    
+    public static let pathGitignore : String  = "/gitignore"
+    public static let pathTemplates : String  = "/templates"
     
     // MARK: PRIVATTE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
@@ -158,10 +159,52 @@ class GHMiscellaneousGitIgnoresRepo: MiscellaneousGitIgnoresRepo {
     //__________________________________________________________________________________________________________________
     
     func gitIgnoreNames(result: @escaping ResultGitIgnoreList) {
-        result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousGitIgnoresRepo.gitIgnoreNames: 🚧 Not Implemented")))
+        
+        /// initialize local variables
+        var path : String = Self.pathGitignore
+        path += Self.pathTemplates
+        
+        session.get(path, with: nil) {
+            
+            RESTResult in
+            
+            switch (RESTResult) {
+            
+            case .failure(let error) :
+                do {
+                    result(.failure(error))
+                }
+            
+            case .success(let response) :
+                do {
+                                    
+                    do  {
+                        let names : [String] = try self.session.decoder.decode([String].self, from: response.data)
+                        
+                        result(.success(names))
+                        
+                    } catch {
+                        result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+    
     }
+
     
     func gitIgnoreTemplate(name: String, result: @escaping ResultGitIgnoreTemplate) {
+        
+        /// initialize local variables
+        var path : String = Self.pathGitignore
+        path += Self.pathTemplates
+        path += "/\(name)"
+        
+        print("\t\t🌐\(path)")
         result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousGitIgnoresRepo.gitIgnoreTemplate: 🚧 Not Implemented")))
     }
     
@@ -177,6 +220,9 @@ class GHMiscellaneousLicensesRepo: MiscellaneousLicensesRepo {
         
     // MARK: PUBLIC STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    
+    public static let pathLicenses : String  = "/licenses"
+    public static let pathLicense  : String  = "/license"
     
     // MARK: PRIVATTE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
@@ -195,14 +241,32 @@ class GHMiscellaneousLicensesRepo: MiscellaneousLicensesRepo {
     //__________________________________________________________________________________________________________________
     
     func licenseList(result: @escaping ResultGitLicenseList) {
+        
+         // initialize local variables
+          let  path : String = Self.pathLicenses
+          print("\t\t🌐\(path)")
+         
         result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousLicensesRepo.licenseList: 🚧 Not Implemented")))
     }
     
     func single(name: String, result: @escaping ResultGitLicense) {
+        
+        // initialize local variables
+        var  path : String = Self.pathLicenses
+        path += "/\(name)"
+        print("\t\t🌐\(path)")
+        
         result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousLicensesRepo.single: 🚧 Not Implemented")))
     }
     
     func licenseIn(owner: String, repo: String, result: @escaping ResultGitLicense) {
+        
+        // initialize local variables
+        var  path : String = GHRepositoryRepository.pathRepos
+        path        += "/\(owner)"
+        path        += "/\(repo)"
+        print("\t\t🌐\(path)")
+        
         result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousLicensesRepo.licenseIn: 🚧 Not Implemented")))
     }
     
@@ -220,6 +284,8 @@ class GHMiscellaneousMarkdownRepo: MiscellaneousMarkdownRepo {
         
     // MARK: PUBLIC STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    public static let pathMarkdown  : String = "/markdown"
+    public static let pathRaw       : String = "/raw"
     
     
     // MARK: PRIVATTE STATIC PROPERTIES
@@ -244,10 +310,21 @@ class GHMiscellaneousMarkdownRepo: MiscellaneousMarkdownRepo {
     //__________________________________________________________________________________________________________________
 
     func renderMarkdown(text: String, result: @escaping ResultRender) {
+        
+        /// initializa local variables
+        let path : String = Self.pathMarkdown
+        print("\t\t🌐\(path)")
+        
         result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousMarkdownRepo.renderMarkdown: 🚧 Not Implemented")))
     }
     
     func renderMarkdownRaw(text: String, result: @escaping ResultRender) {
+        
+        /// initializa local variables
+        var path : String = Self.pathMarkdown
+        path += Self.pathRaw
+        print("\t\t🌐\(path)")
+        
         result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousMarkdownRepo.renderMarkdownRaw: 🚧 Not Implemented")))
     }
     
@@ -262,6 +339,8 @@ class GHMiscellaneousMetaRepo: MiscellaneousMetaRepo {
         
     // MARK: PUBLIC STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    
+    public static let pathMeta : String = "/meta"
     
     // MARK: PRIVATTE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
@@ -280,6 +359,11 @@ class GHMiscellaneousMetaRepo: MiscellaneousMetaRepo {
     //__________________________________________________________________________________________________________________
     
     func get(result: @escaping ResultMeta) {
+        
+        /// initializa local variables
+        let path : String = Self.pathMeta
+        print("\t\t🌐\(path)")
+        
         result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousMetaRepo.get: 🚧 Not Implemented")))
     }
     
@@ -294,6 +378,8 @@ class GHMiscellaneousRateLimitRepo: MiscellaneousRateLimitRepo {
         
     // MARK: PUBLIC STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    
+    public static let pathRateLimit : String  = "/rate_limit"
     
     // MARK: PRIVATTE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
@@ -312,7 +398,12 @@ class GHMiscellaneousRateLimitRepo: MiscellaneousRateLimitRepo {
     //__________________________________________________________________________________________________________________
     
     func get(result: @escaping ResultRateLimit) {
-            result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousRateLimitRepo.get: 🚧 Not Implemented")))
+        
+        /// initializa local variables
+        let path : String = Self.pathRateLimit
+        print("\t\t🌐\(path)")
+        
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousRateLimitRepo.get: 🚧 Not Implemented")))
     }
     
 }

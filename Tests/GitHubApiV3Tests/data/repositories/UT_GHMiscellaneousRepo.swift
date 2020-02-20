@@ -144,9 +144,10 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                     api.miscellaneousRepo.gitIgnores.gitIgnoreNames() {
                         result in
                         
+                        print(result)
                         /// 🔬 Execute test
                         switch( result ) {
-                            
+
                         case .failure(let error) :
                             do {
                                 
@@ -226,7 +227,7 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                 
                 do {
                     
-                    api.miscellaneousRepo.gitIgnores.gitIgnoreTemplate(name: "") {
+                    api.miscellaneousRepo.gitIgnores.gitIgnoreTemplate(name: "C") {
                         result  in
                         
                         /// 🔬 Execute test
@@ -396,7 +397,7 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                 
                 do {
                     
-                    api.miscellaneousRepo.licenses.single(name: "") {
+                    api.miscellaneousRepo.licenses.single(name: "mit") {
                         result in
                         
                         /// 🔬 Execute test
@@ -482,7 +483,7 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                 
                 do {
                     
-                    api.miscellaneousRepo.licenses.licenseIn(owner: "", repo: "") {
+                    api.miscellaneousRepo.licenses.licenseIn(owner: "exceljs", repo: "exceljs") {
                         result in
                         
                         /// 🔬 Execute test

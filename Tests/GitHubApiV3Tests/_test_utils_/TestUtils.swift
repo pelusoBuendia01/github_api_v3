@@ -29,10 +29,10 @@ class TestUtils {
     static func  errorString(cls: String, fun: String, error: Error?) -> String {
         
         if let error = error {
-            return "\n\t❌ \(cls).\(fun): \(error)\n"
+            return "\n\n\t\t\t❌ \(cls).\(fun): \(error)\n"
         }
         else {
-            return "\n\t❌ \(cls).\(fun): \n"
+            return "\n\n\t\t\t❌ \(cls).\(fun): \n"
         }   
     }
         
