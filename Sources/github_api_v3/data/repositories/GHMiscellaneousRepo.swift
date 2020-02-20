@@ -396,6 +396,9 @@ class GHMiscellaneousMarkdownRepo: MiscellaneousMarkdownRepo {
     // MARK: PRIVATE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
     
+    private static let paramText    : String = "text"
+    private static let paramMode    : String = "mode"
+    private static let paramContext : String = "context"
     
         
     // MARK: PUBLIC STATIC PROPERTIES
@@ -429,9 +432,45 @@ class GHMiscellaneousMarkdownRepo: MiscellaneousMarkdownRepo {
         
         /// initializa local variables
         let path : String = Self.pathMarkdown
-        print("\t\t🌐\(path)")
+        let param : [String:Any] = [
+            Self.paramText      : text,
+            Self.paramMode      : "gfm",
+            Self.paramContext   : "github/gollum"
+            
+        ]
         
-        result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousMarkdownRepo.renderMarkdown: 🚧 Not Implemented")))
+        print("\t\t🌐\(path)")
+        print("\t\t📜\(param)")
+        
+        /// execute http get request
+        session.post(path, with: param) {
+            
+            RESTResult in
+            
+            switch (RESTResult) {
+            
+            case .failure(let error) :
+                do {
+                    result(.failure(error))
+                }
+            
+            case .success(let response) :
+                do {
+                                    
+                    do  {
+                        let render = try self.session.decoder.decode(String.self, from: response.data)
+                        result(.success(render))
+                    } catch {
+                        result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+        
     }
     
     func renderMarkdownRaw(text: String, result: @escaping ResultRender) {

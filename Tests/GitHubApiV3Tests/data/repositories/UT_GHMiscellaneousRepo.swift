@@ -505,7 +505,7 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                                 
                             }
                             
-                        case .success(let a) :
+                        case .success(_) :
                             do  {
                                 XCTAssert(true)
                                 expect.fulfill()
@@ -537,7 +537,6 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
         
     }
 
-    
     func test0007() {
         
         /// initialize local variables
@@ -572,7 +571,7 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                 
                 do {
                     
-                    api.miscellaneousRepo.markdown.renderMarkdown(text: "") {
+                    api.miscellaneousRepo.markdown.renderMarkdown(text: "Hello world github/linguist#1 **cool**, and #1!") {
                         result in
                         
                         /// 🔬 Execute test
@@ -591,15 +590,18 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                                 
                             }
                             
-                        case .success(_) :
+                        case .success(let a) :
                             do  {
+                                print("\n\t\t- - - - - - - - - - - - - - - - - - - - - - - -")
+                                print(a)
+                                print("\t\t- - - - - - - - - - - - - - - - - - - - - - - -\n")
                                 XCTAssert(true)
+                                expect.fulfill()
                             }
                         }
                         
                     }
-                    
-                    expect.fulfill()
+                                        
                 }
                 
             }
@@ -623,7 +625,6 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
         
     }
 
-    
     func test0008() {
         
         /// initialize local variables
@@ -708,7 +709,6 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
         }
         
     }
-
     
     func test0009() {
         
@@ -794,7 +794,6 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
         }
         
     }
-
     
     func test0010() {
         
@@ -881,7 +880,6 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
         }
         
     }
-
     
 }
 
