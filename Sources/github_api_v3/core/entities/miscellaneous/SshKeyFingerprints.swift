@@ -1,5 +1,5 @@
 //
-//  GitignoreTemplateEntity.swift
+//  SshKeyFingerprints.swift
 //  githubAPIv3
 //
 /// - copyright: <http://unlicense.org/>
@@ -8,11 +8,11 @@
 
 import Foundation
 
-public protocol GitignoreTemplateEntity: GHCodable {
-    
+
+class SshKeyFingerprints: GHCodable {
+ 
     // MARK: PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________
-    
     
     
 }
