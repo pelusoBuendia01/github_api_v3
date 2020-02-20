@@ -9,7 +9,7 @@
 import Foundation
 
 
-class SshKeyFingerprints: GHCodable {
+protocol SshKeyFingerprints: GHCodable {
  
     // MARK: PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________

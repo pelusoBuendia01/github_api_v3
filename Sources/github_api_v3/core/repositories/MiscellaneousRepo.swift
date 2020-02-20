@@ -11,17 +11,24 @@ public protocol MiscellaneousRepo : GHRepository {
        
    // MARK: TYPEALIAS
    //__________________________________________________________________________________________________________________
+    
     typealias ResultLicense             = (Result< LicenseEntity            ,Error> ) -> Void
     typealias ResultLicenseList         = (Result<[LicenseEntity]           ,Error> ) -> Void
     
        
    // MARK: VARIABLES
    //__________________________________________________________________________________________________________________
+    
+    var emojis      : MiscellaneousEmojisRepo       { get }
+    var gitIgnores  : MiscellaneousGitIgnoresRepo   { get }
+    var licenses    : MiscellaneousLicensesRepo     { get }
+    var markdown    : MiscellaneousMarkdownRepo     { get }
+    var meta        : MiscellaneousMetaRepo         { get }
+    var rateLimit   : MiscellaneousRateLimitRepo    { get }
        
+    
    // MARK: FUNCTIONS
    //__________________________________________________________________________________________________________________
-    
-    
     
 }
 
@@ -44,9 +51,6 @@ public protocol MiscellaneousEmojisRepo : GHRepository {
 }
 
 
-
-
-
 public protocol MiscellaneousGitIgnoresRepo : GHRepository {
     
     // MARK: TYPEALIAS
@@ -67,7 +71,6 @@ public protocol MiscellaneousGitIgnoresRepo : GHRepository {
                                  result     : @escaping ResultGitIgnoreTemplate) -> Void
     
 }
-
 
 
 public protocol MiscellaneousLicensesRepo : GHRepository {
@@ -97,7 +100,6 @@ public protocol MiscellaneousLicensesRepo : GHRepository {
 }
 
 
-
 public protocol MiscellaneousMarkdownRepo : GHRepository {
     
     // MARK: TYPEALIAS
@@ -121,7 +123,6 @@ public protocol MiscellaneousMarkdownRepo : GHRepository {
 }
 
 
-
 public protocol MiscellaneousMetaRepo : GHRepository {
     
     // MARK: TYPEALIAS
@@ -141,8 +142,7 @@ public protocol MiscellaneousMetaRepo : GHRepository {
 }
 
 
-
-public protocol MiscellaneousReateLimitRepo : GHRepository {
+public protocol MiscellaneousRateLimitRepo : GHRepository {
     
     // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________

@@ -1,5 +1,5 @@
 //
-//  GHRateLimitEntity.swift
+//  GHSshKeyFingerprints.swift
 //  githubAPIv3
 //
 /// - copyright: <http://unlicense.org/>
@@ -9,11 +9,12 @@
 import Foundation
 
 
-class GHRateLimitEntity: RateLimitEntity {
+class GHSshKeyFingerprints: SshKeyFingerprints {
     
     // MARK: ENUM
     //__________________________________________________________________________________________________________________
     enum CodingKeys: CodingKey {
+        case a
     }
     
     // MARK: INSTANCE PUBLIC PROPERTIES
@@ -38,5 +39,4 @@ class GHRateLimitEntity: RateLimitEntity {
     func encode(to encoder: Encoder) throws {
         
     }
-    
 }
