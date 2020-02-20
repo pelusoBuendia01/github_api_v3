@@ -273,9 +273,10 @@ class GHMiscellaneousLicensesRepo: MiscellaneousLicensesRepo {
     
     func licenseList(result: @escaping ResultGitLicenseList) {
         
-        // initialize local variables
+        /// initialize local variables
         let  path : String = Self.pathLicenses
           
+        /// execute http get request
         session.get(path, with: nil) {
             
             RESTResult in
@@ -310,12 +311,40 @@ class GHMiscellaneousLicensesRepo: MiscellaneousLicensesRepo {
     
     func single(name: String, result: @escaping ResultGitLicense) {
         
-        // initialize local variables
+        /// initialize local variables
         var  path : String = Self.pathLicenses
         path += "/\(name)"
-        print("\t\t🌐\(path)")
         
-        result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousLicensesRepo.single: 🚧 Not Implemented")))
+        /// execute http get request
+        session.get(path, with: nil) {
+            
+            RESTResult in
+            
+            switch (RESTResult) {
+            
+            case .failure(let error) :
+                do {
+                    result(.failure(error))
+                }
+            
+            case .success(let response) :
+                do {
+                                    
+                    do  {
+                        let license = try self.session.decoder.decode(GHLicenseEntity.self, from: response.data)
+                        
+                        result(.success(license))
+                        
+                    } catch {
+                        result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
+                    }
+                    
+                }
+                
+            }
+            
+        }
+
     }
     
     func licenseIn(owner: String, repo: String, result: @escaping ResultGitLicense) {

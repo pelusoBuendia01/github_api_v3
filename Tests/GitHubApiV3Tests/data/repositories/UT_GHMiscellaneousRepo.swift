@@ -333,7 +333,7 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                                 
                             }
                             
-                        case .success(let a) :
+                        case .success(_) :
                             do  {
                                 
                                 XCTAssert(true)
@@ -366,7 +366,6 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
         
     }
 
-    
     func test0005() {
         
         /// initialize local variables
@@ -452,7 +451,6 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
         }
         
     }
-
     
     func test0006() {
         

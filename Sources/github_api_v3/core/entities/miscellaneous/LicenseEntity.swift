@@ -12,10 +12,18 @@ public protocol LicenseEntity : GHCodable {
     
     // MARK: PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________
-    var key     : String { get }
-    var name    : String { get }
-    var nodeId  : String { get }
-    var spdxId  : String { get }
-    var url     : String { get }
+    var key             : String    { get }
+    var name            : String    { get }
+    var nodeId          : String    { get }
+    var spdxId          : String    { get }
+    var url             : String    { get }
+    var htmlURL         : String?   { get }
+    var description     : String?   { get }
+    var implementation  : String?   { get }
+    var permissions     : [String]? { get }
+    var conditions      : [String]? { get }
+    var limitations     : [String]? { get }
+    var body            : String?   { get }
+    var featured        : Bool?     { get }
     
 }
