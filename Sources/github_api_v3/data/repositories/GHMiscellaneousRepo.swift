@@ -480,7 +480,34 @@ class GHMiscellaneousMarkdownRepo: MiscellaneousMarkdownRepo {
         path += Self.pathRaw
         print("\t\t🌐\(path)")
         
-        result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousMarkdownRepo.renderMarkdownRaw: 🚧 Not Implemented")))
+        /// execute http get request
+        session.post(path, with: param) {
+            
+            RESTResult in
+            
+            switch (RESTResult) {
+            
+            case .failure(let error) :
+                do {
+                    result(.failure(error))
+                }
+            
+            case .success(let response) :
+                do {
+                                    
+                    do  {
+                        let render = try self.session.decoder.decode(String.self, from: response.data)
+                        result(.success(render))
+                    } catch {
+                        result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
     }
     
 }
