@@ -164,6 +164,7 @@ class GHMiscellaneousGitIgnoresRepo: MiscellaneousGitIgnoresRepo {
         var path : String = Self.pathGitignore
         path += Self.pathTemplates
         
+        /// execute http get request
         session.get(path, with: nil) {
             
             RESTResult in
@@ -203,9 +204,7 @@ class GHMiscellaneousGitIgnoresRepo: MiscellaneousGitIgnoresRepo {
         var path : String = Self.pathGitignore
         path += Self.pathTemplates
         path += "/\(name)"
-        
-        
-        
+                        
         /// execute http get request
         session.get(path, with: nil) {
             
@@ -274,11 +273,39 @@ class GHMiscellaneousLicensesRepo: MiscellaneousLicensesRepo {
     
     func licenseList(result: @escaping ResultGitLicenseList) {
         
-         // initialize local variables
-          let  path : String = Self.pathLicenses
-          print("\t\t🌐\(path)")
-         
-        result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousLicensesRepo.licenseList: 🚧 Not Implemented")))
+        // initialize local variables
+        let  path : String = Self.pathLicenses
+          
+        session.get(path, with: nil) {
+            
+            RESTResult in
+            
+            switch (RESTResult) {
+            
+            case .failure(let error) :
+                do {
+                    result(.failure(error))
+                }
+            
+            case .success(let response) :
+                do {
+                                    
+                    do  {
+                        let licenses = try self.session.decoder.decode([GHLicenseEntity].self, from: response.data)
+                        
+                        result(.success(licenses))
+                        
+                    } catch {
+                        result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
+        
     }
     
     func single(name: String, result: @escaping ResultGitLicense) {
