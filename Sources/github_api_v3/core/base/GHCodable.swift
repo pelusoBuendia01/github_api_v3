@@ -63,6 +63,19 @@ public extension GHCodable {
                     
                 }
                 else if (
+                     (type(of: attr.value)  == [String]?.self  )
+                ) {
+                    
+                    if let string = attr.value as? String {
+                        value = "\(string)"
+                    } else {
+                        value = "<[String]=nil>"
+                    }
+                    
+                    
+                }
+                
+                else if (
                      (type(of: attr.value)  == Bool?.self    )
                 ) {
                     

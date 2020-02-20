@@ -353,9 +353,37 @@ class GHMiscellaneousLicensesRepo: MiscellaneousLicensesRepo {
         var  path : String = GHRepositoryRepository.pathRepos
         path        += "/\(owner)"
         path        += "/\(repo)"
-        print("\t\t🌐\(path)")
         
-        result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousLicensesRepo.licenseIn: 🚧 Not Implemented")))
+        /// execute http get request
+        session.get(path, with: nil) {
+            
+            RESTResult in
+            
+            switch (RESTResult) {
+            
+            case .failure(let error) :
+                do {
+                    result(.failure(error))
+                }
+            
+            case .success(let response) :
+                do {
+                                    
+                    do  {
+                        let license = try self.session.decoder.decode(GHLicenseEntity.self, from: response.data)
+                        
+                        result(.success(license))
+                        
+                    } catch {
+                        result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
     }
     
 }

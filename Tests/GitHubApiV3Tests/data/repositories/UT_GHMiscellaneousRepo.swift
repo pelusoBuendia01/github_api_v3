@@ -505,7 +505,7 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                                 
                             }
                             
-                        case .success(_) :
+                        case .success(let a) :
                             do  {
                                 XCTAssert(true)
                                 expect.fulfill()
