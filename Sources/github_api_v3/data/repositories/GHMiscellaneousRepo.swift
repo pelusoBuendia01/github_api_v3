@@ -64,9 +64,14 @@ class GHMiscellaneousEmojisRepo: MiscellaneousEmojisRepo {
         
     // MARK: PUBLIC STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    public static let pathEmojis : String = "/emojis"
+    
+    
     
     // MARK: PRIVATTE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    
+    
     
     // MARK: OVERRIDED PUBLIC PROPERTIES [MiscellaneousEmojisRepo]
     //__________________________________________________________________________________________________________________
@@ -82,7 +87,40 @@ class GHMiscellaneousEmojisRepo: MiscellaneousEmojisRepo {
     //__________________________________________________________________________________________________________________
     
     func getEmojiList(result: @escaping ResultEmojist) {
-        result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousEmojisRepo.getEmojiList: 🚧 Not Implemented")))
+        
+        /// initialize local variables
+        
+        let path : String = Self.pathEmojis
+        
+        
+    
+        self.session.get(path, with: nil) {
+            RESTResult in
+            
+            switch (RESTResult) {
+            
+            case .failure(let error) :
+                do {
+                    result(.failure(error))
+                }
+            
+            case .success(let response) :
+                do {
+                
+                    do  {
+                        let emojis : [String:String] = try self.session.decoder.decode([String:String].self, from: response.data)
+                        result(.success(emojis))
+                        
+                    } catch {
+                        result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
+                    }
+                    
+                }
+                
+            }
+
+        }
+            
     }
     
 }

@@ -46,35 +46,42 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
             case .success(let api) :
                 do {
                     
-                    api.miscellaneousRepo.emojis.getEmojiList() {
-                    result in
                     
-                    switch (result) {
+                    api
+                        .miscellaneousRepo
+                        .emojis
+                        .getEmojiList() {
+                            result in
+
+                            /// 🔬 Execute test
+                            switch (result) {
                         
-                    case .failure(let error) :
+                            case .failure(let error) :
                         
-                        do {
+                                do {
                         
-                            XCTFail(
-                                TestUtils.errorString(
-                                    cls: Self.CLS,
-                                    fun: testFunction,
-                                    error: error
-                                )
-                            )
+                                    XCTFail(
+                                        TestUtils.errorString(
+                                            cls: Self.CLS,
+                                            fun: testFunction,
+                                            error: error
+                                        )
+                                    )
                             
-                        }
+                                }
+                                                
+                            case .success(_) :
+                            
+                                do {
+                                    
+                                    XCTAssert(true)
+                                    expect.fulfill()
+                                }
                         
-                        
-                    case .success(_) :
-                        do {
-                            XCTAssert(true)
-                        }
-                        
-                    }
+                            }
                 }
                 
-                    expect.fulfill()
+                    
                 }
                 
             }
@@ -134,7 +141,7 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                 
                 do {
                     
-                    api.miscellaneousRepo.emojis.getEmojiList() {
+                    api.miscellaneousRepo.gitIgnores.gitIgnoreNames() {
                         result in
                         
                         /// 🔬 Execute test
@@ -219,7 +226,7 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                 
                 do {
                     
-                    api.miscellaneousRepo.gitIgnores.gitIgnoreNames() {
+                    api.miscellaneousRepo.gitIgnores.gitIgnoreTemplate(name: "") {
                         result  in
                         
                         /// 🔬 Execute test
