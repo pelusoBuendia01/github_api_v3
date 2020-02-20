@@ -12,7 +12,8 @@ public protocol GitignoreTemplateEntity: GHCodable {
     
     // MARK: PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________
-    
+    var name    : String { get }
+    var source  : String { get }
     
     
 }

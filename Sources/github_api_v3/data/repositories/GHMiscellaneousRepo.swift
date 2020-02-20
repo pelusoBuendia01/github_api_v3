@@ -204,8 +204,40 @@ class GHMiscellaneousGitIgnoresRepo: MiscellaneousGitIgnoresRepo {
         path += Self.pathTemplates
         path += "/\(name)"
         
-        print("\t\t🌐\(path)")
-        result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousGitIgnoresRepo.gitIgnoreTemplate: 🚧 Not Implemented")))
+        
+        
+        /// execute http get request
+        session.get(path, with: nil) {
+            
+            RESTResult in
+            
+            switch (RESTResult) {
+            
+            case .failure(let error) :
+                do {
+                    result(.failure(error))
+                }
+            
+            case .success(let response) :
+                do {
+                                    
+                    do  {
+                        
+                        let template  = try self.session.decoder.decode(GHGitignoreTemplateEntity.self, from: response.data)
+                        result(.success(template))
+                        
+                    } catch {
+                        
+                        result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
+                        
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
     }
     
     

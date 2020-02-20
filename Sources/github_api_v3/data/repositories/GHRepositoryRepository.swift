@@ -152,7 +152,6 @@ internal class GHRepositoryRepository       : RepositoryRepo {
         path                += "&\(GHRepositoryRepository.paramSort     )=\(paramSort.rawValue      )"
         path                += "&\(GHRepositoryRepository.paramDirection)=\(paramDirection.rawValue)"
         
-        print(path)
         
         /// execute http get request
         session.get(path, with: nil) {
@@ -292,9 +291,7 @@ internal class GHRepositoryRepository       : RepositoryRepo {
         if let paramAllowMeregeCommit       = allowMeregeCommit     { param.updateValue(paramAllowMeregeCommit      , forKey: GHRepositoryRepository.paramAllowMergeCommit      ) }
         if let paramAllowRebaseMerge        = allowRebaseMerge      { param.updateValue(paramAllowRebaseMerge       , forKey: GHRepositoryRepository.paramAllowRebaseMerge      ) }
         if let paramDeleteBranchOnMerege    = deleteBranchOnMerege  { param.updateValue(paramDeleteBranchOnMerege   , forKey: GHRepositoryRepository.paramDeleteBranchOnMerege  ) }
-        
-        print(param)
-        
+                
         // execute http post request
         session.post(path, with: param) {
             RESTResult in

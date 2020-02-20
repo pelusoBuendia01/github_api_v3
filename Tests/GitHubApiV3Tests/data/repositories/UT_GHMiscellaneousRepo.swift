@@ -143,8 +143,7 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                     
                     api.miscellaneousRepo.gitIgnores.gitIgnoreNames() {
                         result in
-                        
-                        print(result)
+                                            
                         /// 🔬 Execute test
                         switch( result ) {
 
@@ -164,12 +163,13 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                         case .success(_) :
                             do  {
                                 XCTAssert(true)
+                                expect.fulfill()
                             }
                         }
                         
                     }
                     
-                    expect.fulfill()
+                    
                 }
                 
             }
@@ -248,13 +248,15 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                             
                         case .success(_) :
                             do  {
+                                
                                 XCTAssert(true)
+                                expect.fulfill()
                             }
                         }
                         
                     }
                     
-                    expect.fulfill()
+                    
                 }
                 
             }

@@ -11,13 +11,20 @@ import Foundation
 
 class GHGitignoreTemplateEntity : GitignoreTemplateEntity {
     
+    
     // MARK: ENUM
     //__________________________________________________________________________________________________________________
-    enum CodingKeys: CodingKey {
+    
+    enum CodingKeys: String, CodingKey {
+        case name = "name"
+        case source = "source"
     }
     
     // MARK: INSTANCE PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    
+    let name    : String
+    let source  : String
     
     
     // MARK: OVERRIDE CONSTRUCTOR (Decodable)
@@ -26,9 +33,14 @@ class GHGitignoreTemplateEntity : GitignoreTemplateEntity {
     required init(from decoder: Decoder) throws {
         
         /// Initialize local variables
-        //let container = try decoder.container(keyedBy: GHUserEntity.CodingKeys.self)
+        let container = try decoder.container(keyedBy: GHGitignoreTemplateEntity.CodingKeys.self)
         
         /// Initialize instance properties
+        do      { self.name = try container.decode(String.self, forKey: .name)}
+        catch   { self.name = ""}
+        
+        do      { self.source = try container.decode(String.self, forKey: .source)}
+        catch   { self.source = ""}
         
     }
     

@@ -96,11 +96,6 @@ final class UT_GitHubSessionFactory: XCTestCase {
                 
             case .success(_)    :
                 do {
-                    print(TestUtils.errorString(
-                        cls: Self.CLS,
-                        fun: testFunction,
-                        error: nil )
-                    )
                     XCTAssert(false)
                 }
                             
