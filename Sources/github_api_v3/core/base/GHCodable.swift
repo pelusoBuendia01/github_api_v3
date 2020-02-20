@@ -8,6 +8,8 @@
 //
 
 import Foundation
+import Combine
+import SwiftUI
 
 public protocol GHCodable : Codable {
     
