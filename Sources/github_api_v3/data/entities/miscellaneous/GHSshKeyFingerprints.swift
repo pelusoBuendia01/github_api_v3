@@ -1,5 +1,5 @@
 //
-//  GHGitignoreTemplateEntity.swift
+//  GHSshKeyFingerprints.swift
 //  githubAPIv3
 //
 /// - copyright: <http://unlicense.org/>
@@ -9,22 +9,26 @@
 import Foundation
 
 
-class GHGitignoreTemplateEntity : GitignoreTemplateEntity {
+class GHSshKeyFingerprints: SshKeyFingerprints {
     
     
     // MARK: ENUM
     //__________________________________________________________________________________________________________________
-    
     enum CodingKeys: String, CodingKey {
-        case name = "name"
-        case source = "source"
+        case md5RSA     = "MD5_RSA"
+        case md5DSA     = "MD5_DSA"
+        case sha256RSA  = "SHA256_RSA"
+        case sha256DSA  = "SHA256_DSA"
+            
     }
     
     // MARK: INSTANCE PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________
     
-    let name    : String
-    let source  : String
+    let md5RSA      : String
+    let md5DSA      : String
+    let sha256RSA   : String
+    let sha256DSA   : String
     
     
     // MARK: OVERRIDE CONSTRUCTOR (Decodable)
@@ -33,14 +37,21 @@ class GHGitignoreTemplateEntity : GitignoreTemplateEntity {
     required init(from decoder: Decoder) throws {
         
         /// Initialize local variables
-        let container = try decoder.container(keyedBy: GHGitignoreTemplateEntity.CodingKeys.self)
+        let container = try decoder.container(keyedBy: GHSshKeyFingerprints.CodingKeys.self)
         
         /// Initialize instance properties
-        do      { self.name = try container.decode(String.self, forKey: .name)}
-        catch   { self.name = ""}
         
-        do      { self.source = try container.decode(String.self, forKey: .source)}
-        catch   { self.source = ""}
+        do      { self.md5RSA = try container.decode(String.self, forKey: .md5RSA) }
+        catch   { self.md5RSA = "" }
+        
+        do      { self.md5DSA = try container.decode(String.self, forKey: .md5DSA) }
+        catch   { self.md5DSA = "" }
+        
+        do      { self.sha256RSA = try container.decode(String.self, forKey: .sha256RSA) }
+        catch   { self.sha256RSA = "" }
+        
+        do      { self.sha256DSA = try container.decode(String.self, forKey: .sha256DSA) }
+        catch   { self.sha256DSA = "" }
         
     }
     
@@ -50,5 +61,4 @@ class GHGitignoreTemplateEntity : GitignoreTemplateEntity {
     func encode(to encoder: Encoder) throws {
         
     }
-    
 }
