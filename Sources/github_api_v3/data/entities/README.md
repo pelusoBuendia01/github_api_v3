@@ -18,43 +18,43 @@
 
 |Protocol name                                                                | Description               |
 |:----------------------------------------------------------------------------|:--------------------------|
-|[GHGitignoreTemplateEntity](./miscellaneous/GHGitignoreTemplateEntity.swift) | TODO: 🏷 Add description  |
-|[GHLicenseEntity](./miscellaneous/GHLicenseEntity.swift)                     | TODO: 🏷 Add description  |
-|[GHMarkdownEntity](./miscellaneous/GHMarkdownEntity.swift)                   | TODO: 🏷 Add description  |
-|[GHMetaEntity](./miscellaneous/GHMetaEntity.swift)                           | TODO: 🏷 Add description  |
-|[GHRateLimitEntity](./miscellaneous/GHRateLimitEntity.swift)                 | TODO: 🏷 Add description  |
+|[🧩GHGitignoreTemplateEntity](./miscellaneous/GHGitignoreTemplateEntity.swift) | Miscellaneous Git ignore template  object  |
+|[🧩GHLicenseEntity](./miscellaneous/GHLicenseEntity.swift)                     | Miscellaneous License  object  |
+|[🧩GHMetaEntity](./miscellaneous/GHMetaEntity.swift)                           | Miscellaneous Meta object  |
+|[🧩GHRateLimitEntity](./miscellaneous/GHRateLimitEntity.swift)                 | Miscellaneous  rate limit object  |
+|[🧩GHSshKeyFingerprints](./miscellaneous/GHSshKeyFingerprints.swift)                 | Miscellaneous finger print object  |
 
 
 ## organizations
 
-|Protocol name                                                                                | Description               |
-|:--------------------------------------------------------------------------------------------|:--------------------------|
-|[GHOrganizationAuthorizationEntity](./organizations/GHOrganizationAuthorizationEntity.swift) | TODO: 🏷 Add description  |
-|[GHOrganizationEntity](./organizations/GHOrganizationEntity.swift)                           | TODO: 🏷 Add description  |
-|[GHOrganizationInvitationEntity](./organizations/GHOrganizationInvitationEntity.swift)       | TODO: 🏷 Add description  |
-|[GHOrganizationMembershipEntity](./organizations/GHOrganizationMembershipEntity.swift)       | TODO: 🏷 Add description  |
-|[GHWebhookEntity](./organizations/GHWebhookEntity.swift)                                     | TODO: 🏷 Add description  |
+|Protocol name                                                                                  | Description               |
+|:----------------------------------------------------------------------------------------------|:--------------------------|
+|[🧩GHOrganizationAuthorizationEntity](./organizations/GHOrganizationAuthorizationEntity.swift) | Org authroization object  |
+|[🧩GHOrganizationEntity](./organizations/GHOrganizationEntity.swift)                           | Org object                |
+|[🧩GHOrganizationInvitationEntity](./organizations/GHOrganizationInvitationEntity.swift)       | Org inviation object      |
+|[🧩GHOrganizationMembershipEntity](./organizations/GHOrganizationMembershipEntity.swift)       | Org membership object     |
+|[🧩GHWebhookEntity](./organizations/GHWebhookEntity.swift)                                     | Org webhook object        |
 
 
 ## projects
 
-|Protocol name                                                           | Description               |
-|:-----------------------------------------------------------------------|:--------------------------|
-|[GHProjectCardType](./projects/GHProjectCardType.swift)                 | TODO: 🏷 Add description  |
-|[GHProjectColumnEntity](./projects/GHProjectColumnEntity.swift)         | TODO: 🏷 Add description  |
-|[GHProjectEntity](./projects/GHProjectEntity.swift)                     | TODO: 🏷 Add description  |
-|[GHProjectPermissionEntity](./projects/GHProjectPermissionEntity.swift) | TODO: 🏷 Add description  |
+|Protocol name                                                             | Description                    |
+|:-------------------------------------------------------------------------|:-------------------------------|
+|[🧩GHProjectCardType](./projects/GHProjectCardType.swift)                 | Project Card Codable Object    |
+|[🧩GHProjectColumnEntity](./projects/GHProjectColumnEntity.swift)         | Project Column Codable Object  |
+|[🧩GHProjectEntity](./projects/GHProjectEntity.swift)                     | Project Codable Object         |
+|[🧩GHProjectPermissionEntity](./projects/GHProjectPermissionEntity.swift) | Project Permision Object       |
 
 
 ## pull request
 
-|Protocol name                                                                              | Description               |
-|:------------------------------------------------------------------------------------------|:--------------------------|
-|[GHPullRequestCommitEntity](./pull_requests/GHPullRequestCommitEntity.swift)               | TODO: 🏷 Add description  |
-|[GHPullRequestEntity](./pull_requests/GHPullRequestEntity.swift)                           | TODO: 🏷 Add description  |
-|[GHPullRequestReviewCommentEntity](./pull_requests/GHPullRequestReviewCommentEntity.swift) | TODO: 🏷 Add description  |
-|[GHPullRequestReviewEntity](./pull_requests/GHPullRequestReviewEntity.swift)               | TODO: 🏷 Add description  |
-|[GHPullRequestReviewRequestEntity](./pull_requests/GHPullRequestReviewRequestEntity.swift) | TODO: 🏷 Add description  |
+|Protocol name                                                                                | Description                         |
+|:--------------------------------------------------------------------------------------------|:------------------------------------|
+|[🧩GHPullRequestCommitEntity](./pull_requests/GHPullRequestCommitEntity.swift)               | Pull request commit Object          |
+|[🧩GHPullRequestEntity](./pull_requests/GHPullRequestEntity.swift)                           | Pull request Object                 |
+|[🧩GHPullRequestReviewCommentEntity](./pull_requests/GHPullRequestReviewCommentEntity.swift) | Pull request review comment Object  |
+|[🧩GHPullRequestReviewEntity](./pull_requests/GHPullRequestReviewEntity.swift)               | Pull request review Object          |
+|[🧩GHPullRequestReviewRequestEntity](./pull_requests/GHPullRequestReviewRequestEntity.swift) | Pull Request Review request Object  |
 
 
 ## repositories
@@ -77,11 +77,11 @@
 
 ## teams
 
-|Protocol name                                                             | Description               |
-|:-------------------------------------------------------------------------|:--------------------------|
-|[GHTeamDiscussionCommentEntity](./teams/GHTeamDiscussionCommentEntity.swift)  | TODO: 🏷 Add description  |
-|[GHTeamDiscussionEntity](./teams/GHTeamDiscussionEntity.swift)                | TODO: 🏷 Add description  |
-|[GHTeamEntity](./teams/GHTeamEntity.swift)                                    | TODO: 🏷 Add description  |
+|Protocol name                                                                   | Description                      |
+|:-------------------------------------------------------------------------------|:---------------------------------|
+|[🧩GHTeamDiscussionCommentEntity](./teams/GHTeamDiscussionCommentEntity.swift)  | Team Discussion Comment object   |
+|[🧩GHTeamDiscussionEntity](./teams/GHTeamDiscussionEntity.swift)                | Team Discussion object           |
+|[🧩GHTeamEntity](./teams/GHTeamEntity.swift)                                    | Team object                      |
 
 ## users
 

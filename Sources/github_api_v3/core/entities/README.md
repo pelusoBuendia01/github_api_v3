@@ -25,46 +25,48 @@
 
 |Protocol name                                                            | Description               |
 |:------------------------------------------------------------------------|:--------------------------|
-|[GitignoreTemplateEntity](./miscellaneous/GitignoreTemplateEntity.swift) | TODO: 🏷 Add description  |
-|[LicenseEntity](./miscellaneous/LicenseEntity.swift)                     | TODO: 🏷 Add description  |
-|[MarkdownEntity](./miscellaneous/MarkdownEntity.swift)                   | TODO: 🏷 Add description  |
-|[MetaEntity](./miscellaneous/MetaEntity.swift)                           | TODO: 🏷 Add description  |
-|[RateLimitEntity](./miscellaneous/RateLimitEntity.swift)                 | TODO: 🏷 Add description  |
+|[🧬GitignoreTemplateEntity](./miscellaneous/GitignoreTemplateEntity.swift)   | Miscellaneous git ignore object protocol  |
+|[🧬LicenseEntity](./miscellaneous/LicenseEntity.swift)                                     | Miscellaneous license object protocol  |
+|[🧬MarkdownEntity](./miscellaneous/MarkdownEntity.swift)                   | Miscellaneous markdown object protocol  |
+|[🧬MetaEntity](./miscellaneous/MetaEntity.swift)                           | Miscellaneous meta object protocol  |
+|[🧬RateLimitEntity](./miscellaneous/RateLimitEntity.swift)                 | Miscellaneous rate limit object protocol  |
 
 
 ## organizations
 
-|Protocol name                                                                            | Description               |
-|:----------------------------------------------------------------------------------------|:--------------------------|
-|[OrganizationAuthorizationEntity](./organizations/OrganizationAuthorizationEntity.swift) | TODO: 🏷 Add description  |
-|[OrganizationEntity](./organizations/OrganizationEntity.swift)                           | TODO: 🏷 Add description  |
-|[OrganizationInvitationEntity](./organizations/OrganizationInvitationEntity.swift)       | TODO: 🏷 Add description  |
-|[OrganizationMembershipEntity](./organizations/OrganizationMembershipEntity.swift)       | TODO: 🏷 Add description  |
-|[WebhookEntity](./organizations/WebhookEntity.swift)                                     | TODO: 🏷 Add description  |
+|Protocol name                                                                                                                  | Description                       |
+|:------------------------------------------------------------------------------------------------------------------------------|:----------------------------------|
+|[🧬OrganizationAuthorizationEntity](./organizations/OrganizationAuthorizationEntity.swift)                                     | Org authorization object protocol |
+|[🧬OrganizationEntity](./organizations/OrganizationEntity.swift)                                                               | Org object protocol               |
+|[🧬OrganizationInvitationEntity](./organizations/OrganizationInvitationEntity.swift)                                           | Org invitation object protocol    |
+|[📇OrganizationMembersAllowedRepositoryCreationType](./organizations/OrganizationMembersAllowedRepositoryCreationType.swift)   | Enum Org meber creation type      |
+|[🧬OrganizationMembershipEntity](./organizations/OrganizationMembershipEntity.swift)                                           | Org membership object protocol    |
+|[📇OrganizationRepositoryPermission](./organizations/OrganizationRepositoryPermission.swift)                                   | Enum Org repository permision     |
+|[🧬WebhookEntity](./organizations/WebhookEntity.swift)                                                                         | Org webhook object protocol       |
 
 
 ## projects
 
-|Protocol name                                                       | Description               |
-|:-------------------------------------------------------------------|:--------------------------|
-|[GHAffiliation](./projects/GHAffiliation.swift)                     | TODO: 🏷 Add description  |
-|[GHPermission](./projects/GHPermission.swift)                       | TODO: 🏷 Add description  |
-|[ProjectCardEntity](./projects/ProjectCardEntity.swift)             | TODO: 🏷 Add description  |
-|[ProjectCardType](./projects/ProjectCardType.swift)                 | TODO: 🏷 Add description  |
-|[ProjectColumnEntity](./projects/ProjectColumnEntity.swift)         | TODO: 🏷 Add description  |
-|[ProjectEntity](./projects/ProjectEntity.swift)                     | TODO: 🏷 Add description  |
-|[ProjectPermissionEntity](./projects/ProjectPermissionEntity.swift) | TODO: 🏷 Add description  |
+|Protocol name                                                         | Description                        |
+|:---------------------------------------------------------------------|:-----------------------------------|
+|[📇GHAffiliation](./projects/GHAffiliation.swift)                     | Enum project affiliation           |
+|[📇GHPermission](./projects/GHPermission.swift)                       | Enum project permission            |
+|[🧬ProjectCardEntity](./projects/ProjectCardEntity.swift)             | Card object protocol               |
+|[📇ProjectCardType](./projects/ProjectCardType.swift)                 | Enum of project card type          |
+|[🧬ProjectColumnEntity](./projects/ProjectColumnEntity.swift)         | Project Column object protocol     |
+|[🧬ProjectEntity](./projects/ProjectEntity.swift)                     | Project object protocol            |
+|[🧬ProjectPermissionEntity](./projects/ProjectPermissionEntity.swift) | Project permision object protocol  |
 
 
 ## pull request
 
-|Protocol name                                                                          | Description               |
-|:--------------------------------------------------------------------------------------|:--------------------------|
-|[PullRequestCommitEntity](./pull_requests/PullRequestCommitEntity.swift)               | TODO: 🏷 Add description  |
-|[PullRequestEntity](./pull_requests/PullRequestEntity.swift)                           | TODO: 🏷 Add description  |
-|[PullRequestReviewCommentEntity](./pull_requests/PullRequestReviewCommentEntity.swift) | TODO: 🏷 Add description  |
-|[PullRequestReviewEntity](./pull_requests/PullRequestReviewEntity.swift)               | TODO: 🏷 Add description  |
-|[PullRequestReviewRequestEntity](./pull_requests/PullRequestReviewRequestEntity.swift) | TODO: 🏷 Add description  |
+|Protocol name                                                                            | Description                                 |
+|:----------------------------------------------------------------------------------------|:--------------------------------------------|
+|[🧬PullRequestCommitEntity](./pull_requests/PullRequestCommitEntity.swift)               | Pull request commit object protocol         |
+|[🧬PullRequestEntity](./pull_requests/PullRequestEntity.swift)                           | Pull request object protocol                |
+|[🧬PullRequestReviewCommentEntity](./pull_requests/PullRequestReviewCommentEntity.swift) | Pull request review comment object protocol |
+|[🧬PullRequestReviewEntity](./pull_requests/PullRequestReviewEntity.swift)               | Pull request review object protocol         |
+|[🧬PullRequestReviewRequestEntity](./pull_requests/PullRequestReviewRequestEntity.swift) | Pull request review request object protocol |
 
 
 ## repositories
@@ -99,16 +101,16 @@
 
 ## teams
 
-|Protocol name                                                             | Description               |
-|:-------------------------------------------------------------------------|:--------------------------|
-|[TeamDiscussionCommentEntity](./teams/TeamDiscussionCommentEntity.swift)  | TODO: 🏷 Add description  |
-|[TeamDiscussionEntity](./teams/TeamDiscussionEntity.swift)                | TODO: 🏷 Add description  |
-|[TeamEntity](./teams/TeamEntity.swift)                                    | TODO: 🏷 Add description  |
+|Protocol name                                                               | Description                              |
+|:---------------------------------------------------------------------------|:-----------------------------------------|
+|[🧬TeamDiscussionCommentEntity](./teams/TeamDiscussionCommentEntity.swift)  | Team discussion comment object protocol  |
+|[🧬TeamDiscussionEntity](./teams/TeamDiscussionEntity.swift)                | Team duscusion object protocol           |
+|[🧬TeamEntity](./teams/TeamEntity.swift)                                    | Team object protocol                     |
 
 ## users
 
-|Protocol name                                            | Description               |
-|:--------------------------------------------------------|:--------------------------|
-|[UserEntity](./users/UserEntity.swift)                   | TODO: 🏷 Add description  |
-|[UserHoverCardEntity](./users/UserHoverCardEntity.swift) | TODO: 🏷 Add description  |
-|[UserPlanEntity](./users/UserPlanEntity.swift)           | TODO: 🏷 Add description  |
+|Protocol name                                              | Description                       |
+|:----------------------------------------------------------|:----------------------------------|
+|[🧬UserEntity](./users/UserEntity.swift)                   | User object protocol              |
+|[🧬UserHoverCardEntity](./users/UserHoverCardEntity.swift) | User Hovercard object protocol    |
+|[🧬UserPlanEntity](./users/UserPlanEntity.swift)           | User Plan object protocol         |
