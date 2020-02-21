@@ -764,7 +764,7 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                             }
                             
                         case .success(_) :
-                            do  {
+                            do  {                                
                                 XCTAssert(true)
                                 expect.fulfill()
                             }

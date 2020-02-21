@@ -9,10 +9,13 @@
 import Foundation
 
 
-protocol SshKeyFingerprints: GHCodable {
+public protocol SshKeyFingerprints: GHCodable {
  
     // MARK: PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________
-    
+    var md5RSA      : String {get}
+    var md5DSA      : String {get}
+    var sha256RSA   : String {get}
+    var sha256DSA   : String {get}
     
 }

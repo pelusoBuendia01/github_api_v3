@@ -74,7 +74,20 @@ public extension GHCodable {
                     
                     
                 }
-                
+                else if (
+                     (type(of: attr.value)  == Array<String>.self  )
+                ) {
+                    
+                    if let string = attr.value as? Array<String> {
+                        value = "\(string)"
+                    } else {
+                        value = "Array<String>=nil>"
+                    }
+                    
+                    
+                }
+                    
+                    
                 else if (
                      (type(of: attr.value)  == Bool?.self    )
                 ) {
@@ -109,7 +122,7 @@ public extension GHCodable {
                         
                         if (tmp.contains("Optional<")) {
                             tmp = ""+tmp.components(separatedBy: "<").last!
-                            tmp = tmp.components(separatedBy: ">").first!+">"
+                            tmp = tmp.components(separatedBy: ">").first!+""
                         }
                         
                         value = tmp

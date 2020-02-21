@@ -12,5 +12,13 @@ public protocol MetaEntity: GHCodable {
     
     // MARK: PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________
+    var verifiablePasswordAuthentication    : Bool                { get }
+    var sshKeyFingerprints                  : SshKeyFingerprints?   { get }
+    var hooks                               : [String]              { get }
+    var web                                 : [String]              { get }
+    var api                                 : [String]              { get }
+    var git                                 : [String]              { get }
+    var pages                               : [String]              { get }
+    var importer                            : [String]              { get }
     
 }

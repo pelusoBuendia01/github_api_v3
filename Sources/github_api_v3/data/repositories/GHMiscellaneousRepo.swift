@@ -481,7 +481,7 @@ class GHMiscellaneousMarkdownRepo: MiscellaneousMarkdownRepo {
         print("\t\t🌐\(path)")
         
         /// execute http get request
-        session.post(path, with: param) {
+        session.post(path, with: nil) {
             
             RESTResult in
             
@@ -544,9 +544,35 @@ class GHMiscellaneousMetaRepo: MiscellaneousMetaRepo {
         
         /// initializa local variables
         let path : String = Self.pathMeta
-        print("\t\t🌐\(path)")
         
-        result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousMetaRepo.get: 🚧 Not Implemented")))
+        /// execute http get request
+        session.get(path, with: nil) {
+            
+            RESTResult in
+            
+            switch (RESTResult) {
+            
+            case .failure(let error) :
+                do {
+                    result(.failure(error))
+                }
+            
+            case .success(let response) :
+                do {
+                                    
+                    do  {
+                        let meta = try self.session.decoder.decode(GHMetaEntity.self, from: response.data)
+                        result(.success(meta))
+                    } catch {
+                        result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
     }
     
 }
