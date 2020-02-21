@@ -49,7 +49,7 @@ internal class GHOrganizationRepository: OrganizationRepo {
     // MARK: OVERRIDED PUBLIC PROPERTIES [UserRepository]
     //__________________________________________________________________________________________________________________
     
-    public var session      : GHSessio
+    public var session      : GHSession
     
     let blocks              : OrganizationBlocksRepo
     let members             : OrganizationMembersRepo

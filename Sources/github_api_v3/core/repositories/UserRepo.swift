@@ -16,7 +16,7 @@ public protocol UserRepo : GHRepository {
     
     typealias ResultUser                = (Result< UserEntity   ,Error>)  -> Void
     typealias ResultUserList            = (Result<[UserEntity]  ,Error>)  -> Void
-    typealias ResultUserHovercardList   = (Result<[UserHoverCardEntity]  ,Error>)  -> Void
+    typealias ResultUserHovercardList   = (Result<UserHoverCardEntity  ,Error>)  -> Void
     
     
     // MARK: AUTHENTICATED FUNCTIONS
