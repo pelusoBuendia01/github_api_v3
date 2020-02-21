@@ -429,10 +429,12 @@ internal class GHUserRepo: UserRepo {
                 do {
                     
                    do {
-                       let hovercards = try self.session.decoder.decode([GHUserHoverCardEntity].self, from: response.data)
-                       result( .success(hovercards) )
+                                        
+                    let hovercards = try self.session.decoder.decode(GHUserHoverCardEntity.self, from: response.data)
+                    result( .success(hovercards) )                                        
                    }
                    catch {
+                    
                        result(
                            .failure(
                                GHSession.SessionError.decodingError(

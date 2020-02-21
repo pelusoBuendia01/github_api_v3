@@ -42,11 +42,39 @@ final class UT_GHUserRepo: XCTestCase {
                     )
                         
                 }
-            case .success(_) :
+            case .success(let api) :
                 do {
                     
-                    XCTAssert(false)
-                    expect.fulfill()
+                    api.userRepo.authenticated() {
+                        result in
+                        
+                        switch (result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                                
+                            }
+                            
+                        case .success(let user) :
+                            do {
+                                                                                                
+                                XCTAssertNotNil(user)
+                                expect.fulfill()
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                    
                 }
                 
             }
@@ -522,11 +550,39 @@ final class UT_GHUserRepo: XCTestCase {
                     )
                         
                 }
-            case .success(_) :
+            case .success(let api) :
                 do {
+                
+                    api.userRepo.single(from: "othiym23") {
+                        result in
+                        
+                        switch (result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                                
+                            }
+                            
+                        case .success(let user) :
+                            do {
+                                                                                                
+                                XCTAssertNotNil(user)
+                                expect.fulfill()
+                            }
+                            
+                        }
+                        
+                    }
+                
                     
-                    XCTAssert(false)
-                    expect.fulfill()
                 }
                 
             }
@@ -582,11 +638,40 @@ final class UT_GHUserRepo: XCTestCase {
                     )
                         
                 }
-            case .success(_) :
+            case .success(let api) :
                 do {
                     
-                    XCTAssert(false)
-                    expect.fulfill()
+                    api.userRepo.singleHovercard(from: "othiym23") {
+                        result in
+                        
+                        switch (result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                                
+                            }
+                            
+                        case .success(let hovercard) :
+                            do {
+                                
+                                
+                                XCTAssertNotNil(hovercard.context)
+                                
+                                expect.fulfill()
+                            }
+                            
+                        }
+                        
+                    }
+                                        
                 }
                 
             }
@@ -642,11 +727,38 @@ final class UT_GHUserRepo: XCTestCase {
                     )
                         
                 }
-            case .success(_) :
+            case .success(let api) :
                 do {
                     
-                    XCTAssert(false)
-                    expect.fulfill()
+                    api.userRepo.list(starting: nil) {
+                        result in
+                        
+                        switch (result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                                
+                            }
+                            
+                        case .success(_) :
+                            do {
+                                
+                                XCTAssert(true)
+                                expect.fulfill()
+                            }
+                            
+                        }
+                        
+                    }
+                    
                 }
                 
             }
@@ -702,11 +814,37 @@ final class UT_GHUserRepo: XCTestCase {
                     )
                         
                 }
-            case .success(_) :
+            case .success(let api) :
                 do {
                     
-                    XCTAssert(false)
-                    expect.fulfill()
+                    api.userRepo.blockedUsers() {
+                        result in
+                        
+                        switch (result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                                
+                            }
+                            
+                        case .success(_) :
+                            do {
+                                XCTAssert(true)
+                             expect.fulfill()
+                            }
+                            
+                        }
+                    }
+                    
+                    
                 }
                 
             }
@@ -762,11 +900,39 @@ final class UT_GHUserRepo: XCTestCase {
                     )
                         
                 }
-            case .success(_) :
+            case .success(let api ) :
                 do {
                     
-                    XCTAssert(false)
-                    expect.fulfill()
+                    api.userRepo.verifyIf(isBlocked: "othiym23") {
+                        result in
+                        
+                        switch (result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                                
+                            }
+                            
+                        case .success(let verification) :
+                            do {
+                                                                
+                                XCTAssert(!verification)
+                            }
+                        }
+                        
+                        expect.fulfill()
+                        
+                    }
+                    
+                    
                 }
                 
             }
@@ -843,9 +1009,9 @@ final class UT_GHUserRepo: XCTestCase {
                                 
                             }
                             
-                        case .success(_) :
+                        case .success(let blocked) :
                             do {
-                                XCTAssert(true)
+                                XCTAssert(blocked)
                             }
                         }
                         
@@ -926,9 +1092,9 @@ final class UT_GHUserRepo: XCTestCase {
                                 )
                             }
                             
-                        case .success(let blocked) :
+                        case .success(let unblocked) :
                             do {
-                                XCTAssert(blocked)
+                                XCTAssert(unblocked)
                                 expect.fulfill()
                             }
                             
