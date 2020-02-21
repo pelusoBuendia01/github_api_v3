@@ -18,11 +18,11 @@
 
 |Protocol name                                                                | Description               |
 |:----------------------------------------------------------------------------|:--------------------------|
-|[GHGitignoreTemplateEntity](./miscellaneous/GHGitignoreTemplateEntity.swift) | TODO: 🏷 Add description  |
-|[GHLicenseEntity](./miscellaneous/GHLicenseEntity.swift)                     | TODO: 🏷 Add description  |
-|[GHMarkdownEntity](./miscellaneous/GHMarkdownEntity.swift)                   | TODO: 🏷 Add description  |
-|[GHMetaEntity](./miscellaneous/GHMetaEntity.swift)                           | TODO: 🏷 Add description  |
-|[GHRateLimitEntity](./miscellaneous/GHRateLimitEntity.swift)                 | TODO: 🏷 Add description  |
+|[🧩GHGitignoreTemplateEntity](./miscellaneous/GHGitignoreTemplateEntity.swift) | Miscellaneous Git ignore template  object  |
+|[🧩GHLicenseEntity](./miscellaneous/GHLicenseEntity.swift)                     | Miscellaneous License  object  |
+|[🧩GHMetaEntity](./miscellaneous/GHMetaEntity.swift)                           | Miscellaneous Meta object  |
+|[🧩GHRateLimitEntity](./miscellaneous/GHRateLimitEntity.swift)                 | Miscellaneous  rate limit object  |
+|[🧩GHSshKeyFingerprints](./miscellaneous/GHSshKeyFingerprints.swift)                 | Miscellaneous finger print object  |
 
 
 ## organizations
