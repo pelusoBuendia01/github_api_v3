@@ -57,7 +57,7 @@ public protocol MiscellaneousEmojisRepo : GHRepository {
 
 public protocol MiscellaneousGitIgnoresRepo : GHRepository {
     
-    
+  
     // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________
     
@@ -138,8 +138,8 @@ public protocol MiscellaneousLicensesRepo : GHRepository {
 
 public protocol MiscellaneousMarkdownRepo : GHRepository {
     
-    
-    // MARK: TYPEALIAS
+
+  // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________
     
     typealias ResultRender          = (Result<String    ,Error> ) -> Void
@@ -172,6 +172,7 @@ public protocol MiscellaneousMarkdownRepo : GHRepository {
                                      result : @escaping ResultRender    ) -> Void
     
     
+
 }
 
 
