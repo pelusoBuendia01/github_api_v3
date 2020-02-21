@@ -12,6 +12,6 @@ public protocol UserHoverCardEntity : GHCodable {
     
     // MARK: PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________
-    var context : UserHoverCardContextEntity?   { get }
+    var context : [UserHoverCardContextEntity]?   { get }
     
 }

@@ -10,15 +10,17 @@ import Foundation
 
 internal class GHUserHoverCardEntity : UserHoverCardEntity {
     
+    
+    
     // MARK: ENUM
     //__________________________________________________________________________________________________________________
     enum CodingKeys: String, CodingKey {
-        case context = "context"
+        case context = "contexts"
     }
     
     // MARK: INSTANCE PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________
-    let context : UserHoverCardContextEntity?
+    var context: [UserHoverCardContextEntity]?
     
     // MARK: OVERRIDE CONSTRUCTOR (Decodable)
     //__________________________________________________________________________________________________________________
@@ -27,9 +29,10 @@ internal class GHUserHoverCardEntity : UserHoverCardEntity {
         
         /// Initialize local variables
         let container = try decoder.container(keyedBy: GHUserHoverCardEntity.CodingKeys.self)
+                
         
         /// Initialize instance properties
-        do      { self.context = try container.decode(GHUserHoverCardContextEntity.self  , forKey: .context)}
+        do      { self.context = try container.decode([GHUserHoverCardContextEntity].self  , forKey: .context)}
         catch   { self.context = nil }
         
     }
