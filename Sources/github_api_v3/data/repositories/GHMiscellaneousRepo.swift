@@ -609,9 +609,35 @@ class GHMiscellaneousRateLimitRepo: MiscellaneousRateLimitRepo {
         
         /// initializa local variables
         let path : String = Self.pathRateLimit
-        print("\t\t🌐\(path)")
         
-        result(.failure(GHSession.SessionError.notImplemented(message: "GHMiscellaneousRateLimitRepo.get: 🚧 Not Implemented")))
+        /// execute http get request
+        session.get(path, with: nil) {
+            
+            RESTResult in
+            
+            switch (RESTResult) {
+            
+            case .failure(let error) :
+                do {
+                    result(.failure(error))
+                }
+            
+            case .success(let response) :
+                do {
+                                    
+                    do  {
+                        let rateLimit = try self.session.decoder.decode(GHRateLimitEntity.self, from: response.data)
+                        result(.success(rateLimit))
+                    } catch {
+                        result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
+                    }
+                    
+                }
+                
+            }
+            
+        }
+        
     }
     
 }
