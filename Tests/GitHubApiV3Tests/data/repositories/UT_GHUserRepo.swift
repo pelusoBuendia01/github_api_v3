@@ -822,11 +822,37 @@ final class UT_GHUserRepo: XCTestCase {
                     )
                         
                 }
-            case .success(_) :
+            case .success(let api) :
                 do {
                     
-                    XCTAssert(false)
-                    expect.fulfill()
+                    api.userRepo.block(username: "othiym23") {
+                        result in
+                        
+                        switch (result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                                
+                            }
+                            
+                        case .success(_) :
+                            do {
+                                XCTAssert(true)
+                            }
+                        }
+                        
+                        expect.fulfill()
+                    }
+                    
+                    
                 }
                 
             }
