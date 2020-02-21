@@ -25,11 +25,11 @@
 
 |Protocol name                                                            | Description               |
 |:------------------------------------------------------------------------|:--------------------------|
-|[GitignoreTemplateEntity](./miscellaneous/GitignoreTemplateEntity.swift) | TODO: 🏷 Add description  |
-|[LicenseEntity](./miscellaneous/LicenseEntity.swift)                     | TODO: 🏷 Add description  |
-|[MarkdownEntity](./miscellaneous/MarkdownEntity.swift)                   | TODO: 🏷 Add description  |
-|[MetaEntity](./miscellaneous/MetaEntity.swift)                           | TODO: 🏷 Add description  |
-|[RateLimitEntity](./miscellaneous/RateLimitEntity.swift)                 | TODO: 🏷 Add description  |
+|[🧬GitignoreTemplateEntity](./miscellaneous/GitignoreTemplateEntity.swift)   | Miscellaneous git ignore object protocol  |
+|[🧬LicenseEntity](./miscellaneous/LicenseEntity.swift)                                     | Miscellaneous license object protocol  |
+|[🧬MarkdownEntity](./miscellaneous/MarkdownEntity.swift)                   | Miscellaneous markdown object protocol  |
+|[🧬MetaEntity](./miscellaneous/MetaEntity.swift)                           | Miscellaneous meta object protocol  |
+|[🧬RateLimitEntity](./miscellaneous/RateLimitEntity.swift)                 | Miscellaneous rate limit object protocol  |
 
 
 ## organizations
