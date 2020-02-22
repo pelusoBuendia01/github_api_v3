@@ -25,11 +25,11 @@
 
 |Protocol name                                                            | Description               |
 |:------------------------------------------------------------------------|:--------------------------|
-|[GitignoreTemplateEntity](./miscellaneous/GitignoreTemplateEntity.swift) | TODO: 🏷 Add description  |
-|[LicenseEntity](./miscellaneous/LicenseEntity.swift)                     | TODO: 🏷 Add description  |
-|[MarkdownEntity](./miscellaneous/MarkdownEntity.swift)                   | TODO: 🏷 Add description  |
-|[MetaEntity](./miscellaneous/MetaEntity.swift)                           | TODO: 🏷 Add description  |
-|[RateLimitEntity](./miscellaneous/RateLimitEntity.swift)                 | TODO: 🏷 Add description  |
+|[🧬GitignoreTemplateEntity](./miscellaneous/GitignoreTemplateEntity.swift)   | Miscellaneous git ignore object protocol  |
+|[🧬LicenseEntity](./miscellaneous/LicenseEntity.swift)                                     | Miscellaneous license object protocol  |
+|[🧬MarkdownEntity](./miscellaneous/MarkdownEntity.swift)                   | Miscellaneous markdown object protocol  |
+|[🧬MetaEntity](./miscellaneous/MetaEntity.swift)                           | Miscellaneous meta object protocol  |
+|[🧬RateLimitEntity](./miscellaneous/RateLimitEntity.swift)                 | Miscellaneous rate limit object protocol  |
 
 
 ## organizations
@@ -60,13 +60,13 @@
 
 ## pull request
 
-|Protocol name                                                                          | Description               |
-|:--------------------------------------------------------------------------------------|:--------------------------|
-|[PullRequestCommitEntity](./pull_requests/PullRequestCommitEntity.swift)               | TODO: 🏷 Add description  |
-|[PullRequestEntity](./pull_requests/PullRequestEntity.swift)                           | TODO: 🏷 Add description  |
-|[PullRequestReviewCommentEntity](./pull_requests/PullRequestReviewCommentEntity.swift) | TODO: 🏷 Add description  |
-|[PullRequestReviewEntity](./pull_requests/PullRequestReviewEntity.swift)               | TODO: 🏷 Add description  |
-|[PullRequestReviewRequestEntity](./pull_requests/PullRequestReviewRequestEntity.swift) | TODO: 🏷 Add description  |
+|Protocol name                                                                            | Description                                 |
+|:----------------------------------------------------------------------------------------|:--------------------------------------------|
+|[🧬PullRequestCommitEntity](./pull_requests/PullRequestCommitEntity.swift)               | Pull request commit object protocol         |
+|[🧬PullRequestEntity](./pull_requests/PullRequestEntity.swift)                           | Pull request object protocol                |
+|[🧬PullRequestReviewCommentEntity](./pull_requests/PullRequestReviewCommentEntity.swift) | Pull request review comment object protocol |
+|[🧬PullRequestReviewEntity](./pull_requests/PullRequestReviewEntity.swift)               | Pull request review object protocol         |
+|[🧬PullRequestReviewRequestEntity](./pull_requests/PullRequestReviewRequestEntity.swift) | Pull request review request object protocol |
 
 
 ## repositories
@@ -101,11 +101,11 @@
 
 ## teams
 
-|Protocol name                                                             | Description               |
-|:-------------------------------------------------------------------------|:--------------------------|
-|[TeamDiscussionCommentEntity](./teams/TeamDiscussionCommentEntity.swift)  | TODO: 🏷 Add description  |
-|[TeamDiscussionEntity](./teams/TeamDiscussionEntity.swift)                | TODO: 🏷 Add description  |
-|[TeamEntity](./teams/TeamEntity.swift)                                    | TODO: 🏷 Add description  |
+|Protocol name                                                               | Description                              |
+|:---------------------------------------------------------------------------|:-----------------------------------------|
+|[🧬TeamDiscussionCommentEntity](./teams/TeamDiscussionCommentEntity.swift)  | Team discussion comment object protocol  |
+|[🧬TeamDiscussionEntity](./teams/TeamDiscussionEntity.swift)                | Team duscusion object protocol           |
+|[🧬TeamEntity](./teams/TeamEntity.swift)                                    | Team object protocol                     |
 
 ## users
 
