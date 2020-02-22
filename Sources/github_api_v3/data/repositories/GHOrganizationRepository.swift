@@ -483,12 +483,13 @@ internal class GHOrganizationRepository: OrganizationRepo {
         
         /// initialize local variables
         var path : String    = GHOrganizationRepository.pathOrgs
-            path                +=  "/\(orgLogin)"
+            path            += "/\(orgLogin)"
                
         let params : [String:Any?] = [
-            GHOrganizationRepository.paramDefault_repositoryPermission : defaultRepositoryPermission
+            GHOrganizationRepository.paramDefault_repositoryPermission : defaultRepositoryPermission.rawValue
         ]
-               
+                    
+        
         /// execute http patch request
         session.patch(path, with: params) {
             RESTResult in
@@ -497,6 +498,7 @@ internal class GHOrganizationRepository: OrganizationRepo {
                 
             case .failure(let error)    : do { result(.failure((error))) }
             case .success(let response) : do {
+                
                 do {
                     let org = try self.session.decoder.decode(GHOrganizationEntity.self, from: response.data)
                     result(.success(org))
@@ -749,7 +751,7 @@ class GHOrganizationBlocksRepo: OrganizationBlocksRepo {
 }
 
 class GHOrganizationMembersRepo: OrganizationMembersRepo {
-    
+
     
     // MARK: PRIVATE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
@@ -780,6 +782,104 @@ class GHOrganizationMembersRepo: OrganizationMembersRepo {
     // MARK: OVERRIDE FUNCTIONS FROM [OrganizationRepository]
     //__________________________________________________________________________________________________________________
     
+    func memberList                 (organization   : String,
+                                     role           : OrganizationRole?,
+                                     filter         : OrganizationFilter?,
+                                     result         : @escaping UserRepo.ResultUserList ) {
+            
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.memberList : 🚧 not implemented")))
+    }
+    
+    
+    func verifyMembership           (of username    : String,
+                                     in orgName     : String,
+                                     result         : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.verifyMembership : 🚧 not implemented")))
+    }
+    
+    
+    func addMember                  (of username    : String,
+                                     in orgName     : String,
+                                     result         : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.addMember : 🚧 not implemented")))
+    }
+    
+    func publicMemberList           (organization   : String,
+                                     result         : @escaping (Result<[UserEntity], Error>) -> Void) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.publicMemberList : 🚧 not implemented")))
+    }
+    
+    func verifyPublicMembership     (of username    : String,
+                                     in orgName     : String,
+                                     result         : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.verifyPublicMembership : 🚧 not implemented")))
+    }
+    
+    func publicizeUserMembership    (of username    : String,
+                                     in orgName     : String,
+                                     result         : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.publicizeUserMembership : 🚧 not implemented")))
+    }
+    
+    func concealUserMembership      (of username    : String,
+                                     in orgName     : String,
+                                     result         : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.concealUserMembership : 🚧 not implemented")))
+    }
+    
+    func getMembership              (of username    : String,
+                                     in orgName     : String,
+                                     result         : @escaping ResultMembership) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.getMembership : 🚧 not implemented")))
+    }
+    
+    func addMembership              (of username    : String,
+                                     in orgName     : String,
+                                     role           : OrganizationRole?,
+                                     result         : @escaping ResultMembership) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.addMembership : 🚧 not implemented")))
+    }
+    
+    func removeMembership           (of username    : String,
+                                     in orgName     : String,
+                                     role           : OrganizationRole?,
+                                     result         : @escaping ResultMembership) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.removeMembership : 🚧 not implemented")))
+    }
+    
+    func lisInvitationTeams         (invitationID   : String,
+                                     in orgName     : String,
+                                     result         : @escaping ResultInvitationList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.lisInvitationTeams : 🚧 not implemented")))
+    }
+    
+    func listPendingInvitationTeams (invitationID   : String,
+                                     in orgName     : String,
+                                     result         : @escaping ResultInvitationList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.listPendingInvitationTeams : 🚧 not implemented")))
+    }
+    
+    func createInvitation           (email          : String,
+                                     in orgName     : String,
+                                     result         : @escaping ResultInvitationList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.createInvitation : 🚧 not implemented")))
+    }
+    
+    func createInvitation           (id             : Int,
+                                     in orgName     : String,
+                                     role           : OrganizationInvitationRole?,
+                                     result         : @escaping ResultInvitationList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.createInvitation : 🚧 not implemented")))
+    }
+    
+    func myMemberships              (result         : @escaping ResultMembershipList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.myMemberships : 🚧 not implemented")))
+    }
+    
+    func myMemberships              (in orgName     : String,
+                                     result         : @escaping ResultMembership) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationMembersRepo.myMemberships : 🚧 not implemented")))
+    }
     
 }
 
@@ -818,6 +918,22 @@ class GHOrganizationOutsideCollaboratorsRepo: OrganizationOutsideCollaboratorsRe
     //__________________________________________________________________________________________________________________
     
     
+    func listOutsideCollaborators           (result     : @escaping ResultCollaboratorList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationOutsideCollaboratorsRepo.listOutsideCollaborators : 🚧 not implemented")))
+    }
+    
+    func removeCollarborator                (username   : String,
+                                             result     : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationOutsideCollaboratorsRepo.removeCollarborator : 🚧 not implemented")))
+    }
+    
+    func convertMemberToOutsideCollaborator (username   : String,
+                                             result     : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationOutsideCollaboratorsRepo.convertMemberToOutsideCollaborator : 🚧 not implemented")))
+    }
+    
+    
+    
 }
 
 
@@ -852,6 +968,44 @@ class GHOrganizationWebhooksRepo: OrganizationWebhooksRepo {
     
     // MARK: OVERRIDE FUNCTIONS FROM [OrganizationRepository]
     //__________________________________________________________________________________________________________________
+    
+        
+    func listHooks      (result     : @escaping ResultWebhookList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationWebhooksRepo.listHooks : 🚧 not implemented")))
+    }
+    
+    func single         (orgName    : String,
+                         hookId     : Int,
+                         result     : @escaping ResultWebhook) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationWebhooksRepo.single : 🚧 not implemented")))
+    }
+    
+    func create         (name       : String,
+                         conf       : WebhookConfigEntity?,
+                         events     : [String],
+                         active     : Bool,
+                         result     : @escaping ResultWebhook) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationWebhooksRepo.create : 🚧 not implemented")))
+    }
+    
+    func update         (conf       : WebhookConfigEntity?,
+                         events     : [String],
+                         active     : Bool,
+                         result     : @escaping ResultWebhook) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationWebhooksRepo.update : 🚧 not implemented")))
+    }
+    
+    func ping           (orgName    : String,
+                         hookId     : Int,
+                         result     : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationWebhooksRepo.ping : 🚧 not implemented")))
+    }
+    
+    func delete         (orgName    : String,
+                         hookId     : Int,
+                         result     : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationWebhooksRepo.delete : 🚧 not implemented")))
+    }
     
     
 }

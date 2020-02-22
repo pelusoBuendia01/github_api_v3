@@ -65,9 +65,9 @@ public protocol OrganizationRepo : GHRepository{
     /// - parameter in_orgLogin: the organization login name to be updated
     /// - parameter result: result callback completition
     /// - returns: Void
-    func update                 (billingEmail                           : String,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg)
+    func update                 (billingEmail   : String,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg)
     
     /// update
     ///
@@ -75,9 +75,9 @@ public protocol OrganizationRepo : GHRepository{
     /// - parameter in_orgLogin: the organization login name to be updated
     /// - parameter result: result callback completition
     /// - returns: Void
-    func update                 (company                                : String,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg)
+    func update                 (company        : String,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg)
     
     /// update
     ///
@@ -85,9 +85,9 @@ public protocol OrganizationRepo : GHRepository{
     /// - parameter in_orgLogin: the organization login name to be updated
     /// - parameter result: result callback completition
     /// - returns: Void
-    func update                 (email                                  : String,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg)
+    func update                 (email          : String,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg)
     
     /// update
     ///
@@ -95,9 +95,9 @@ public protocol OrganizationRepo : GHRepository{
     /// - parameter in_orgLogin: the organization login name to be updated
     /// - parameter result: result callback completition
     /// - returns: Void
-    func update                 (location                               : String,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg)
+    func update                 (location       : String,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg)
     
     /// update
     ///
@@ -105,9 +105,9 @@ public protocol OrganizationRepo : GHRepository{
     /// - parameter in_orgLogin: the organization login name to be updated
     /// - parameter result: result callback completition
     /// - returns: Void
-    func update                 (name                                   : String,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg)
+    func update                 (name           : String,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg)
     
     /// update
     ///
@@ -115,9 +115,9 @@ public protocol OrganizationRepo : GHRepository{
     /// - parameter in_orgLogin: the organization login name to be updated
     /// - parameter result: result callback completition
     /// - returns: Void
-    func update                 (description                            : String,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg)
+    func update                 (description    : String,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg)
     
     /// update
     ///
@@ -125,9 +125,9 @@ public protocol OrganizationRepo : GHRepository{
     /// - parameter in_orgLogin: the organization login name to be updated
     /// - parameter result: result callback completition
     /// - returns: Void
-    func update                 (hasOrganizationProjects                : Bool,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg)
+    func update                 (hasOrganizationProjects    : Bool,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg)
     
     /// update
     ///
@@ -135,9 +135,9 @@ public protocol OrganizationRepo : GHRepository{
     /// - parameter in_orgLogin: the organization login name to be updated
     /// - parameter result: result callback completition
     /// - returns: Void
-    func update                 (hasRepositoryProjects                  : Bool,
-                                 in orgLogin                            : String,
-                                 result                                 : @escaping ResultOrg)
+    func update                 (hasRepositoryProjects      : Bool,
+                                 in orgLogin    : String,
+                                 result         : @escaping ResultOrg)
     
     /// update
     ///
@@ -217,14 +217,30 @@ public protocol OrganizationBlocksRepo : GHRepository{
     // MARK: FUNCTIONS
     //__________________________________________________________________________________________________________________
     
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
     func listBlockedUsers   ( result    : @escaping UserRepo.ResultUserList             ) -> Void
     
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
     func verify             ( username  : String,
                               result    : @escaping GHConfiguration.RESTConfirmation    ) -> Void
     
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
     func block              ( username  : String,
                               result    : @escaping GHConfiguration.RESTConfirmation    ) -> Void
         
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
     func unblock            ( username  : String,
                               result    : @escaping GHConfiguration.RESTConfirmation    ) -> Void
     
@@ -237,6 +253,10 @@ public protocol OrganizationMembersRepo : GHRepository{
     // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________
     
+    typealias ResultMembership      = (Result< OrganizationMembershipEntity   ,Error>)  -> Void
+    typealias ResultMembershipList  = (Result<[OrganizationMembershipEntity] ,Error>)  -> Void
+    typealias ResultInvitationList  = (Result<[OrganizationInvitationEntity]  ,Error>)  -> Void
+    
     
     // MARK: VARIABLES
     //__________________________________________________________________________________________________________________
@@ -244,6 +264,147 @@ public protocol OrganizationMembersRepo : GHRepository{
     
     // MARK: FUNCTIONS
     //__________________________________________________________________________________________________________________
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func memberList                 (organization   : String,
+                                     role           : OrganizationRole?,
+                                     filter         : OrganizationFilter?,
+                                     result         : @escaping UserRepo.ResultUserList) -> Void
+    
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func verifyMembership           (of username    : String,
+                                     in orgName     : String ,
+                                     result         : @escaping GHConfiguration.RESTConfirmation) -> Void
+    
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func addMember                  (of username    : String,
+                                     in orgName     : String ,
+                                     result         : @escaping GHConfiguration.RESTConfirmation) -> Void
+    
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func publicMemberList           (organization   : String,
+                                     result         : @escaping UserRepo.ResultUserList) -> Void
+    
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func verifyPublicMembership     (of username    : String,
+                                     in orgName     : String ,
+                                     result         : @escaping GHConfiguration.RESTConfirmation) -> Void
+    
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func publicizeUserMembership    (of username    : String,
+                                     in orgName     : String ,
+                                     result         : @escaping GHConfiguration.RESTConfirmation) -> Void
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func concealUserMembership      (of username    : String,
+                                     in orgName     : String ,
+                                     result         : @escaping GHConfiguration.RESTConfirmation) -> Void
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func getMembership              (of username    : String,
+                                     in orgName     : String ,
+                                     result         : @escaping ResultMembership) -> Void
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func addMembership              (of username    : String,
+                                     in orgName     : String ,
+                                     role           : OrganizationRole?,
+                                     result         : @escaping ResultMembership) -> Void
+    
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func removeMembership           (of username    : String,
+                                     in orgName     : String ,
+                                     role           : OrganizationRole?,
+                                     result         : @escaping ResultMembership) -> Void
+    
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func lisInvitationTeams         (invitationID   : String,
+                                     in orgName     : String ,
+                                     result         : @escaping ResultInvitationList) -> Void
+    
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func listPendingInvitationTeams (invitationID   : String,
+                                     in orgName     : String ,
+                                     result         : @escaping ResultInvitationList) -> Void
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func createInvitation           (email          : String,
+                                     in orgName     : String ,
+                                     result         : @escaping ResultInvitationList) -> Void
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func createInvitation           (id             : Int,
+                                     in orgName     : String ,
+                                     role           : OrganizationInvitationRole?,
+                                     result         : @escaping ResultInvitationList) -> Void
+    
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func myMemberships              (result         : @escaping ResultMembershipList) -> Void
+    
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func myMemberships               (in orgName     : String ,
+                                     result         : @escaping ResultMembership) -> Void
+    
+    
+    
     
 }
 
@@ -253,6 +414,9 @@ public protocol OrganizationOutsideCollaboratorsRepo : GHRepository{
     // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________
     
+    typealias ResultCollaborator        = (Result< UserEntity   ,Error>)  -> Void
+    typealias ResultCollaboratorList    = (Result<[UserEntity]  ,Error>)  -> Void
+    
     
     // MARK: VARIABLES
     //__________________________________________________________________________________________________________________
@@ -260,6 +424,29 @@ public protocol OrganizationOutsideCollaboratorsRepo : GHRepository{
     
     // MARK: FUNCTIONS
     //__________________________________________________________________________________________________________________
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func listOutsideCollaborators               (result     : @escaping ResultCollaboratorList ) -> Void
+    
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func removeCollarborator                    (username   : String,
+                                                 result     : @escaping GHConfiguration.RESTConfirmation ) -> Void
+    
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func convertMemberToOutsideCollaborator     (username   : String,
+                                                 result     : @escaping GHConfiguration.RESTConfirmation) -> Void
+    
     
 }
 
@@ -268,6 +455,8 @@ public protocol OrganizationWebhooksRepo : GHRepository{
     
     // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________
+    typealias ResultWebhook             = (Result< WebhookEntity    ,Error>)  -> Void
+    typealias ResultWebhookList         = (Result<[WebhookEntity]   ,Error>)  -> Void
     
     
     // MARK: VARIABLES
@@ -276,6 +465,58 @@ public protocol OrganizationWebhooksRepo : GHRepository{
     
     // MARK: FUNCTIONS
     //__________________________________________________________________________________________________________________
+ 
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func listHooks                              (result     : @escaping ResultWebhookList) -> Void
+    
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func single                                 (orgName    : String,
+                                                 hookId     : Int,
+                                                 result     : @escaping ResultWebhook) -> Void
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func create                                 (name       : String,
+                                                 conf       : WebhookConfigEntity?,
+                                                 events     : [String],
+                                                 active     : Bool,
+                                                 result     : @escaping ResultWebhook) -> Void
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func update                                 (conf       : WebhookConfigEntity?,
+                                                 events     : [String],
+                                                 active     : Bool,
+                                                 result     : @escaping ResultWebhook) -> Void
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func ping                                   (orgName    : String ,
+                                                 hookId     : Int,
+                                                 result     : @escaping GHConfiguration.RESTConfirmation) -> Void
+    
+    ///
+    ///
+    /// - parameter result: result callback completition
+    /// - returns: Void
+    func delete                                 (orgName    : String ,
+                                                 hookId     : Int,
+                                                 result     : @escaping GHConfiguration.RESTConfirmation) -> Void
+    
     
 }
+
 
