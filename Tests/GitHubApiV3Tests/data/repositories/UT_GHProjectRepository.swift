@@ -8,12 +8,13 @@
 import              XCTest
 @testable import    github_api_v3
 
-
-
 final class UT_GHProjectRepository: XCTestCase {
     
     static let CLS : String  = "UT_GHMiscellaneousRepo"
     static var projectCreated = 0
+    static var firstProject   = 0
+    static var firstColumnId   = 0
+    
     
     func test0001() {
                 
@@ -23,7 +24,7 @@ final class UT_GHProjectRepository: XCTestCase {
             description: TestUtils.expectationString(
                 cls: Self.CLS,
                 fun: testFunction,
-                desc: "GHProjectRepo."
+                desc: "GHProjectRepo.myProjects"
             )
         )
         
@@ -65,6 +66,8 @@ final class UT_GHProjectRepository: XCTestCase {
                             
                         case .success(let obj) :
                             do {
+                                
+                                Self.firstProject = obj[0].id
                                 XCTAssertNotNil(obj)
                                 
                             }
@@ -467,7 +470,7 @@ final class UT_GHProjectRepository: XCTestCase {
                         case .success(let obj) :
                             do {
                                 XCTAssertNotNil(obj)
-                            }                            
+                            }
                         }
                         expect.fulfill()
                     }
@@ -493,5 +496,160 @@ final class UT_GHProjectRepository: XCTestCase {
         
     }
     
+ 
+    func test0007() {
+                
+        /// initialize local variables6
+        let testFunction = "test0007"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHProjectRepo.columns"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    
+                    api.projectRepo.columns.inProject(id: Self.firstProject) {
+                        result in
+                        
+                        switch(result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                            }
+                            
+                        case .success(let obj) :
+                            do {
+                                Self.firstColumnId = obj[0].id
+                                XCTAssertNotNil(obj)
+                            }
+                        }
+                        expect.fulfill()
+                    }
+                }
+            }
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    func test0008() {
+                
+        /// initialize local variables6
+        let testFunction = "test0008"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHProjectRepo.columns"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    
+                    api.projectRepo.columns.single(columnId: Self.firstColumnId) {
+                        result in
+                        
+                        switch(result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                            }
+                            
+                        case .success(let obj) :
+                            do {                                
+                                XCTAssertNotNil(obj)
+                            }
+                        }
+                        expect.fulfill()
+                    }
+                }
+            }
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
     
 }
