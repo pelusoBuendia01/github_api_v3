@@ -1012,8 +1012,7 @@ class GHProjectColumnsRepository : ProjectColumnsRepository {
                 }
             }
         }
-        
-        result(.failure(GHSession.SessionError.notImplemented(message: "Not yet implemented [Work in progress 🚧]")))
+                
     }
     
     func delete     (columnId       : Int,
@@ -1160,6 +1159,7 @@ class GHProjectColumnsRepository : ProjectColumnsRepository {
         
         
     }
+    
     
     
 }
