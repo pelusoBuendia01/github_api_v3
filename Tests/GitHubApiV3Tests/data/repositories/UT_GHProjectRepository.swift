@@ -15,6 +15,7 @@ final class UT_GHProjectRepository: XCTestCase {
     static var firstProject     = 0
     static var firstColumnId    = 0
     static var newColumnId      = 0
+    static var firstCardId      = 0
     
     
     func test0001() {
@@ -1130,4 +1131,712 @@ final class UT_GHProjectRepository: XCTestCase {
         
     }
     
+    
+    
+    func test0015() {
+                
+        /// initialize local variables6
+        let testFunction = "test0015"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHProjectRepo.cards.inColumn"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    
+                    api.projectRepo.cards.inColumn(columnId: Self.firstColumnId) {
+                        result in
+                        
+                        switch(result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                            }
+                            
+                        case .success(let obj) :
+                            do {
+                                Self.firstCardId =  obj[0].id
+                                print("\t\t\t📍\(obj[0].debugDescription())")
+                                XCTAssertNotNil(obj)
+                            }
+                        }
+                        expect.fulfill()
+                    }
+                }
+            }
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    
+    func test0016() {
+                
+        /// initialize local variables6
+        let testFunction = "test0016"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHProjectRepo.cards.single"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do  {
+                        XCTAssertNil(api)
+                        expect.fulfill()
+                
+                    
+                }
+            }
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    
+    func test0017() {
+                
+        /// initialize local variables6
+        let testFunction = "test0017"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHProjectRepo.cards.addNote"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    XCTAssertNil(api)
+                    expect.fulfill()
+                }
+            }
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    
+    func test0018() {
+                
+        /// initialize local variables6
+        let testFunction = "test0018"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHProjectRepo.cards.addNote"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    XCTAssertNil(api)
+                    expect.fulfill()
+                    
+                }
+            }
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    
+    func test0019() {
+                
+        /// initialize local variables6
+        let testFunction = "test0019"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHProjectRepo.cards.addPullRequest"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    XCTAssertNil(api)
+                    expect.fulfill()
+                    
+                }
+            }
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    
+    func test0020() {
+                
+        /// initialize local variables6
+        let testFunction = "test0020"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHProjectRepo.cards.addIssue"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    XCTAssertNil(api)
+                    expect.fulfill()
+                    
+                }
+            }
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    
+    func test0021() {
+                
+        /// initialize local variables6
+        let testFunction = "test0021"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHProjectRepo.cards.update name"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    XCTAssertNil(api)
+                    expect.fulfill()
+                    
+                }
+            }
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    
+    func test0022() {
+                
+        /// initialize local variables6
+        let testFunction = "test0023"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHProjectRepo.cards.update archived"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    XCTAssertNil(api)
+                    expect.fulfill()
+                }
+            }
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    
+    func test0023() {
+                
+        /// initialize local variables6
+        let testFunction = "test0025"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHProjectRepo.cards.moveTop"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    XCTAssertNil(api)
+                    expect.fulfill()
+                    
+                }
+            }
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+        
+    func test0024() {
+                
+        /// initialize local variables6
+        let testFunction = "test0024"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHProjectRepo.cards.moveBottom"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    XCTAssertNil(api)
+                    expect.fulfill()
+                    
+                }
+            }
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+
+    func test0025() {
+                
+        /// initialize local variables6
+        let testFunction = "test0025"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHProjectRepo.cards.move"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    XCTAssertNil(api)
+                    expect.fulfill()
+                    
+                }
+            }
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+
+    
+    func test0026() {
+                
+        /// initialize local variables6
+        let testFunction = "test0026"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHProjectRepo.cards.delete"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    XCTAssertNil(api)
+                    expect.fulfill()
+                    
+                }
+            }
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+
+
 }
