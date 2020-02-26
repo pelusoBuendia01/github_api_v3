@@ -9,6 +9,6 @@ import Foundation
 
 
 enum TestTokens : String {
-    case valid      = "62292d334d90007bc65388d2abc8040be56b9e38"
+    case valid      = "9461ecce2c2356d8dfc9071d807661354f2118a3"
     case invalid    = "74f1a---6c2e88b6bc---31a13b940c3---9367d"
 }

@@ -16,6 +16,7 @@ final class UT_GHProjectRepository: XCTestCase {
     static var firstColumnId    = 0
     static var newColumnId      = 0
     static var firstCardId      = 0
+    static var newCardId        = 0
     
     
     func test0001() {
@@ -1244,8 +1245,32 @@ final class UT_GHProjectRepository: XCTestCase {
                 }
             case .success(let api) :
                 do  {
-                        XCTAssertNil(api)
+                    
+                    api.projectRepo.cards.single(cardId: Self.firstCardId) {
+                        result in
+                                            
+                        switch(result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                            }
+                            
+                        case .success(let obj) :
+                            do {
+                                XCTAssertNotNil(obj)
+                            }
+                        }
                         expect.fulfill()
+                        
+                    }
+                    
                 
                     
                 }
@@ -1302,8 +1327,32 @@ final class UT_GHProjectRepository: XCTestCase {
                 }
             case .success(let api) :
                 do {
-                    XCTAssertNil(api)
-                    expect.fulfill()
+                    api.projectRepo.cards.addNote(note: "New Note", in: Self.firstColumnId) {
+                        result in
+                        
+                        switch(result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                            }
+                            
+                        case .success(let obj) :
+                            do {
+                                Self.newCardId = obj.id
+                                XCTAssertNotNil(obj)
+                            }
+                        }
+                        
+                        expect.fulfill()
+                    }
+                    
                 }
             }
         }
@@ -1335,7 +1384,7 @@ final class UT_GHProjectRepository: XCTestCase {
             description: TestUtils.expectationString(
                 cls: Self.CLS,
                 fun: testFunction,
-                desc: "GHProjectRepo.cards.addNote"
+                desc: "GHProjectRepo.cards.addPullRequest"
             )
         )
         
@@ -1392,7 +1441,7 @@ final class UT_GHProjectRepository: XCTestCase {
             description: TestUtils.expectationString(
                 cls: Self.CLS,
                 fun: testFunction,
-                desc: "GHProjectRepo.cards.addPullRequest"
+                desc: "GHProjectRepo.cards.addIssue"
             )
         )
         
@@ -1449,7 +1498,7 @@ final class UT_GHProjectRepository: XCTestCase {
             description: TestUtils.expectationString(
                 cls: Self.CLS,
                 fun: testFunction,
-                desc: "GHProjectRepo.cards.addIssue"
+                desc: "GHProjectRepo.cards.update note"
             )
         )
         
@@ -1472,9 +1521,31 @@ final class UT_GHProjectRepository: XCTestCase {
                 }
             case .success(let api) :
                 do {
-                    XCTAssertNil(api)
-                    expect.fulfill()
                     
+                    api.projectRepo.cards.update(note: "Note updated 🧿", of: Self.newCardId) {
+                        result in
+                        
+                        switch(result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                            }
+                            
+                        case .success(let obj) :
+                            do {
+                                XCTAssertNotNil(obj)
+                            }
+                        }
+                        
+                        expect.fulfill()
+                    }
                 }
             }
         }
@@ -1506,7 +1577,7 @@ final class UT_GHProjectRepository: XCTestCase {
             description: TestUtils.expectationString(
                 cls: Self.CLS,
                 fun: testFunction,
-                desc: "GHProjectRepo.cards.update name"
+                desc: "GHProjectRepo.cards.update note"
             )
         )
         
@@ -1529,8 +1600,31 @@ final class UT_GHProjectRepository: XCTestCase {
                 }
             case .success(let api) :
                 do {
-                    XCTAssertNil(api)
-                    expect.fulfill()
+                    
+                    api.projectRepo.cards.update(archived: true, of: Self.newCardId) {
+                        result in
+                        
+                        switch(result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                            }
+                            
+                        case .success(let obj) :
+                            do {
+                                XCTAssertNotNil(obj)
+                            }
+                        }
+                        
+                        expect.fulfill()
+                    }
                     
                 }
             }
@@ -1563,7 +1657,7 @@ final class UT_GHProjectRepository: XCTestCase {
             description: TestUtils.expectationString(
                 cls: Self.CLS,
                 fun: testFunction,
-                desc: "GHProjectRepo.cards.update archived"
+                desc: "GHProjectRepo.cards.update unarchived"
             )
         )
         
@@ -1586,8 +1680,32 @@ final class UT_GHProjectRepository: XCTestCase {
                 }
             case .success(let api) :
                 do {
-                    XCTAssertNil(api)
-                    expect.fulfill()
+                    
+                    api.projectRepo.cards.update(archived: false, of: Self.newCardId) {
+                        result in
+                        
+                        switch(result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                            }
+                            
+                        case .success(let obj) :
+                            do {
+                                XCTAssertNotNil(obj)
+                            }
+                        }
+                        
+                        expect.fulfill()
+                    }
+                    
                 }
             }
         }
@@ -1619,7 +1737,7 @@ final class UT_GHProjectRepository: XCTestCase {
             description: TestUtils.expectationString(
                 cls: Self.CLS,
                 fun: testFunction,
-                desc: "GHProjectRepo.cards.moveTop"
+                desc: "GHProjectRepo.cards.update moveTop"
             )
         )
         
@@ -1642,8 +1760,31 @@ final class UT_GHProjectRepository: XCTestCase {
                 }
             case .success(let api) :
                 do {
-                    XCTAssertNil(api)
-                    expect.fulfill()
+                    
+                    api.projectRepo.cards.moveTop(cardId: Self.newCardId, in: Self.firstColumnId) {
+                        result in
+                        
+                        switch(result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                            }
+                            
+                        case .success(let obj) :
+                            do {
+                                XCTAssertTrue(obj)
+                            }
+                        }
+                        
+                        expect.fulfill()
+                    }
                     
                 }
             }
@@ -1676,7 +1817,7 @@ final class UT_GHProjectRepository: XCTestCase {
             description: TestUtils.expectationString(
                 cls: Self.CLS,
                 fun: testFunction,
-                desc: "GHProjectRepo.cards.moveBottom"
+                desc: "GHProjectRepo.cards.moveTop"
             )
         )
         
@@ -1699,9 +1840,31 @@ final class UT_GHProjectRepository: XCTestCase {
                 }
             case .success(let api) :
                 do {
-                    XCTAssertNil(api)
-                    expect.fulfill()
                     
+                    api.projectRepo.cards.moveBottom(cardId: Self.newCardId, in: Self.firstColumnId) {
+                        result in
+                        
+                        switch(result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                            }
+                            
+                        case .success(let obj) :
+                            do {
+                                XCTAssertTrue(obj)
+                            }
+                        }
+                        
+                        expect.fulfill()
+                    }
                 }
             }
         }
@@ -1756,9 +1919,31 @@ final class UT_GHProjectRepository: XCTestCase {
                 }
             case .success(let api) :
                 do {
-                    XCTAssertNil(api)
-                    expect.fulfill()
                     
+                    api.projectRepo.cards.move(cardId: Self.newCardId, in: Self.firstColumnId, after: Self.firstCardId) {
+                        result in
+                        
+                        switch(result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                            }
+                            
+                        case .success(let obj) :
+                            do {
+                                XCTAssertTrue(obj)
+                            }
+                        }
+                        
+                        expect.fulfill()
+                    }
                 }
             }
         }
@@ -1813,9 +1998,31 @@ final class UT_GHProjectRepository: XCTestCase {
                 }
             case .success(let api) :
                 do {
-                    XCTAssertNil(api)
-                    expect.fulfill()
                     
+                    api.projectRepo.cards.delete(cardId: Self.newCardId) {
+                        result in
+                        
+                        switch(result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                            }
+                            
+                        case .success(let obj) :
+                            do {
+                                XCTAssertTrue(obj)
+                            }
+                        }
+                        
+                        expect.fulfill()
+                    }
                 }
             }
         }
