@@ -18,11 +18,11 @@
 
 |Protocol name                                                                | Description               |
 |:----------------------------------------------------------------------------|:--------------------------|
-|[GHGitignoreTemplateEntity](./miscellaneous/GHGitignoreTemplateEntity.swift) | TODO: 🏷 Add description  |
-|[GHLicenseEntity](./miscellaneous/GHLicenseEntity.swift)                     | TODO: 🏷 Add description  |
-|[GHMarkdownEntity](./miscellaneous/GHMarkdownEntity.swift)                   | TODO: 🏷 Add description  |
-|[GHMetaEntity](./miscellaneous/GHMetaEntity.swift)                           | TODO: 🏷 Add description  |
-|[GHRateLimitEntity](./miscellaneous/GHRateLimitEntity.swift)                 | TODO: 🏷 Add description  |
+|[🧩GHGitignoreTemplateEntity](./miscellaneous/GHGitignoreTemplateEntity.swift) | Miscellaneous Git ignore template  object  |
+|[🧩GHLicenseEntity](./miscellaneous/GHLicenseEntity.swift)                     | Miscellaneous License  object  |
+|[🧩GHMetaEntity](./miscellaneous/GHMetaEntity.swift)                           | Miscellaneous Meta object  |
+|[🧩GHRateLimitEntity](./miscellaneous/GHRateLimitEntity.swift)                 | Miscellaneous  rate limit object  |
+|[🧩GHSshKeyFingerprints](./miscellaneous/GHSshKeyFingerprints.swift)                 | Miscellaneous finger print object  |
 
 
 ## organizations
@@ -48,13 +48,13 @@
 
 ## pull request
 
-|Protocol name                                                                              | Description               |
-|:------------------------------------------------------------------------------------------|:--------------------------|
-|[GHPullRequestCommitEntity](./pull_requests/GHPullRequestCommitEntity.swift)               | TODO: 🏷 Add description  |
-|[GHPullRequestEntity](./pull_requests/GHPullRequestEntity.swift)                           | TODO: 🏷 Add description  |
-|[GHPullRequestReviewCommentEntity](./pull_requests/GHPullRequestReviewCommentEntity.swift) | TODO: 🏷 Add description  |
-|[GHPullRequestReviewEntity](./pull_requests/GHPullRequestReviewEntity.swift)               | TODO: 🏷 Add description  |
-|[GHPullRequestReviewRequestEntity](./pull_requests/GHPullRequestReviewRequestEntity.swift) | TODO: 🏷 Add description  |
+|Protocol name                                                                                | Description                         |
+|:--------------------------------------------------------------------------------------------|:------------------------------------|
+|[🧩GHPullRequestCommitEntity](./pull_requests/GHPullRequestCommitEntity.swift)               | Pull request commit Object          |
+|[🧩GHPullRequestEntity](./pull_requests/GHPullRequestEntity.swift)                           | Pull request Object                 |
+|[🧩GHPullRequestReviewCommentEntity](./pull_requests/GHPullRequestReviewCommentEntity.swift) | Pull request review comment Object  |
+|[🧩GHPullRequestReviewEntity](./pull_requests/GHPullRequestReviewEntity.swift)               | Pull request review Object          |
+|[🧩GHPullRequestReviewRequestEntity](./pull_requests/GHPullRequestReviewRequestEntity.swift) | Pull Request Review request Object  |
 
 
 ## repositories

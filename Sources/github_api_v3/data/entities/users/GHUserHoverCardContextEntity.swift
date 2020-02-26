@@ -14,8 +14,8 @@ internal class GHUserHoverCardContextEntity: UserHoverCardContextEntity {
     // MARK: ENUM
     //__________________________________________________________________________________________________________________
     enum CodingKeys: String, CodingKey {
-        case message  = "message"
-        case octicon = "octicon"
+        case message    = "message"
+        case octicon    = "octicon"
     }
     
     // MARK: INSTANCE PUBLIC PROPERTIES
