@@ -28,7 +28,7 @@ internal class GHTeamsRepo: TeamsRepo {
     
     public var session: GHSession
     
-    let discussion          : TeamsDiscussionCommentsRepo
+    let discussion          : TeamsDiscussionRepo
     let discussionComments  : TeamsDiscussionCommentsRepo
     let members             : TeamsMembersRepo
     let synchronization     : TeamsSynchronizationRepo
@@ -41,7 +41,7 @@ internal class GHTeamsRepo: TeamsRepo {
         /// initialize instance variables
         self.session = session
         
-        self.discussion         =  GHTeamsDiscussionCommentsRepo(session: self.session)
+        self.discussion         =  GHTeamsDiscussionRepo(session: self.session)
         self.discussionComments =  GHTeamsDiscussionCommentsRepo(session: self.session)
         self.members            =  GHTeamsMembersRepo(session: self.session)
         self.synchronization   =  GHTeamsSynchronizationRepo(session: self.session)
@@ -142,6 +142,48 @@ internal class GHTeamsRepo: TeamsRepo {
 
 
 internal class GHTeamsDiscussionRepo: TeamsDiscussionRepo {
+    
+    func listDiscussions    (in slug        : String,
+                             orgId          : Int,
+                             team_Id        : Int,
+                             result         : @escaping ResultDiscussionList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsDiscussionRepo.listDiscussions : 🚧 not implemented")))
+    }
+    
+    func single             (discussionNumber: Int,
+                             in slug        : String,
+                             orgId          : Int,
+                             team_Id        : Int,
+                             result         : @escaping ResultDiscussion) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsDiscussionRepo.single : 🚧 not implemented")))
+    }
+    
+    func create             (title          : Int,
+                             required       : Int,
+                             isPrivate      : Bool,
+                             orgId          : Int,
+                             team_Id        : Int,
+                             result         : @escaping ResultDiscussion) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsDiscussionRepo.create : 🚧 not implemented")))
+    }
+    
+    func update             (discussionNumber: Int,
+                             title          : Int?,
+                             required       : Int?,
+                             isPrivate      : Bool?,
+                             orgId          : Int,
+                             team_Id        : Int,
+                             result         : @escaping ResultDiscussion) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsDiscussionRepo.update : 🚧 not implemented")))
+    }
+    
+    func delete             (discussionNumber: Int,
+                             in slug        : String,
+                             orgId          : Int,
+                             result         : @escaping ResultDiscussion) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsDiscussionRepo.delete : 🚧 not implemented")))
+    }
+    
     
     // MARK: PRIVATE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________

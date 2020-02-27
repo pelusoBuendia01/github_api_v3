@@ -19,7 +19,7 @@ public protocol TeamsRepo : GHRepository {
     // MARK: VARIABLES
     //__________________________________________________________________________________________________________________
     
-    var discussion          : TeamsDiscussionCommentsRepo   { get }
+    var discussion          : TeamsDiscussionRepo           { get }
     var discussionComments  : TeamsDiscussionCommentsRepo   { get }
     var members             : TeamsMembersRepo              { get }
     var synchronization     : TeamsSynchronizationRepo      { get }
@@ -68,25 +68,25 @@ public protocol TeamsRepo : GHRepository {
                          repo           : String,
                          managedBy slug : String,
                          in org         : Int,
-                         result         : @escaping GHConfiguration.RESTConfirmation)
+                         result         : @escaping GHConfiguration.RESTConfirmation) -> Void
     
     func addOrupdateRepo(owner          : String,
                          repo           : String,
                          managedBy slug : String,
                          in org         : Int,
-                         result         : @escaping GHConfiguration.RESTConfirmation)
+                         result         : @escaping GHConfiguration.RESTConfirmation) -> Void
     
     func removeRepo     (owner          : String,
                          repo           : String,
                          managedBy slug : String,
                          in org         : Int,
-                         result         : @escaping GHConfiguration.RESTConfirmation)
+                         result         : @escaping GHConfiguration.RESTConfirmation) -> Void
     
     func authorizedTeams(result         : @escaping ResultTeamList)
     
     func projects       (in slug        : String,
                          org            : Int,
-                         result         : @escaping ProjectRepo.ResultProjectList)
+                         result         : @escaping ProjectRepo.ResultProjectList) -> Void
     
     
     
@@ -97,6 +97,8 @@ public protocol TeamsDiscussionRepo : GHRepository {
     
     // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________
+    typealias ResultDiscussion      = (Result< Void   ,Error> ) -> Void
+    typealias ResultDiscussionList  = (Result<[Void]  ,Error> ) -> Void
     
     
     // MARK: VARIABLES
@@ -106,6 +108,36 @@ public protocol TeamsDiscussionRepo : GHRepository {
     // MARK: FUNCTIONS
     //__________________________________________________________________________________________________________________
     
+    func listDiscussions        (in slug    : String,
+                                 orgId      : Int,
+                                 team_Id    : Int,
+                                 result     : @escaping ResultDiscussionList ) -> Void
+    
+    func single                 (discussionNumber : Int,
+                                 in slug    : String,
+                                 orgId      : Int,
+                                 team_Id    : Int,
+                                 result     : @escaping ResultDiscussion ) -> Void
+    
+    func create                 (title      : Int,
+                                 required   : Int,
+                                 isPrivate  : Bool,
+                                 orgId      : Int,
+                                 team_Id    : Int,
+                                 result     : @escaping ResultDiscussion ) -> Void
+    
+    func update                 (discussionNumber : Int,
+                                 title      : Int?,
+                                 required   : Int?,
+                                 isPrivate  : Bool?,
+                                 orgId      : Int,
+                                 team_Id    : Int,
+                                 result     : @escaping ResultDiscussion ) -> Void
+    
+    func delete                 (discussionNumber : Int,
+                                 in slug    : String,
+                                 orgId      : Int,
+                                 result     : @escaping ResultDiscussion ) -> Void
     
 }
 
