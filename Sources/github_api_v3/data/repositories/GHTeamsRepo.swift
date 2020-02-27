@@ -292,6 +292,8 @@ internal class GHTeamsDiscussionCommentsRepo: TeamsDiscussionCommentsRepo {
 
 internal class GHTeamsMembersRepo: TeamsMembersRepo {
     
+    
+    
     // MARK: PRIVATE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
     
@@ -321,6 +323,41 @@ internal class GHTeamsMembersRepo: TeamsMembersRepo {
     // MARK: OVERRIDE FUNCTIONS FROM [OrganizationRepository]
     //__________________________________________________________________________________________________________________
 
+    func listMembers            (orgId      : Int,
+                                 teamId     : Int,
+                                 role       : TeamRole?,
+                                 result     : @escaping UserRepo.ResultUserList ) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsMembersRepo.listMembers : 🚧 not implemented")))
+    }
+    
+    func getMembership          (orgId      : Int,
+                                 teamId     : Int,
+                                 username   : String,
+                                 result     : @escaping ResultMembership) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsMembersRepo.getMembership : 🚧 not implemented")))
+    }
+    
+    
+    func addOrUpdateMembership  (username   : String,
+                                 orgId      : Int,
+                                 teamId     : Int,
+                                 result     : @escaping ResultMembership) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsMembersRepo.addOrUpdateMembership : 🚧 not implemented")))
+    }
+    
+    func removeMembership       (username   : String,
+                                 orgId      : Int,
+                                 teamId     : Int,
+                                 result     : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsMembersRepo.removeMembership : 🚧 not implemented")))
+    }
+    
+    func listPendingInvitations (orgId      : Int,
+                                 teamId     : Int,
+                                 result     : @escaping ResultInvitationList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsMembersRepo.listPendingInvitations : 🚧 not implemented")))
+    }
+    
     
 }
 

@@ -198,6 +198,10 @@ public protocol TeamsMembersRepo : GHRepository {
     
     // MARK: TeamsDiscussionRepo
     //__________________________________________________________________________________________________________________
+    typealias ResultMembership      = (Result< TeamMembershipEntity   ,Error> ) -> Void
+    typealias ResultMembershipList  = (Result<[TeamMembershipEntity]  ,Error> ) -> Void
+    typealias ResultInvitation      = (Result< TeamInvitationEntity   ,Error> ) -> Void
+    typealias ResultInvitationList  = (Result<[TeamInvitationEntity]  ,Error> ) -> Void
     
     
     // MARK: VARIABLES
@@ -206,6 +210,30 @@ public protocol TeamsMembersRepo : GHRepository {
     
     // MARK: FUNCTIONS
     //__________________________________________________________________________________________________________________
+    
+    func listMembers            (orgId          : Int,
+                                 teamId         : Int,
+                                 role           : TeamRole?,
+                                 result         : @escaping UserRepo.ResultUserList ) -> Void
+    
+    func getMembership          (orgId          : Int,
+                                 teamId         : Int,
+                                 username       : String,
+                                 result         : @escaping ResultMembership) -> Void
+    
+    func addOrUpdateMembership  (username       : String,
+                                 orgId          : Int,
+                                 teamId         : Int,
+                                 result         : @escaping ResultMembership) -> Void
+    
+    func removeMembership       (username       : String,
+                                 orgId          : Int,
+                                 teamId         : Int,
+                                 result         : @escaping GHConfiguration.RESTConfirmation ) -> Void
+    
+    func listPendingInvitations (orgId          : Int,
+                                 teamId         : Int,
+                                 result         : @escaping ResultInvitationList ) -> Void
     
     
 }
