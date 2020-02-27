@@ -29,6 +29,67 @@ public protocol TeamsRepo : GHRepository {
     //__________________________________________________________________________________________________________________
     
     
+    func listTeams      (result         : @escaping ResultTeamList ) -> Void
+    
+    func getBy          (name           : String,
+                         result         : @escaping ResultTeam ) -> Void
+    
+    func create         (name           : String,
+                         description    : String?,
+                         mainteiners    : [String]?,
+                         repoNames      : [String]?,
+                         privacy        : TeamPrivacy?,
+                         permission     : TeamPermission?,
+                         parentTeamId   : Int?,
+                         result         : @escaping ResultTeam) -> Void
+    
+    func update         (slug           : String,
+                         in org         : Int,
+                         name           : String,
+                         description    : String?,
+                         privacy        : TeamPrivacy?,
+                         permission     : TeamPermission?,
+                         parentTeamId   : Int?,
+                         result         : @escaping ResultTeam) -> Void
+    
+    func delete         (slug           : String,
+                         in org         : Int,
+                         result         : @escaping GHConfiguration.RESTConfirmation) -> Void
+    
+    func childTeams     (slug           : String,
+                         in org         : Int,
+                         result         : @escaping ResultTeamList) -> Void
+    
+    func reposOf        (slug           : String,
+                         in org         : Int,
+                         result         : @escaping RepositoryRepo.ResultLanguageList ) -> Void
+    
+    func verifyRepo     (owner          : String,
+                         repo           : String,
+                         managedBy slug : String,
+                         in org         : Int,
+                         result         : @escaping GHConfiguration.RESTConfirmation)
+    
+    func addOrupdateRepo(owner          : String,
+                         repo           : String,
+                         managedBy slug : String,
+                         in org         : Int,
+                         result         : @escaping GHConfiguration.RESTConfirmation)
+    
+    func removeRepo     (owner          : String,
+                         repo           : String,
+                         managedBy slug : String,
+                         in org         : Int,
+                         result         : @escaping GHConfiguration.RESTConfirmation)
+    
+    func authorizedTeams(result         : @escaping ResultTeamList)
+    
+    func projects       (in slug        : String,
+                         org            : Int,
+                         result         : @escaping ProjectRepo.ResultProjectList)
+    
+    
+    
 }
 
 public protocol TeamsDiscussionRepo : GHRepository {

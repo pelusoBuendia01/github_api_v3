@@ -53,6 +53,91 @@ internal class GHTeamsRepo: TeamsRepo {
     //__________________________________________________________________________________________________________________
 
     
+    func listTeams  (result         : @escaping ResultTeamList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsRepo.listTeams : 🚧 not implemented")))
+    }
+    
+    func getBy      (name           : String,
+                     result         : @escaping ResultTeam) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsRepo.getBy : 🚧 not implemented")))
+    }
+    
+    func create     (name           : String,
+                     description    : String?,
+                     mainteiners    : [String]?,
+                     repoNames      : [String]?,
+                     privacy        : TeamPrivacy?,
+                     permission     : TeamPermission?,
+                     parentTeamId   : Int?,
+                     result         : @escaping ResultTeam) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsRepo.create : 🚧 not implemented")))
+    }
+    
+    func update     (slug           : String,
+                     in org         : Int,
+                     name           : String,
+                     description    : String?,
+                     privacy        : TeamPrivacy?,
+                     permission     : TeamPermission?,
+                     parentTeamId   : Int?,
+                     result         : @escaping ResultTeam) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsRepo.update : 🚧 not implemented")))
+    }
+    
+    func delete     (slug           : String,
+                     in org         : Int,
+                     result         : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsRepo.delete : 🚧 not implemented")))
+    }
+    
+    func childTeams (slug           : String,
+                     in org         : Int,
+                     result         : @escaping ResultTeamList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsRepo.childTeams : 🚧 not implemented")))
+    }
+    
+    func reposOf    (slug           : String,
+                     in org         : Int,
+                     result         : @escaping (Result<[String], Error>) -> Void) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsRepo.reposOf : 🚧 not implemented")))
+    }
+    
+    func verifyRepo (owner          : String,
+                     repo           : String,
+                     managedBy slug : String,
+                     in org         : Int,
+                     result         : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsRepo.verifyRepo : 🚧 not implemented")))
+    }
+    
+    func addOrupdateRepo(owner          : String,
+                         repo           : String,
+                         managedBy slug : String,
+                         in org         : Int,
+                         result         : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsRepo.addOrupdateRepo : 🚧 not implemented")))
+    }
+    
+    func removeRepo (owner          : String,
+                     repo           : String,
+                     managedBy slug : String,
+                     in org         : Int,
+                     result         : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsRepo.removeRepo : 🚧 not implemented")))
+    }
+    
+    func authorizedTeams(result: @escaping ResultTeamList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsRepo.authorizedTeams : 🚧 not implemented")))
+    }
+    
+    func projects   (in slug        : String,
+                     org            : Int,
+                     result         : @escaping (Result<[ProjectEntity], Error>) -> Void) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsRepo.projects : 🚧 not implemented")))
+    }
+    
+    
+    
 }
 
 
