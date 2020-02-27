@@ -97,6 +97,7 @@ public protocol TeamsDiscussionRepo : GHRepository {
     
     // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________
+    
     typealias ResultDiscussion      = (Result< Void   ,Error> ) -> Void
     typealias ResultDiscussionList  = (Result<[Void]  ,Error> ) -> Void
     
@@ -143,6 +144,11 @@ public protocol TeamsDiscussionRepo : GHRepository {
 
 public protocol TeamsDiscussionCommentsRepo : GHRepository {
     
+    // MARK: TYPEALIAS
+    //__________________________________________________________________________________________________________________
+    typealias ResultDiscussionComment       = (Result< Void   ,Error> ) -> Void
+    typealias ResultDiscussionCommentList   = (Result<[Void]  ,Error> ) -> Void
+    
     
     // MARK: TeamsDiscussionRepo
     //__________________________________________________________________________________________________________________
@@ -154,6 +160,34 @@ public protocol TeamsDiscussionCommentsRepo : GHRepository {
     
     // MARK: FUNCTIONS
     //__________________________________________________________________________________________________________________
+    
+    func listComments   (result: @escaping ResultDiscussionCommentList) -> Void
+    
+    func single         (commentNumber  : Int,
+                         disussionNumber: Int,
+                         slug           : String ,
+                         org            : String ,
+                         result         : @escaping ResultDiscussionComment) -> Void
+    
+    func create         (body           : String,
+                         disussionNumber: Int,
+                         slug           : String ,
+                         org            : String ,
+                         result         : @escaping ResultDiscussionComment) -> Void
+    
+    func edit           (body           : String,
+                         commentNumber  : Int,
+                         disussionNumber: Int,
+                         slug           : String ,
+                         org            : String ,
+                         result         : @escaping ResultDiscussionComment) -> Void
+    
+    
+    func delete          (commentNumber  : Int,
+                         disussionNumber: Int,
+                         slug           : String ,
+                         org            : String ,
+                         result         : @escaping GHConfiguration.RESTConfirmation) -> Void
     
     
 }

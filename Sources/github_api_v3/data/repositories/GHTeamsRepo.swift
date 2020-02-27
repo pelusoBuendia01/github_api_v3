@@ -143,6 +143,36 @@ internal class GHTeamsRepo: TeamsRepo {
 
 internal class GHTeamsDiscussionRepo: TeamsDiscussionRepo {
     
+
+    // MARK: PRIVATE STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    
+        
+    // MARK: PUBLIC STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    
+    
+    // MARK: PRIVATTE STATIC PROPERTIES
+    //__________________________________________________________________________________________________________________
+    
+    
+    // MARK: OVERRIDED PUBLIC PROPERTIES [UserRepository]
+    //__________________________________________________________________________________________________________________
+    
+    public var session: GHSession
+    
+    
+    // MARK: CONSTRUCTOR
+    //__________________________________________________________________________________________________________________
+    
+    init(session : GHSession) {
+        self.session = session
+    }
+    
+    
+    // MARK: OVERRIDE FUNCTIONS FROM [OrganizationRepository]
+    //__________________________________________________________________________________________________________________
+
     func listDiscussions    (in slug        : String,
                              orgId          : Int,
                              team_Id        : Int,
@@ -184,41 +214,11 @@ internal class GHTeamsDiscussionRepo: TeamsDiscussionRepo {
         result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsDiscussionRepo.delete : 🚧 not implemented")))
     }
     
-    
-    // MARK: PRIVATE STATIC PROPERTIES
-    //__________________________________________________________________________________________________________________
-    
-        
-    // MARK: PUBLIC STATIC PROPERTIES
-    //__________________________________________________________________________________________________________________
-    
-    
-    // MARK: PRIVATTE STATIC PROPERTIES
-    //__________________________________________________________________________________________________________________
-    
-    
-    // MARK: OVERRIDED PUBLIC PROPERTIES [UserRepository]
-    //__________________________________________________________________________________________________________________
-    
-    public var session: GHSession
-    
-    
-    // MARK: CONSTRUCTOR
-    //__________________________________________________________________________________________________________________
-    
-    init(session : GHSession) {
-        self.session = session
-    }
-    
-    
-    // MARK: OVERRIDE FUNCTIONS FROM [OrganizationRepository]
-    //__________________________________________________________________________________________________________________
-
-    
 }
 
 
 internal class GHTeamsDiscussionCommentsRepo: TeamsDiscussionCommentsRepo {
+        
     
     // MARK: PRIVATE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
@@ -246,9 +246,46 @@ internal class GHTeamsDiscussionCommentsRepo: TeamsDiscussionCommentsRepo {
     }
     
     
-    // MARK: OVERRIDE FUNCTIONS FROM [OrganizationRepository]
+    // MARK: OVERRIDE FUNCTIONS FROM [TeamsDiscussionCommentsRepo]
     //__________________________________________________________________________________________________________________
 
+    
+    func listComments       (result: @escaping ResultDiscussionCommentList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsDiscussionCommentsRepo.listComments : 🚧 not implemented")))
+    }
+    
+    func single             (commentNumber  : Int,
+                             disussionNumber: Int,
+                             slug           : String,
+                             org            : String,
+                             result         : @escaping ResultDiscussionComment) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsDiscussionCommentsRepo.single : 🚧 not implemented")))
+    }
+    
+    func create             (body           : String,
+                             disussionNumber: Int,
+                             slug           : String,
+                             org            : String,
+                             result         : @escaping ResultDiscussionComment) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsDiscussionCommentsRepo.create : 🚧 not implemented")))
+    }
+    
+    func edit               (body           : String,
+                             commentNumber  : Int,
+                             disussionNumber: Int,
+                             slug           : String,
+                             org            : String,
+                             result         : @escaping ResultDiscussionComment) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsDiscussionCommentsRepo.edit : 🚧 not implemented")))
+    }
+    
+    func delete             (commentNumber  : Int,
+                             disussionNumber: Int,
+                             slug           : String,
+                             org            : String,
+                             result         : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsDiscussionCommentsRepo.delete : 🚧 not implemented")))
+    }
     
 }
 
