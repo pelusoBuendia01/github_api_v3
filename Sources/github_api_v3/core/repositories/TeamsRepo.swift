@@ -243,7 +243,8 @@ public protocol TeamsSynchronizationRepo : GHRepository {
     
     // MARK: TeamsDiscussionRepo
     //__________________________________________________________________________________________________________________
-    
+    typealias ResultIdP      = (Result< TeamMembershipEntity   ,Error> ) -> Void
+    typealias ResultIdPList  = (Result<[TeamMembershipEntity]  ,Error> ) -> Void
     
     // MARK: VARIABLES
     //__________________________________________________________________________________________________________________
@@ -252,5 +253,13 @@ public protocol TeamsSynchronizationRepo : GHRepository {
     // MARK: FUNCTIONS
     //__________________________________________________________________________________________________________________
     
+    func listGroups         (in orgId       : Int,
+                             result         : @escaping ResultIdPList) -> Void
+    
+    func listGroups         (for teamId     : Int,
+                             result         : @escaping ResultIdPList) -> Void
+        
+    func createOrUpodate    (for teamId     : Int,
+                             result         : @escaping ResultIdP) -> Void
     
 }

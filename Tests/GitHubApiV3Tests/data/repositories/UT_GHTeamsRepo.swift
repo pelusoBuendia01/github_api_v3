@@ -1938,8 +1938,7 @@ final class UT_GHTeamsRepo: XCTestCase {
         }
         
     }
-    
-    
+        
     func test0023() {
                     
         /// initialize local variables
@@ -2321,6 +2320,267 @@ final class UT_GHTeamsRepo: XCTestCase {
                 do {
                     
                     api.teamRepo.members.listPendingInvitations(orgId: 0, teamId: 0) {
+                        result in
+
+                        switch (result) {
+
+                        case .failure(let error) :
+                            do {
+
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+
+                            }
+
+                        case .success(let obj) :
+                            do {
+
+                                XCTAssertNotNil(obj)
+
+
+                            }
+
+                        }
+                        expect.fulfill()
+                    }
+                    
+                }
+                
+            }
+            
+            
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    func test0028() {
+                    
+        /// initialize local variables
+        let testFunction = "test0028"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHTeamsRepo.synchronization.listGroups org"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    
+                    api.teamRepo.synchronization.listGroups(in: 0) {
+                        result in
+
+                        switch (result) {
+
+                        case .failure(let error) :
+                            do {
+
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+
+                            }
+
+                        case .success(let obj) :
+                            do {
+
+                                XCTAssertNotNil(obj)
+
+
+                            }
+
+                        }
+                        expect.fulfill()
+                    }
+                    
+                }
+                
+            }
+            
+            
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    func test0029() {
+                    
+        /// initialize local variables
+        let testFunction = "test0029"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHTeamsRepo.synchronization.listGroups Team"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    
+                    api.teamRepo.synchronization.listGroups(for: 0) {
+                        result in
+
+                        switch (result) {
+
+                        case .failure(let error) :
+                            do {
+
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+
+                            }
+
+                        case .success(let obj) :
+                            do {
+
+                                XCTAssertNotNil(obj)
+
+
+                            }
+
+                        }
+                        expect.fulfill()
+                    }
+                    
+                }
+                
+            }
+            
+            
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    func test0030() {
+                    
+        /// initialize local variables
+        let testFunction = "test0030"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHTeamsRepo.synchronization.createOrUpodate"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    
+                    api.teamRepo.synchronization.createOrUpodate(for: 0) {
                         result in
 
                         switch (result) {

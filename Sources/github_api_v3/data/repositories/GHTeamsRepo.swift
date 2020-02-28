@@ -44,7 +44,7 @@ internal class GHTeamsRepo: TeamsRepo {
         self.discussion         =  GHTeamsDiscussionRepo(session: self.session)
         self.discussionComments =  GHTeamsDiscussionCommentsRepo(session: self.session)
         self.members            =  GHTeamsMembersRepo(session: self.session)
-        self.synchronization   =  GHTeamsSynchronizationRepo(session: self.session)
+        self.synchronization    =  GHTeamsSynchronizationRepo(session: self.session)
         
     }
     
@@ -363,6 +363,7 @@ internal class GHTeamsMembersRepo: TeamsMembersRepo {
 
 internal class GHTeamsSynchronizationRepo: TeamsSynchronizationRepo {
     
+    
     // MARK: PRIVATE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
     
@@ -392,5 +393,21 @@ internal class GHTeamsSynchronizationRepo: TeamsSynchronizationRepo {
     // MARK: OVERRIDE FUNCTIONS FROM [OrganizationRepository]
     //__________________________________________________________________________________________________________________
 
+    func listGroups         (in orgId   : Int,
+                             result     : @escaping ResultIdPList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsSynchronizationRepo.listGroups : 🚧 not implemented")))
+    }
+    
+    func listGroups         (for teamId : Int,
+                             result     : @escaping ResultIdPList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsSynchronizationRepo.listGroups : 🚧 not implemented")))
+    }
+    
+    func createOrUpodate    (for teamId : Int,
+                             result     : @escaping ResultIdP) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHTeamsSynchronizationRepo.createOrUpodate : 🚧 not implemented")))
+    }
+    
+    
     
 }
