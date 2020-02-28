@@ -1,14 +1,13 @@
 //
-//  MarkdownEntity.swift
-//  githubAPIv3
+//  File.swift
+//  
 //
-//  Created by Francisco Romero on 06/02/20.
-//  Copyright © 2020 Francisco Romero. All rights reserved.
+//  Created by Francisco Romero on 26/02/20.
 //
 
 import Foundation
 
-public protocol MarkdownEntity: GHCodable {
+public protocol TeamInvitationEntity: GHCodable{
     
     // MARK: PUBLIC PROPERTIES
     //__________________________________________________________________________________________________________________

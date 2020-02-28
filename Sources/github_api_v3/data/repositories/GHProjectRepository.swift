@@ -101,7 +101,7 @@ internal class GHProjectRepository : ProjectRepo {
                          result: @escaping ProjectRepo.ResultProjectList) {
         
         /// initialize local variables
-        let path : String   = "\(GHOrganizationRepository.pathOrganizations)/\(organization)\(GHProjectRepository.pathProjects)"
+        let path : String   = "\(GHOrganizationRepository.pathOrgs)/\(organization)\(GHProjectRepository.pathProjects)"
         
         /// execute  http get request
         session
@@ -1012,8 +1012,7 @@ class GHProjectColumnsRepository : ProjectColumnsRepository {
                 }
             }
         }
-        
-        result(.failure(GHSession.SessionError.notImplemented(message: "Not yet implemented [Work in progress 🚧]")))
+                
     }
     
     func delete     (columnId       : Int,
@@ -1160,6 +1159,7 @@ class GHProjectColumnsRepository : ProjectColumnsRepository {
         
         
     }
+    
     
     
 }
