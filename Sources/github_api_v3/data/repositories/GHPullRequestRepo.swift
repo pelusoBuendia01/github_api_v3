@@ -10,7 +10,6 @@ import Foundation
 internal class GHPullRequestRepo: PullRequestRepo {
     
     
-    
     // MARK: PRIVATE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
     
@@ -50,6 +49,75 @@ internal class GHPullRequestRepo: PullRequestRepo {
     // MARK: OVERRIDE FUNCTIONS FROM [OrganizationRepository]
     //__________________________________________________________________________________________________________________
     
+    func listPullRequest        (owner      : String,
+                                 repo       : String,
+                                 state      : PullRequestState?,
+                                 head       : String?,
+                                 base       : String?,
+                                 sort       : PullRequestSort?,
+                                 direction  : PullRequestDirection?,
+                                 result     : @escaping ResultPullRequestList) {
+            result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestRepo.listPullRequest : 🚧 not implemented")))
+    }
+    
+    
+    func single                 (owner      : String,
+                                 repo       : String,
+                                 pullNumber : Int,
+                                 result     : @escaping ResultPullRequest) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestRepo.single : 🚧 not implemented")))
+    }
+    
+    func create                 (owner      : String,
+                                 repo       : String,
+                                 title      : String,
+                                 head       : String,
+                                 base       : String,
+                                 body       : String?,
+                                 mainteinerCanModify: Bool?,
+                                 draft      : Bool?,
+                                 result     : @escaping ResultPullRequest) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestRepo.create : 🚧 not implemented")))
+    }
+    
+    func update                 (owner      : String,
+                                 repo       : String,
+                                 pullNumber : Int,
+                                 title      : String?,
+                                 body       : String?,
+                                 state      : PullRequestState?,
+                                 base       : String?,
+                                 mainteinerCanModify: Bool?,
+                                 result     : @escaping ResultPullRequest) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestRepo.update : 🚧 not implemented")))
+    }
+    
+    func filesIn                (owner      : String,
+                                 repo       : String,
+                                 pullNumber : Int,
+                                 result     : @escaping ResultPullRequestFileList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestRepo.filesIn : 🚧 not implemented")))
+    }
+    
+    func verifyMerged           (owner      : String,
+                                 repo       : String,
+                                 pullNumber : Int,
+                                 result     : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestRepo.verifyMerged : 🚧 not implemented")))
+    }
+    
+    func merge                  (owner      : String,
+                                 repo       : String,
+                                 pullNumber : Int,
+                                 title      : String,
+                                 message    : String,
+                                 sha        : String,
+                                 method     : PullRequestCommitEntity?,
+                                 result     : @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestRepo.merge : 🚧 not implemented")))
+    }
+    
+
     
 }
 

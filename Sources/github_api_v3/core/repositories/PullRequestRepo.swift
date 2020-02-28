@@ -13,6 +13,7 @@ public protocol PullRequestRepo : GHRepository {
     //__________________________________________________________________________________________________________________
     typealias ResultPullRequest                     = (Result< PullRequestEntity                ,Error> ) -> Void
     typealias ResultPullRequestList                 = (Result<[PullRequestEntity]               ,Error> ) -> Void
+    typealias ResultPullRequestFileList             = (Result<[PullRequestFileEntity]           ,Error> ) -> Void
     typealias ResultPullRequestCommit               = (Result< PullRequestCommitEntity          ,Error> ) -> Void
     typealias ResultPullRequestCommitList           = (Result<[PullRequestCommitEntity]         ,Error> ) -> Void
     typealias ResultPullRequestReview               = (Result< PullRequestReviewEntity          ,Error> ) -> Void
@@ -32,6 +33,62 @@ public protocol PullRequestRepo : GHRepository {
     
     // MARK: FUNCTIONS
     //__________________________________________________________________________________________________________________
+    
+    func listPullRequest            (owner      : String,
+                                     repo       : String,
+                                     state      : PullRequestState?,
+                                     head       : String?,
+                                     base       : String?,
+                                     sort       : PullRequestSort?,
+                                     direction  : PullRequestDirection?,
+                                     result     : @escaping ResultPullRequestList) -> Void
+    
+    
+    func single                     (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     result     : @escaping ResultPullRequest) -> Void
+    
+    
+    func create                     (owner      : String,
+                                     repo       : String,
+                                     title      : String,
+                                     head       : String,
+                                     base       : String,
+                                     body       : String?,
+                                     mainteinerCanModify : Bool?,
+                                     draft      : Bool?,
+                                     result     : @escaping ResultPullRequest) -> Void
+    
+    func update                     (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     title      : String?,
+                                     body       : String?,
+                                     state      : PullRequestState?,
+                                     base       : String?,
+                                     mainteinerCanModify : Bool?,
+                                     result     : @escaping ResultPullRequest) -> Void
+    
+        
+    func filesIn                    (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     result     : @escaping ResultPullRequestFileList) -> Void
+    
+    func verifyMerged               (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     result     : @escaping GHConfiguration.RESTConfirmation) -> Void
+    
+    func merge                      (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     title      : String,
+                                     message    : String,
+                                     sha        : String,
+                                     method     : PullRequestCommitEntity?,
+                                     result     : @escaping GHConfiguration.RESTConfirmation) -> Void
     
 }
 
