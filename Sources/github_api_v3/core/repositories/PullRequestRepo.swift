@@ -167,6 +167,9 @@ public protocol PullRequestReviewCommentsRepo : GHRepository {
     // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________
     
+    typealias ResultReviewComent        = (Result< PullRequestReviewCommentEntity   ,Error> ) -> Void
+    typealias ResultReviewComentList    = (Result<[PullRequestReviewCommentEntity]  ,Error> ) -> Void
+    
     
     // MARK: VARIABLES
     //__________________________________________________________________________________________________________________
@@ -174,6 +177,51 @@ public protocol PullRequestReviewCommentsRepo : GHRepository {
     
     // MARK: FUNCTIONS
     //__________________________________________________________________________________________________________________
+    
+    func listInPullRequest          (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     result     : @escaping ResultReviewComentList) -> Void
+    
+    func listInRepo                 (owner      : String,
+                                     repo       : String,
+                                     result     : @escaping ResultReviewComentList) -> Void
+    
+    
+    func single                     (owner      : String,
+                                     repo       : String,
+                                     commentId  : Int,
+                                     result     : @escaping ResultReviewComentList) -> Void
+    
+    
+    func create                     (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     body       : String,
+                                     path       : String,
+                                     result     : @escaping ResultReviewComentList) -> Void
+    
+    
+    func createReplayFor            (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     commentId  : Int,
+                                     body       : String,
+                                     result     : @escaping ResultReviewComentList) -> Void
+    
+    
+    func update                     (owner      : String,
+                                     repo       : String,
+                                     commitId   : Int,
+                                     body       : String,
+                                     result     : @escaping ResultReviewComentList) -> Void
+    
+    
+    
+    func delete                     (owner      : String,
+                                     repo       : String,
+                                     commitId   : Int,
+                                     result     : @escaping GHConfiguration.RESTConfirmation) -> Void
     
     
 }

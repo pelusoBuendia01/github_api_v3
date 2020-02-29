@@ -222,6 +222,61 @@ internal class GHPullRequestReviewsRepo: PullRequestReviewsRepo {
 
 internal class GHPullRequestReviewCommentsRepo: PullRequestReviewCommentsRepo {
     
+    
+    func listInPullRequest  (owner: String,
+                             repo: String,
+                             pullNumber: Int,
+                             result: @escaping ResultReviewComentList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestReviewCommentsRepo.listInPullRequest : 🚧 not implemented")))
+    }
+    
+    func listInRepo         (owner: String,
+                             repo: String,
+                             result: @escaping ResultReviewComentList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestReviewCommentsRepo.listInRepo : 🚧 not implemented")))
+    }
+    
+    func single             (owner: String,
+                             repo: String,
+                             commentId: Int,
+                             result: @escaping ResultReviewComentList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestReviewCommentsRepo.single : 🚧 not implemented")))
+    }
+    
+    func create             (owner: String,
+                             repo: String,
+                             pullNumber: Int,
+                             body: String,
+                             path: String,
+                             result: @escaping ResultReviewComentList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestReviewCommentsRepo.create : 🚧 not implemented")))
+    }
+    
+    func createReplayFor    (owner: String,
+                             repo: String,
+                             pullNumber: Int,
+                             commentId: Int,
+                             body: String,
+                             result: @escaping ResultReviewComentList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestReviewCommentsRepo.createReplayFor : 🚧 not implemented")))
+    }
+    
+    func update             (owner: String,
+                             repo: String,
+                             commitId: Int,
+                             body: String,
+                             result: @escaping ResultReviewComentList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestReviewCommentsRepo.update : 🚧 not implemented")))
+    }
+    
+    func delete             (owner: String,
+                             repo: String,
+                             commitId: Int,
+                             result: @escaping GHConfiguration.RESTConfirmation) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestReviewCommentsRepo.delete : 🚧 not implemented")))
+    }
+    
+    
     // MARK: PRIVATE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
     

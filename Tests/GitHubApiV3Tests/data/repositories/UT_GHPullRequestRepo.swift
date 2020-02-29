@@ -1304,6 +1304,609 @@ final class UT_GHPullRequestRepo: XCTestCase {
         
     }   
     
+    
+    func test0016() {
+                
+        /// initialize local variables
+        let testFunction = "test0016"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHPullRequestRepo.reviewComments.listInPullRequest"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    
+                    api.pullRequestRepo.reviewComments.listInPullRequest(owner: "", repo: "", pullNumber: 0) {
+                        result in
+                        
+                        switch (result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                                
+                            }
+                            
+                        case .success(let user) :
+                            do {
+                                                                                                
+                                XCTAssertNotNil(user)
+                                
+                            }
+                            
+                        }
+                        expect.fulfill()
+                    }
+                    
+                }
+                
+            }
+            
+            
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+        
+    func test0017() {
+                
+        /// initialize local variables
+        let testFunction = "test0017"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHPullRequestRepo.reviewComments.listInRepo"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    
+                    api.pullRequestRepo.reviewComments.listInRepo(owner: "", repo: "") {
+                        result in
+                        
+                        switch (result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                                
+                            }
+                            
+                        case .success(let user) :
+                            do {
+                                                                                                
+                                XCTAssertNotNil(user)
+                                
+                            }
+                            
+                        }
+                        expect.fulfill()
+                    }
+                    
+                }
+                
+            }
+            
+            
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    func test0018() {
+                
+        /// initialize local variables
+        let testFunction = "test0016"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHPullRequestRepo.reviewComments.single"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    
+                    api.pullRequestRepo.reviewComments.single(owner: "", repo: "", commentId: 0) {
+                        result in
+                        
+                        switch (result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                                
+                            }
+                            
+                        case .success(let user) :
+                            do {
+                                                                                                
+                                XCTAssertNotNil(user)
+                                
+                            }
+                            
+                        }
+                        expect.fulfill()
+                    }
+                    
+                }
+                
+            }
+            
+            
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    func test0019() {
+                
+        /// initialize local variables
+        let testFunction = "test0019"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHPullRequestRepo.reviewComments.create"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    
+                    api.pullRequestRepo.reviewComments.create(owner: "", repo: "", pullNumber: 0, body: "", path: "") {
+                        result in
+                        
+                        switch (result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                                
+                            }
+                            
+                        case .success(let user) :
+                            do {
+                                                                                                
+                                XCTAssertNotNil(user)
+                                
+                            }
+                            
+                        }
+                        expect.fulfill()
+                    }
+                    
+                }
+                
+            }
+            
+            
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    func test0020() {
+                
+        /// initialize local variables
+        let testFunction = "test00206"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHPullRequestRepo.reviewComments.createReplayFor"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    
+                    api.pullRequestRepo.reviewComments.createReplayFor(owner: "", repo: "", pullNumber: 0, commentId: 0, body: "") {
+                        result in
+                        
+                        switch (result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                                
+                            }
+                            
+                        case .success(let user) :
+                            do {
+                                                                                                
+                                XCTAssertNotNil(user)
+                                
+                            }
+                            
+                        }
+                        expect.fulfill()
+                    }
+                    
+                }
+                
+            }
+            
+            
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    func test0021() {
+                
+        /// initialize local variables
+        let testFunction = "test0021"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHPullRequestRepo.reviewComments.update"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    
+                    api.pullRequestRepo.reviewComments.update(owner: "", repo: "", commitId: 0, body: "") {
+                        result in
+                        
+                        switch (result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                                
+                            }
+                            
+                        case .success(let user) :
+                            do {
+                                                                                                
+                                XCTAssertNotNil(user)
+                                
+                            }
+                            
+                        }
+                        expect.fulfill()
+                    }
+                    
+                }
+                
+            }
+            
+            
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
+    func test0022() {
+                
+        /// initialize local variables
+        let testFunction = "test0022"
+        let expect = expectation(
+            description: TestUtils.expectationString(
+                cls: Self.CLS,
+                fun: testFunction,
+                desc: "GHPullRequestRepo.reviewComments.delete"
+            )
+        )
+        
+        /// excute async function
+        GitHubSessionFactory.initSessionWithToken(token: TestTokens.valid.rawValue) {
+            sessionResult in
+                                    
+            switch(sessionResult) {
+            case .failure(let error) :
+                do {
+                    
+                    XCTFail(
+                        TestUtils.errorString(
+                            cls: Self.CLS,
+                            fun: testFunction,
+                            error: error
+                        )
+                    )
+                        
+                }
+            case .success(let api) :
+                do {
+                    
+                    api.pullRequestRepo.reviewComments.delete(owner: "", repo: "", commitId: 0) {
+                        result in
+                        
+                        switch (result) {
+                            
+                        case .failure(let error) :
+                            do {
+                                
+                                XCTFail(
+                                    TestUtils.errorString(
+                                        cls: Self.CLS,
+                                        fun: testFunction,
+                                        error: error
+                                    )
+                                )
+                                
+                            }
+                            
+                        case .success(let user) :
+                            do {
+                                                                                                
+                                XCTAssertNotNil(user)
+                                
+                            }
+                            
+                        }
+                        expect.fulfill()
+                    }
+                    
+                }
+                
+            }
+            
+            
+        }
+            
+        /// wait for expectation timeout
+        waitForExpectations(timeout: TestUtils.timeOut) {
+            timeOutError in
+            
+            if let timeOutError = timeOutError {
+                XCTFail(
+                    TestUtils.errorString(
+                        cls: Self.CLS,
+                        fun: testFunction,
+                        error: timeOutError
+                    )
+                )
+            }
+            
+        }
+        
+    }
+    
 }
 
 
