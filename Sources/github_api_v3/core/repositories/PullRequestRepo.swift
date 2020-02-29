@@ -16,8 +16,6 @@ public protocol PullRequestRepo : GHRepository {
     typealias ResultPullRequestFileList             = (Result<[PullRequestFileEntity]           ,Error> ) -> Void
     typealias ResultPullRequestCommit               = (Result< PullRequestCommitEntity          ,Error> ) -> Void
     typealias ResultPullRequestCommitList           = (Result<[PullRequestCommitEntity]         ,Error> ) -> Void
-    typealias ResultPullRequestReview               = (Result< PullRequestReviewEntity          ,Error> ) -> Void
-    typealias ResultPullRequestReviewList           = (Result<[PullRequestReviewEntity]         ,Error> ) -> Void
     typealias ResultPullRequestReviewComment        = (Result< PullRequestReviewCommentEntity   ,Error> ) -> Void
     typealias ResultPullRequestReviewCommentList    = (Result<[PullRequestReviewCommentEntity]  ,Error> ) -> Void    
     typealias ResultPullRequestReviewRequest        = (Result< PullRequestReviewRequestEntity   ,Error> ) -> Void
@@ -98,6 +96,11 @@ public protocol PullRequestReviewsRepo : GHRepository {
     // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________
     
+    typealias ResultPullRequestReview               = (Result< PullRequestReviewEntity          ,Error> ) -> Void
+    typealias ResultPullRequestReviewList           = (Result<[PullRequestReviewEntity]         ,Error> ) -> Void
+    typealias ResultPullRequestReviewComment        = (Result< PullRequestReviewCommentEntity   ,Error> ) -> Void
+    typealias ResultPullRequestReviewCommentList    = (Result<[PullRequestReviewCommentEntity]  ,Error> ) -> Void
+    
     
     // MARK: VARIABLES
     //__________________________________________________________________________________________________________________
@@ -105,6 +108,55 @@ public protocol PullRequestReviewsRepo : GHRepository {
     
     // MARK: FUNCTIONS
     //__________________________________________________________________________________________________________________
+    
+    func listReview                 (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     result     : @escaping ResultPullRequestReviewList ) -> Void
+        
+    func single                     (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     result     : @escaping ResultPullRequestReview ) -> Void
+        
+    func deletePending              (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     result     : @escaping PullRequestRepo.ResultPullRequest ) -> Void
+
+    func comment                    (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     result     : @escaping ResultPullRequestReview ) -> Void
+    
+    func create                     (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     body       : String,
+                                     result     : @escaping ResultPullRequestReview ) -> Void
+    
+    func update                     (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     reviewId   : Int,
+                                     body       : String,
+                                     result     : @escaping ResultPullRequestReview ) -> Void
+    
+    
+    func submit                     (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     reviewId   : Int,
+                                     body       : String,
+                                     event      : PullRequestReviewEvent,
+                                     result     : @escaping ResultPullRequestReview ) -> Void
+    
+    func dismiss                    (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     reviewId   : Int,
+                                     message    : String,
+                                     result     : @escaping ResultPullRequestReview ) -> Void
     
     
 }
