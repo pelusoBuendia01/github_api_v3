@@ -470,11 +470,15 @@ class GHMiscellaneousMarkdownRepo: MiscellaneousMarkdownRepo {
         
         /// initializa local variables
         var path : String = Self.pathMarkdown
-        path += Self.pathRaw
-        print("\t\t🌐\(path)")
+        path += Self.pathRaw        
+        
+        let param : [String:Any] = [
+            Self.paramText      : text
+        ]
+         
         
         /// execute http get request
-        session.post(path, with: nil) {
+        session.postPlain(path, with: param) {
             
             RESTResult in
             
@@ -488,12 +492,8 @@ class GHMiscellaneousMarkdownRepo: MiscellaneousMarkdownRepo {
             case .success(let response) :
                 do {
                                     
-                    do  {
-                        let render = try self.session.decoder.decode(String.self, from: response.data)
-                        result(.success(render))
-                    } catch {
-                        result(.failure(GHSession.SessionError.decodingError(message: error.localizedDescription)))
-                    }
+                    let render = String(decoding: response.data, as: UTF8.self)
+                    result(.success(render))
                     
                 }
                 

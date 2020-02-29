@@ -658,7 +658,7 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                 
                 do {
                     
-                    api.miscellaneousRepo.markdown.renderMarkdownRaw(text: "") {
+                    api.miscellaneousRepo.markdown.renderMarkdownRaw(text: "Hello world github/linguist#1 **cool**, and #1!") {
                         result in
                         
                         /// 🔬 Execute test
@@ -677,13 +677,14 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                                 
                             }
                             
-                        case .success(_) :
+                        case .success(let html) :
                             do  {
-                                XCTAssert(true)
-                                expect.fulfill()
+                                                                
+                                XCTAssertGreaterThan(html.count, 0)
+                                
                             }
                         }
-                        
+                        expect.fulfill()
                     }
                     
                 }
