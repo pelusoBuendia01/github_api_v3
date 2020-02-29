@@ -9,7 +9,7 @@
 |[GHAppRepos](./GHAppsRepo.swift)                           | TODO: 🏷 Add description  |
 |[GHIssuesRepo](./GHIssuesRepo.swift)                       | TODO: 🏷 Add description  |
 |[GHMigrationRepo](./GHMigrationRepo.swift)                 | TODO: 🏷 Add description  |
-|[🌐 GHMiscellaneousRepo](./GHMiscellaneousRepo.swift)         | Http access to miscellaneous repository   |
+|[🌐 GHMiscellaneousRepo](./GHMiscellaneousRepo.swift)      | Http access to miscellaneous repository   |
 |[🌐 OrganizationRepo](./GHOrganizationRepository.swift)    | Http access to organization repository    |
 |[🌐 GHProjectRepo](./GHProjectRepo.swift)                  | Http access to project repository         |
 |[🌐 GHPullRequestRepo](./GHPullRequestRepo.swift)          | Http access to pull request repository    |
