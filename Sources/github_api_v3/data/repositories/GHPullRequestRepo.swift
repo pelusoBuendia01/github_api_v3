@@ -305,6 +305,7 @@ internal class GHPullRequestReviewCommentsRepo: PullRequestReviewCommentsRepo {
 
 internal class GHPullRequestReviewRequestRepo: PullRequestReviewRequestRepo {
     
+    
     // MARK: PRIVATE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
     
@@ -312,20 +313,51 @@ internal class GHPullRequestReviewRequestRepo: PullRequestReviewRequestRepo {
     // MARK: PUBLIC STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
     
+    
     // MARK: PRIVATTE STATIC PROPERTIES
     //__________________________________________________________________________________________________________________
     
+    
     // MARK: OVERRIDED PUBLIC PROPERTIES [UserRepository]
     //__________________________________________________________________________________________________________________
+    
     public var session: GHSession
+    
     
     // MARK: CONSTRUCTOR
     //__________________________________________________________________________________________________________________
+    
     init(session : GHSession) {
         self.session = session
     }
     
+    
     // MARK: OVERRIDE FUNCTIONS FROM [OrganizationRepository]
     //__________________________________________________________________________________________________________________
+    
+    func listFor            (owner      : String,
+                             repo       : String,
+                             pullNumber : Int,
+                             result     : @escaping ResultReviewRequestList) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestReviewRequestRepo.listFor : 🚧 not implemented")))
+    }
+    
+    func create             (owner      : String,
+                             repo       : String,
+                             pullNumber : Int,
+                             reviewers  : [String]?,
+                             teamReviewers  : [String]?,
+                             result     : @escaping ResultReviewRequest) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestReviewRequestRepo.create : 🚧 not implemented")))
+    }
+    
+    func delete             (owner      : String,
+                             repo       : String,
+                             pullNumber : Int,
+                             reviewers  : [String]?,
+                             teamReviewers  : [String]?,
+                             result     : @escaping ResultReviewRequest) {
+        result(.failure(GHSession.SessionError.notImplemented(message: "GHPullRequestReviewRequestRepo.delete : 🚧 not implemented")))
+    }
     
 }

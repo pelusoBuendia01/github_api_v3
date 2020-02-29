@@ -232,6 +232,8 @@ public protocol PullRequestReviewRequestRepo : GHRepository {
     // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________
     
+    typealias ResultReviewRequest       = (Result< PullRequestReviewRequestEntity   ,Error> ) -> Void
+    typealias ResultReviewRequestList   = (Result< PullRequestReviewRequestEntity   ,Error> ) -> Void
     
     // MARK: VARIABLES
     //__________________________________________________________________________________________________________________
@@ -240,5 +242,25 @@ public protocol PullRequestReviewRequestRepo : GHRepository {
     // MARK: FUNCTIONS
     //__________________________________________________________________________________________________________________
     
+    func listFor                    (owner      : String,
+                                     repo       : String,
+                                     pullNumber : Int,
+                                     result     : @escaping ResultReviewRequestList ) -> Void
+    
+    
+    func create                    (owner       : String,
+                                    repo        : String,
+                                    pullNumber  : Int,
+                                    reviewers   : [String]?,
+                                    teamReviewers  : [String]?,
+                                    result      : @escaping ResultReviewRequest ) -> Void
+    
+    
+    func delete                    (owner       : String,
+                                    repo        : String,
+                                    pullNumber  : Int,
+                                    reviewers   : [String]?,
+                                    teamReviewers  : [String]?,
+                                    result      : @escaping ResultReviewRequest ) -> Void
     
 }
