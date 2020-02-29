@@ -253,6 +253,31 @@ public class GHSession {
             }
     }
     
+    public func postPlain(_ path     : GHConfiguration.ApiPath ,
+                     with body  : [String:Any?]?,
+                     completition    : @escaping GHConfiguration.RESTCompletition) -> Void  {
+        
+        /// Execute "Post"  Request
+        executePlainAsync(
+            path,
+            with        : body,
+            for         : .post){
+                result in
+                    
+                    switch (result) {
+                    case .failure(let error) :do {
+                        completition(.failure(error))
+                        }
+                        
+                    case .success(let response) :  do {
+                        completition(.success(response))
+                        }
+                    }
+                    
+                    
+            }
+    }
+    
     public func put(_ path     : GHConfiguration.ApiPath ,
              with body  : [String:Any?]?,
              completition    : @escaping GHConfiguration.RESTCompletition) -> Void  {
@@ -363,6 +388,8 @@ public class GHSession {
                 }
             }
             
+            
+            
             /// Execute data task
             urlSession.dataTask(with: request) {
                 data, response, error in
@@ -452,6 +479,128 @@ public class GHSession {
         }
         
     }
+    
+    
+    private func executePlainAsync(
+        _ path          : GHConfiguration.ApiPath,
+        with body       : [String:Any?]?,
+        for method      : HttpMethod ,
+        completition    : @escaping GHConfiguration.RESTCompletition ) {
+        
+        /// Initialize valid url
+        if let url = URL.init(string: "\(GHConfiguration.baseURL)\(path)") {
+
+            /// Setup request
+            var request         = URLRequest(url: url)
+            request.httpMethod  = method.parameter
+            if let body         = body {
+                do {
+                    request.httpBody = try JSONSerialization.data(
+                        withJSONObject  : body,
+                        options         : .prettyPrinted
+                    )
+                } catch {
+                    
+                    completition(
+                        .failure(SessionError.requestError(message: GHSession.TXT_INVALID_PARAMETERS))
+                    )
+                    return
+                    
+                }
+            }
+            
+            request.addValue("text/plain", forHTTPHeaderField: "Content-Type")
+            
+            /// Execute data task
+            urlSession.dataTask(with: request) {
+                data, response, error in
+                /// Verify response
+                if let response = response {
+                    
+                    /// Verify http status code error
+                    if ( response.hasError() ) {
+                        
+                        /// Create reponse error
+                        let responseError           : GHError
+                        let sessionError    : SessionError
+                        
+                        /// Verify data was received
+                        if let d = data {
+                            /// Try to get error message
+                            do {
+                                responseError = try self.decoder.decode(GHError.self, from: d)
+                            }
+                            /// When error message is not received
+                            catch {
+                                responseError = GHError.init(code: response.statusCode() )
+                            }
+                        }
+                        /// When no data is received
+                        else {
+                            responseError = GHError(message: GHSession.TXT_NO_DATA_RECEIVED )
+                        }
+                        
+                        // Complete fealure
+                        sessionError    = SessionError.responseError(message: responseError.message)
+                        completition(
+                            .failure(sessionError)
+                        )
+                        return
+                                                
+                    }
+                    /// When no error is received
+                    else {
+                        
+                        /// Verify data was received
+                        if let data = data {
+                            completition(
+                                .success(
+                                    GHConfiguration.RESTResponse(
+                                        data        : data,
+                                        statusCode  : response.statusCode()
+                                    )
+                                )
+                            )
+                            return
+                        }
+                        /// When no data is received
+                        else {
+                            
+                            completition(
+                                .success(
+                                    GHConfiguration.RESTResponse(
+                                        data        : Data.init(),
+                                        statusCode  : response.statusCode()
+                                    )
+                                )
+                            )
+                            return
+                        }
+                    }
+                }
+                /// When no response is received
+                else {
+                    
+                    // complete failure
+                    completition(
+                        .failure(SessionError.responseError(message: GHSession.TXT_NO_RESPONSE_RECEIVED))
+                    )
+                }
+            }.resume()
+            
+        }
+        /// When is not posible a valid url
+        else {
+            
+            // complete failure
+            completition(
+                .failure(SessionError.requestError(message: "\(GHSession.TXT_INVALID_URL)\(path)"))
+            )
+            
+        }
+        
+    }
+    
     
     
     
