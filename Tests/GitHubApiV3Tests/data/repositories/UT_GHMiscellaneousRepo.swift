@@ -590,16 +590,15 @@ final class UT_GHMiscellaneousRepo: XCTestCase {
                                 
                             }
                             
-                        case .success(let a) :
+                        case .success(let html) :
                             do  {
-                                print("\n\t\t- - - - - - - - - - - - - - - - - - - - - - - -")
-                                print(a)
-                                print("\t\t- - - - - - - - - - - - - - - - - - - - - - - -\n")
+                                
+                                XCTAssertNotNil(html)
                                 XCTAssert(true)
-                                expect.fulfill()
+                                
                             }
                         }
-                        
+                        expect.fulfill()
                     }
                                         
                 }
