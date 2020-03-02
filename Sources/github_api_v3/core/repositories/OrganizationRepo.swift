@@ -455,6 +455,8 @@ public protocol OrganizationWebhooksRepo : GHRepository{
     
     // MARK: TYPEALIAS
     //__________________________________________________________________________________________________________________
+
+  
     typealias ResultWebhook             = (Result< WebhookEntity    ,Error>)  -> Void
     typealias ResultWebhookList         = (Result<[WebhookEntity]   ,Error>)  -> Void
     
@@ -518,5 +520,4 @@ public protocol OrganizationWebhooksRepo : GHRepository{
     
     
 }
-
 
