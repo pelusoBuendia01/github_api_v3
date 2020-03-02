@@ -977,16 +977,6 @@ class GHOrganizationWebhooksRepo: OrganizationWebhooksRepo {
                          result     : @escaping ResultWebhook) {
         result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationWebhooksRepo.single : 🚧 not implemented")))
     }
-            
-    func listHooks      (result     : @escaping ResultWebhookList) {
-        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationWebhooksRepo.listHooks : 🚧 not implemented")))
-    }
-    
-    func single         (orgName    : String,
-                         hookId     : Int,
-                         result     : @escaping ResultWebhook) {
-        result(.failure(GHSession.SessionError.notImplemented(message: "GHOrganizationWebhooksRepo.single : 🚧 not implemented")))
-    }
     
     func create         (name       : String,
                          conf       : WebhookConfigEntity?,
