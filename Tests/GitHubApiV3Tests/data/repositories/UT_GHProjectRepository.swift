@@ -70,6 +70,8 @@ final class UT_GHProjectRepository: XCTestCase {
                         case .success(let obj) :
                             do {
                                 
+                                print("\t\t\t📍\(obj.count)")
+                                
                                 Self.firstProject = obj[0].id
                                 XCTAssertNotNil(obj)
                                 
@@ -151,6 +153,7 @@ final class UT_GHProjectRepository: XCTestCase {
                             
                         case .success(let obj) :
                             do {
+                                Self.firstProject = obj[0].id
                                 XCTAssertNotNil(obj)
                             }
                             
