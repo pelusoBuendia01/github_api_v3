@@ -520,4 +520,3 @@ public protocol OrganizationWebhooksRepo : GHRepository{
     
     
 }
-
